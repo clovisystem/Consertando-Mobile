@@ -1,0 +1,107 @@
+object Form2: TForm2
+  Left = 0
+  Top = 0
+  Caption = 'Consertando'
+  ClientHeight = 615
+  ClientWidth = 360
+  FormFactor.Width = 320
+  FormFactor.Height = 480
+  FormFactor.Devices = [Desktop]
+  OnClose = FormClose
+  OnShow = FormShow
+  DesignerMasterStyle = 3
+  object Panel2: TPanel
+    Align = Client
+    Size.Width = 360.000000000000000000
+    Size.Height = 567.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 0
+    object Label3: TLabel
+      Align = Scale
+      DragMode = dmAutomatic
+      StyledSettings = [Family, Style]
+      Position.Y = 220.117874145507800000
+      Size.Width = 360.000000000000000000
+      Size.Height = 228.961776733398400000
+      Size.PlatformDefault = False
+      TextSettings.FontColor = claNavy
+      TextSettings.HorzAlign = Center
+      TextSettings.WordWrap = False
+    end
+    object Label2: TLabel
+      Align = Scale
+      Position.Y = 23.584060668945310000
+      Size.Width = 360.000000000000000000
+      Size.Height = 22.601379394531250000
+      Size.PlatformDefault = False
+      TextSettings.HorzAlign = Center
+      Text = 'Label2'
+    end
+    object Label1: TLabel
+      Align = Scale
+      StyledSettings = [Family, Style, FontColor]
+      Position.Y = 79.596176147460940000
+      Size.Width = 360.000000000000000000
+      Size.Height = 22.601394653320310000
+      Size.PlatformDefault = False
+      TextSettings.Font.Size = 20.000000000000000000
+      TextSettings.HorzAlign = Center
+      Text = 'Informe o defeito:'
+    end
+    object Label4: TLabel
+      Align = Scale
+      Position.Y = 344.000000000000000000
+      Size.Width = 360.000000000000000000
+      Size.Height = 33.000000000000000000
+      Size.PlatformDefault = False
+      TextSettings.HorzAlign = Center
+      Text = 'Label4'
+      Visible = False
+    end
+    object Edit1: TEdit
+      Touch.InteractiveGestures = [LongTap, DoubleTap]
+      Align = Scale
+      TabOrder = 4
+      Position.X = 16.000000000000000000
+      Position.Y = 128.000015258789100000
+      Size.Width = 337.000000000000000000
+      Size.Height = 32.000000000000000000
+      Size.PlatformDefault = False
+      OnKeyDown = Edit1KeyDown
+      OnKeyUp = Edit1KeyUp
+    end
+    object Button1: TButton
+      Align = Scale
+      Position.X = 324.000000000000000000
+      Position.Y = 125.999984741210900000
+      Size.Width = 32.000000000000000000
+      Size.Height = 32.000000000000000000
+      Size.PlatformDefault = False
+      StyleLookup = 'searcheditbutton'
+      TabOrder = 5
+      Text = 'Button1'
+      OnClick = Button1Click
+    end
+  end
+  object ToolBar1: TToolBar
+    Align = Bottom
+    Position.Y = 567.000000000000000000
+    Size.Width = 360.000000000000000000
+    Size.Height = 48.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 1
+    OnClick = ToolBar1Click
+    object Label5: TLabel
+      Align = Horizontal
+      StyledSettings = [Family, FontColor]
+      Position.Y = 16.000000000000000000
+      Size.Width = 360.000000000000000000
+      Size.Height = 23.000000000000000000
+      Size.PlatformDefault = False
+      TextSettings.Font.Size = 20.000000000000000000
+      TextSettings.Font.Style = [fsBold]
+      TextSettings.HorzAlign = Center
+      Text = 'Voltar'
+    end
+  end
+end

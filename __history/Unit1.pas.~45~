@@ -1,0 +1,156 @@
+unit Unit1;
+
+interface
+
+uses
+  System.SysUtils, System.Types, System.UITypes, System.Classes, System.Variants,
+  FMX.Types, FMX.Controls, FMX.Forms, FMX.Graphics, FMX.Dialogs, FMX.StdCtrls,
+  FMX.TabControl, FMX.Objects;
+
+type
+  TForm1 = class(TForm)
+    Panel1: TPanel;
+    ImageControl2: TImageControl;
+    ImageControl3: TImageControl;
+    ImageControl1: TImageControl;
+    TabControl1: TTabControl;
+    TabItem1: TTabItem;
+    Image2: TImage;
+    TabItem2: TTabItem;
+    TabItem3: TTabItem;
+    Label1: TLabel;
+    Button2: TButton;
+    Button3: TButton;
+    ToolBar1: TToolBar;
+    Label2: TLabel;
+    Button1: TButton;
+    Image1: TImage;
+
+    //procedure ShowForm(AObject: TFmxObject);
+    procedure Button2Click(Sender: TObject);
+    procedure Button1Click(Sender: TObject);
+    procedure Button3Click(Sender: TObject);
+    procedure TabItem1Click(Sender: TObject);
+    procedure TabItem2Click(Sender: TObject);
+    procedure TabItem3Click(Sender: TObject);
+    //procedure Label2Click(Sender: TObject);
+    procedure ToolBar1Click(Sender: TObject);
+  private
+    //Fform2: TForm2;
+    { Private declarations }
+  public
+
+    { Public declarations }
+  end;
+
+var
+  Form1: TForm1;
+
+implementation
+
+{$R *.fmx}
+
+uses Unit2, Unit3;
+
+
+
+
+{procedure TForm1.ShowForm(AObject: TFmxObject);
+  var
+    i:integer;
+  begin
+      for i:=0 to Pred(Self.Panel1.children.count)do
+        TControl(Self.Panel1.Children[i]).Visible:=TControl(Self.Panel1.Children[i])=TControl(AObject);
+  end;   }
+
+
+
+procedure TForm1.Button1Click(Sender: TObject);
+begin
+    //Form2.showmodal;
+
+    if Form2=nil then
+    Form2:=TForm2.Create(Self);
+    Form2.Show;
+
+    Form2.Label2.Text:='Computador';
+end;
+
+{procedure TForm1.ImageControl1Click(Sender: TObject);
+begin
+    Form2.showmodal;
+    Form2.Label2.Text:='Computador';
+end;  }
+
+procedure TForm1.Button2Click(Sender: TObject);
+
+begin
+    //Form2.showmodal;
+
+    if Form3=nil then
+    Form3:=TForm2.Create(Self);
+    Form3.Show;
+    Form3.Label2.Text:='TV';
+
+    {if not assigned(Fform2) then
+      Fform2:=TForm2.Create(self);
+      Panel1.AddObject(Fform2.Panel2);
+      ShowForm(Fform2.Panel2); }
+end;
+
+{procedure TForm1.ImageControl2Click(Sender: TObject);
+begin
+    Form2.showmodal;
+    Form2.Label2.Text:='TV';
+end;  }
+
+procedure TForm1.Button3Click(Sender: TObject);
+begin
+    //Form2.showmodal;
+    if Form2=nil then
+    Form2:=TForm2.Create(Self);
+    Form2.Show;
+    Form2.Label2.Text:='Rádio';
+end;
+
+
+{procedure TForm1.ImageControl3Click(Sender: TObject);
+begin
+    Form2.showmodal;
+    Form2.Label2.Text:='Rádio';
+end;}
+
+procedure TForm1.TabItem1Click(Sender: TObject);
+begin
+   //Form2.ShowModal;
+   if Form2=nil then
+    Form2:=TForm2.Create(Self);
+    Form2.Show;
+   Form2.Label2.Text:='Computador';
+end;
+
+procedure TForm1.TabItem2Click(Sender: TObject);
+begin
+  //Form2.ShowModal;
+  if Form2=nil then
+    Form2:=TForm2.Create(Self);
+    Form2.Show;
+  Form2.Label2.Text:='TV';
+end;
+
+procedure TForm1.TabItem3Click(Sender: TObject);
+begin
+  //Form2.ShowModal;
+  if Form2=nil then
+    Form2:=TForm2.Create(Self);
+    Form2.Show;
+  Form2.Label2.Text:='Rádio';
+end;
+
+procedure TForm1.ToolBar1Click(Sender: TObject);
+begin
+  //application.terminate;
+  halt;
+end;
+
+end.

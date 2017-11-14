@@ -1,0 +1,46 @@
+inherited Form2_LgXhdpiPh: TForm2_LgXhdpiPh
+  ClientHeight = 695
+  ClientWidth = 450
+  DesignerMasterStyle = 3
+  inherited Panel2: TPanel
+    Size.Width = 450.000000000000000000
+    Size.Height = 647.000000000000000000
+    inherited Label3: TLabel
+      Position.X = 2.000000000000000000
+      Position.Y = 259.000000000000000000
+      Size.Width = 450.000000000000000000
+      Size.Height = 316.000000000000000000
+    end
+    inherited Label2: TLabel
+      Position.Y = 26.911617279052730000
+      Size.Width = 450.000000000000000000
+      Size.Height = 25.790287017822270000
+    end
+    inherited Label1: TLabel
+      Position.Y = 73.029983520507810000
+      Size.Width = 450.000000000000000000
+      Size.Height = 65.042327880859380000
+    end
+    inherited Label4: TLabel
+      Size.Width = 449.000000000000000000
+      Size.Height = 145.000000000000000000
+    end
+    inherited Edit1: TEdit
+      Position.X = 20.000000000000000000
+      Position.Y = 146.059982299804700000
+      Size.Width = 421.250000000000000000
+      OnTyping = Edit1Typing
+    end
+    inherited Button1: TButton
+      Position.X = 405.000000000000000000
+      Position.Y = 143.777755737304700000
+    end
+  end
+  inherited ToolBar1: TToolBar
+    Position.Y = 647.000000000000000000
+    Size.Width = 450.000000000000000000
+    inherited Label5: TLabel
+      Size.Width = 450.000000000000000000
+    end
+  end
+end

@@ -1,0 +1,109 @@
+object Form4: TForm4
+  Left = 0
+  Top = 0
+  Caption = 'Form4'
+  ClientHeight = 567
+  ClientWidth = 384
+  FormFactor.Width = 320
+  FormFactor.Height = 480
+  FormFactor.Devices = [dkDesktop]
+  DesignerMobile = True
+  DesignerWidth = 384
+  DesignerHeight = 592
+  DesignerDeviceName = 'Google Nexus 4'
+  DesignerOrientation = 0
+  DesignerOSVersion = ''
+  object Panel1: TPanel
+    Height = 569.000000000000000000
+    Width = 385.000000000000000000
+    TabOrder = 0
+    object Label2: TLabel
+      Align = alScale
+      Height = 22.000000000000000000
+      Position.X = 8.000000000000000000
+      Position.Y = 24.000000000000000000
+      Text = 'Label2'
+      TextAlign = taCenter
+      Width = 360.000000000000000000
+      Trimming = ttCharacter
+    end
+    object Label1: TLabel
+      Align = alScale
+      Font.Size = 20.000000000000000000
+      StyledSettings = [ssFamily, ssStyle, ssFontColor]
+      Height = 22.000000000000000000
+      Position.X = 8.000000000000000000
+      Position.Y = 80.000000000000000000
+      Text = 'Informe o defeito:'
+      TextAlign = taCenter
+      Width = 360.000000000000000000
+      Trimming = ttCharacter
+    end
+    object Edit1: TEdit
+      Touch.InteractiveGestures = [igLongTap, igDoubleTap]
+      Align = alScale
+      TabOrder = 2
+      Position.X = 24.000000000000000000
+      Position.Y = 128.000000000000000000
+      Width = 337.000000000000000000
+      Height = 32.000000000000000000
+      KillFocusByReturn = False
+      OnKeyDown = Edit1KeyDown
+    end
+    object Button1: TButton
+      Align = alScale
+      Height = 32.000000000000000000
+      Position.X = 332.000000000000000000
+      Position.Y = 126.000000000000000000
+      StyleLookup = 'searcheditbutton'
+      TabOrder = 3
+      Text = 'Button1'
+      Trimming = ttCharacter
+      Width = 32.000000000000000000
+    end
+    object Label4: TLabel
+      Align = alScale
+      Height = 33.000000000000000000
+      Position.X = 8.000000000000000000
+      Position.Y = 344.000000000000000000
+      Text = 'Label4'
+      TextAlign = taCenter
+      Visible = False
+      Width = 360.000000000000000000
+      Trimming = ttCharacter
+    end
+    object Label3: TLabel
+      Align = alScale
+      DragMode = dmAutomatic
+      FontColor = claNavy
+      StyledSettings = [ssFamily, ssStyle]
+      Height = 229.000000000000000000
+      Position.X = 8.000000000000000000
+      Position.Y = 220.000000000000000000
+      TextAlign = taCenter
+      Width = 360.000000000000000000
+      WordWrap = False
+      Trimming = ttCharacter
+    end
+    object ToolBar1: TToolBar
+      Align = alBottom
+      Height = 48.000000000000000000
+      Position.Y = 521.000000000000000000
+      TabOrder = 6
+      Width = 385.000000000000000000
+      OnClick = ToolBar1Click
+      object Label5: TLabel
+        Align = alHorizontal
+        Font.Size = 20.000000000000000000
+        Font.Style = [fsBold]
+        StyledSettings = [ssFamily, ssFontColor]
+        Height = 23.000000000000000000
+        Position.Y = 16.000000000000000000
+        Text = 'Voltar'
+        TextAlign = taCenter
+        Width = 385.000000000000000000
+        Trimming = ttCharacter
+      end
+    end
+  end
+end

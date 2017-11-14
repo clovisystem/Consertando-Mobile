@@ -1,0 +1,71 @@
+unit Unit1;
+
+interface
+
+uses
+  System.SysUtils, System.Types, System.UITypes, System.Classes, System.Variants,
+  FMX.Types, FMX.Controls, FMX.Forms, FMX.Graphics, FMX.Dialogs, FMX.StdCtrls;
+
+type
+  TForm1 = class(TForm)
+    Panel1: TPanel;
+    ImageControl3: TImageControl;
+    ImageControl2: TImageControl;
+    ImageControl1: TImageControl;
+    Label1: TLabel;
+    Button2: TButton;
+    Button1: TButton;
+    Button3: TButton;
+
+    procedure ShowForm(AObject: TFmxObject);
+    procedure Button2Click(Sender: TObject);
+  private
+    Fform2:TForm2;
+    { Private declarations }
+  public
+
+    { Public declarations }
+  end;
+
+var
+  Form1: TForm1;
+
+implementation
+
+{$R *.fmx}
+
+uses Unit2;
+
+
+
+
+procedure TForm1.ShowForm(AObject: TFmxObject);
+  var
+    i:integer;
+  begin
+      for i:=0 to Pred(Self.Panel1.children.count)do
+        TControl(Self.Panel1.Children[i]).Visible:=TControl(Self.Panel1.Children[i])=TControl(AObject);
+  end;
+
+
+
+procedure TForm1.Button2Click(Sender: TObject);
+
+begin
+    //Form2.showmodal;
+
+    if not assigned(Fform2) then
+      Fform2:=TForm2.Create(self);
+      Panel1.AddObject(Fform2.Panel2);
+      ShowForm(Fform2.Panel2);
+
+
+
+
+end;
+
+
+
+
+
+end.

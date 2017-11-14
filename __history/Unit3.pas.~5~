@@ -1,0 +1,299 @@
+unit Unit3;
+
+interface
+
+uses
+  System.SysUtils, System.Types, System.UITypes, System.Classes, System.Variants,
+  FMX.Types, FMX.Controls, FMX.Forms, FMX.Graphics, FMX.Dialogs, FMX.StdCtrls,
+  FMX.Edit, FMX.ListView.Types, FMX.ListView, FMX.Layouts, FMX.ListBox;
+
+type
+  TForm3 = class(TForm)
+    Panel1: TPanel;
+    Label1: TLabel;
+    Label2: TLabel;
+    Edit1: TEdit;
+    Button1: TButton;
+    Label4: TLabel;
+    Label3: TLabel;
+    ToolBar1: TToolBar;
+    Label5: TLabel;
+    procedure Edit1KeyDown(Sender: TObject; var Key: Word; var KeyChar: Char;
+      Shift: TShiftState);
+    procedure Edit1KeyUp(Sender: TObject; var Key: Word; var KeyChar: Char;
+      Shift: TShiftState);
+    procedure FormShow(Sender: TObject);
+    procedure ToolBar1Click(Sender: TObject);
+    procedure Button1Click(Sender: TObject);
+    procedure FormClose(Sender: TObject; var Action: TCloseAction);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  Form3: TForm3;
+
+implementation
+
+{$R *.fmx}
+
+uses Unit1;
+
+
+
+
+
+
+
+
+
+
+
+//funciona no android
+
+
+
+
+
+
+
+
+
+procedure TForm3.Button1Click(Sender: TObject);
+var
+    procura:string;
+begin
+    procura:=Edit1.Text;
+
+
+
+          If (Label2.Text='TV') then
+          Label3.Visible:=true;
+          //Try
+
+
+                If (Edit1.Text = 'NAO ILUMINA') Or (Edit1.Text = 'DEU PAU') Or (Edit1.Text = 'NÃO ILUMINA') Or (Edit1.Text = 'FALTA ILUMINAÇÃO') Or (Edit1.Text = 'FALTA ILUMINAÇAO') Or (Edit1.Text = 'FALTA ILUMINACAO') Or (Edit1.Text = 'SEM VÍDEO') Or (Edit1.Text = 'SEM VIDEO') Or (Edit1.Text = 'VÍDEO') Or (Edit1.Text = 'VIDEO') Or (Edit1.Text = 'ILUMINAÇÃO') Or (Edit1.Text = 'ILUMINAÇAO') Or (Edit1.Text = 'ILUMINACAO') Or (Edit1.Text = 'SEM ILUMINAÇÃO') Or (Edit1.Text = 'SEM ILUMINACAO') Or (Edit1.Text = 'SEM ILUMINAÇAO') Then
+
+                    Label3.Text := '1-Pode ser lâmpada queimada no display ou na fonte ' + #13 + ' inverter   2-Se aparecer manchas é devido à quebra ' + #13 + ' do display   3-Quando ocorrem riscos é devido à queima de um' + #13 + ' dos CIs';
+
+
+                If (Edit1.Text = 'NÃO LIGA') Or (Edit1.Text = 'NAO LIGA') Or (Edit1.Text = 'NÃO ACENDE') Or (Edit1.Text = 'NAO ACENDE') Or (Edit1.Text = 'NÃO ACENDE O PAINEL') Or (Edit1.Text = 'NAO ACENDE O PAINEL') Or (Edit1.Text = 'LIGA E ACENDE O PAINEL') Or (Edit1.Text = 'NÃO FUNCIONA') Or (Edit1.Text = 'NAO FUNCIONA') Or (Edit1.Text = 'ESTÁ QUEBRADO') Or (Edit1.Text = 'ESTA QUEBRADO') Or (Edit1.Text = 'QUEBRADO') Or (Edit1.Text = 'NÃO ESTÁ FUNCIONANDO') Or (Edit1.Text = 'NAO ESTA FUNCIONANDO') Or (Edit1.Text = 'NÃO ESTÁ LIGANDO') Or (Edit1.Text = 'NAO ESTA LIGANDO') Or (Edit1.Text = 'NAO ESTA FUNCIONANDO') Or (Edit1.Text = 'NAO ESTA LIGANDO') Or (Edit1.Text = 'NÃO QUER LIGAR') Or (Edit1.Text = 'NÃO QUER FUNCIONAR') Or (Edit1.Text = 'NAO QUER LIGAR') Or (Edit1.Text = 'NAO QUER FUNCIONAR') Or (Edit1.Text = 'NAO LIGA') Or (Edit1.Text = 'NAO ACENDE') Then
+
+                    Label3.Text := '1-Pode ser a fonte externa(se possuir) ou os CIs reguladores ' + #13 + 'de tensão internos que alimentam os circuitos ou ainda ' + #13 + 'no CI micro 2-Procure defeito na área do CI micro';
+
+
+                If (Edit1.Text = 'NÃO ESTÁ SUBINDO VÍDEO') Or (Edit1.Text = 'NÃO SOBE VÍDEO') Or (Edit1.Text = 'SUBINDO VÍDEO') Or (Edit1.Text = 'NÃO SUBIU VÍDEO') Or (Edit1.Text = 'NAO ESTA SUBINDO VIDEO') Or (Edit1.Text = 'NAO SOBE VIDEO') Or (Edit1.Text = 'SUBINDO VIDEO') Or (Edit1.Text = 'NAO SUBIU VIDEO') Or (Edit1.Text = 'IMAGEM') Or (Edit1.Text = 'SEM IMAGEM') Or (Edit1.Text = 'ACENDE MAS NÃO TEM IMAGEM') Or (Edit1.Text = 'ACENDE MAS NAO TEM IMAGEM') Or (Edit1.Text = 'ACENDE MAS NÃO APARECE IMAGEM') Or (Edit1.Text = 'ACENDE MAS NAO APARECE IMAGEM') Or (Edit1.Text = 'ACENDE MAS NÃO APARECE NADA') Or (Edit1.Text = 'ACENDE MAS NAO APARECE NADA') Or (Edit1.Text = 'NÃO APARECE IMAGEM') Or (Edit1.Text = 'NAO APARECE IMAGEM') Or (Edit1.Text = 'DEFEITO NA IMAGEM') Or (Edit1.Text = 'DEFEITO DE IMAGEM') Then
+
+                    Label3.Text := '1-Teste os circuitos de imagem ligando vários equipamentos na ' + #13 + 'TV - Se aparecer imagem junto com o menu na tela(OSD), ' + #13 + 'o CI Scaler está funcionando, caso contrário o Scaler ' + #13 + 'está causando defeito';
+
+
+                If (Edit1.Text = 'NÃO ESTÁ SUBINDO SOM') Or (Edit1.Text = 'NÃO SOBE SOM') Or (Edit1.Text = 'SUBINDO SOM') Or (Edit1.Text = 'NÃO SUBIU SOM') Or (Edit1.Text = 'NAO ESTA SUBINDO SOM') Or (Edit1.Text = 'NAO SOBE SOM') Or (Edit1.Text = 'SUBINDO SOM') Or (Edit1.Text = 'NAO SUBIU SOM') Or (Edit1.Text = 'SEM SOM') Or (Edit1.Text = 'SEM ÁUDIO') Or (Edit1.Text = 'SOM') Or (Edit1.Text = 'ÁUDIO') Or (Edit1.Text = 'ESTÁ SEM SOM') Or (Edit1.Text = 'ESTÁ SEM ÁUDIO') Then
+
+                    Label3.Text := '1-Teste o CI de áudio(Injete a ponta preta do multímetro em X1 ' + #13 + 'nos pinos 7 e 11 do Ci para exibir sinal)   2-Teste o CI ' + #13 + 'processado de áudio  3-Teste do CI demodulador e ' + #13 + 'decodificador estéreo 4-Circuito de sintonia(Seletor varicap)';
+
+                If (Edit1.Text = 'NÃO ESTÁ SUBINDO ÁUDIO') Or (Edit1.Text = 'NÃO SOBE ÁUDIO') Or (Edit1.Text = 'SUBINDO ÁUDIO') Or (Edit1.Text = 'NÃO SUBIU ÁUDIO') Or (Edit1.Text = 'NÃO ESTA SUBINDO ÁUDIO') Or (Edit1.Text = 'NAO SOBE ÁUDIO') Or (Edit1.Text = 'SUBINDO ÁUDIO') Or (Edit1.Text = 'NÃO SUBIU ÁUDIO') Or (Edit1.Text = 'NAO ESTA SUBINDO AUDIO') Or (Edit1.Text = 'NAO SOBE AUDIO') Or (Edit1.Text = 'SUBINDO AUDIO') Or (Edit1.Text = 'NAO SUBIU AUDIO') Or (Edit1.Text = 'NAO ESTA SUBINDO AUDIO') Or (Edit1.Text = 'NAO SOBE AUDIO') Or (Edit1.Text = 'SUBINDO AUDIO') Or (Edit1.Text = 'NAO SUBIU AUDIO') Then
+                    Label3.Text := '1-Teste o CI de áudio  2-Teste o CI processador de áudio  ' + #13 + '3-Teste do CI demodulador e decodificador estéreo 4-Circuito ' + #13 + 'de sintonia(Seletor varicap)';
+
+
+
+                If (Edit1.Text = 'CHECK SIGNAL CABLE') Or (Edit1.Text = 'NO OPTIMUM RESOLUTION 1280X1024') Or (Edit1.Text = 'MENSAGEM CHECK SIGNAL CABLE') Or (Edit1.Text = 'MENSAGEM NO OPTIMUM RESOLUTION 1280X1024') Or (Edit1.Text = 'NO OPTIMUM RESOLUTION 1280 X 1024') Or (Edit1.Text = 'MENSAGEM NO OPTIMUM RESOLUTION 1280 X 1024') Then
+
+                    Label3.Text := '1-Troque CI micro';
+
+                If (Edit1.Text = 'DISPLAY QUEBRADO') Or (Edit1.Text = 'DISPLAY COM RISCO') Or (Edit1.Text = 'DISPLAY') Or (Edit1.Text = 'PIXEL MORTO') Or (Edit1.Text = 'DISPLAY COM PIXEL MORTO') Then
+                    Label3.Text := 'O display LCD deve ser trocado';
+
+
+                If (Edit1.Text = 'TELA ACESA SEM IMAGEM') Or (Edit1.Text = 'TELA SEM IMAGEM')Or (Edit1.Text = 'SEM IMAGEM') Then
+
+                    Label3.Text := '1-Meça os pinos de +B do CI scaler. Alguns pinos funcionam com ' + #13 + '3,3 e outros com 1,8V   2-Medir o +B que alimenta o display. ' + #13 + 'Algumas trilhas recebem 3,3 ou 5V  3-Trocar o ' + #13 + 'CI scaler';
+
+                If (Edit1.Text = 'TELA APAGADA') Or (Edit1.Text = 'TELA ACENDE E APAGA') Or (Edit1.Text = 'ACENDE E APAGA') Or (Edit1.Text = 'APAGADA') Or (Edit1.Text = 'APAGADO') Or (Edit1.Text = 'LIGA E DESLIGA') Or (Edit1.Text = 'TELA LIGA E DESLIGA') Then
+
+                    Label3.Text := '1-Teste as lâmpadas. Se uma queimar as outras não acendem   ' + #13 + '2-Medir o +B que alimenta a placa Inverter   3-Medir a tensão ' + #13 + '"Power On" do CI micro   4-Testar o fusível e os transistores ' + #13 + 'chaveadores do inverter   5-Trocar o CI oscilador do inverter';
+
+                If (Edit1.Text = 'MONITOR NÃO LIGA') Or (Edit1.Text = 'MONITOR NAO LIGA') Or (Edit1.Text = 'MONITOR COM DEFEITO') Or (Edit1.Text = 'MONITOR') Or (Edit1.Text = 'MONITOR NÃO FUNCIONA') Or (Edit1.Text = 'MONITOR NAO FUNCIONA') Or (Edit1.Text = 'MONITOR QUEBRADO') Then
+
+                    Label3.Text := 'Se não chegar +B no CI micro, meça os +B de 5 e 12V que ' + #13 + 'saem dos diodos ligados no chopper da fonte - Verifique se tem ' + #13 + '150V no filtro principal. Testar fusível e curto nos retificadores. ' + #13 + 'Teste resistores, diodos, transistores e substitua o CI da fonte';
+
+                If (Edit1.Text = 'TECLAS DO CONTROLE REMOTO NÃO FUNCIONAM') Or (Edit1.Text = 'TECLAS DO CONTROLE REMOTO NAO FUNCIONAM') Or (Edit1.Text = 'TECLA DO CONTROLE REMOTO NÃO FUNCIONA') Or (Edit1.Text = 'TECLA DO CONTROLE REMOTO NAO FUNCIONA') Or (Edit1.Text = 'UMA DAS TECLAS NÃO FUNCIONAM') Or (Edit1.Text = 'UMA DAS TECLAS NAO FUNCIONAM') Or (Edit1.Text = 'TECLA NÃO FUNCIONA') Or (Edit1.Text = 'TECLA NAO FUNCIONA') Or (Edit1.Text = 'CONTROLE REMOTO NÃO FUNCIONA') Or (Edit1.Text = 'CONTROLE REMOTO NAO FUNCIONA') Or (Edit1.Text = 'CONTROLE REMOTO') Then
+
+                    Label3.Text := '1-Lave a placa do Controle remoto com sabão em pó e seque ' + #13 + 'passando uma escova de dentes   2-Insira um decalque ou contato ' + #13 + 'de controle remoto na placa 2-Solda fria  3-Se não funcionar, ' + #13 + 'substitua o cristal - troque o capacitor eletrolítico ou resistor';
+
+                If (Edit1.Text = 'FICA TRAVADA') Or (Edit1.Text = 'TELA TRAVADA') Or (Edit1.Text = 'TRAVADA') Or (Edit1.Text = 'TRAVADO') Or (Edit1.Text = 'TELA FICA TRAVADA') Or (Edit1.Text = 'TRAVOU') Or (Edit1.Text = 'ESTÁ TRAVANDO') Or (Edit1.Text = 'ESTA TRAVANDO') Or (Edit1.Text = 'TRAVANDO') Or (Edit1.Text = 'ESTÁ TRAVADO') Or (Edit1.Text = 'ESTA TRAVADO') Or (Edit1.Text = 'FICOU TRAVADO') Or (Edit1.Text = 'FICOU TRAVADA') Then
+
+                    Label3.Text := '1- Troque a memória(EEPROM)';
+
+                If (Edit1.Text = 'NÃO MEMORIZA') Or (Edit1.Text = 'NAO MEMORIZA') Or (Edit1.Text = 'MEMÓRIA') Or (Edit1.Text = 'MEMORIA') Or (Edit1.Text = 'SEM MEMÓRIA') Or (Edit1.Text = 'SEM MEMORIA') Or (Edit1.Text = 'NÃO LEMBRA') Or (Edit1.Text = 'NAO LEMBRA') Or (Edit1.Text = 'ESQUECE') Then
+
+                    Label3.Text := '1- Troque a memória(EEPROM)';
+
+                If (Edit1.Text = 'MUDA DE CANAL') Or (Edit1.Text = 'MUDA DE CANAL SOZINHO') Or (Edit1.Text = 'MUDA DE CANAL SOZINHA') Or (Edit1.Text = 'TROCA DE CANAL') Or (Edit1.Text = 'TROCA DE CANAL SOZINHO') Or (Edit1.Text = 'TROCA DE CANAL SOZINHA') Then
+
+                    Label3.Text := '1- Troque a memória(EEPROM)';
+
+                If (Edit1.Text = 'AUMENTA O SOM') Or (Edit1.Text = 'AUMENTA SOM') Or (Edit1.Text = 'AUMENTA O SOM SOZINHO') Or (Edit1.Text = 'AUMENTA SOM SOZINHO') Or (Edit1.Text = 'AUMENTA') Or (Edit1.Text = 'AUMENTA O ÁUDIO SOZINHO') Or (Edit1.Text = 'AUMENTA O AUDIO SOZINHO') Or (Edit1.Text = 'AUMENTA O ÁUDIO') Or (Edit1.Text = 'AUMENTA O AUDIO') Or (Edit1.Text = 'SOM ALTO') Or (Edit1.Text = 'ÁUDIO ALTO') Or (Edit1.Text = 'AUDIO ALTO') Then
+
+                    Label3.Text := '1- Troque a memória(EEPROM)';
+
+                If (Edit1.Text = 'LIGA SOZINHO') Or (Edit1.Text = 'LIGA SOZINHA') Or (Edit1.Text = 'FICA LIGANDO SOZINHO') Or (Edit1.Text = 'FICA LIGANDO SOZINHA') Or (Edit1.Text = 'ESTÁ LIGANDO SOZINHA') Or (Edit1.Text = 'ESTA LIGANDO SOZINHA') Or (Edit1.Text = 'ESTÁ LIGANDO SOZINHO') Or (Edit1.Text = 'ESTA LIGANDO SOZINHA') Or (Edit1.Text = 'TV LIGA SOZINHA') Or (Edit1.Text = 'LIGA') Or (Edit1.Text = 'LIGA DO NADA') Or (Edit1.Text = 'TV LIGA DO NADA') Then
+
+                    Label3.Text := '1- Troque a memória(EEPROM)';
+
+                If (Edit1.Text = 'TV CHUVISCANDO') Or (Edit1.Text = 'CHUVISCANDO') Or (Edit1.Text = 'CHUVISCO') Or (Edit1.Text = 'TV COM CHUVISCO') Or (Edit1.Text = 'TELA AZUL') Or (Edit1.Text = 'TV COM TELA AZUL') Or (Edit1.Text = 'TELA AZUL NA TV') Or (Edit1.Text = 'TELEVISÃO COM TELA AZUL') Or (Edit1.Text = 'TELEVISAO COM TELA AZUL') Or (Edit1.Text = 'TELA AZUL NA TELEVISÃO') Or (Edit1.Text = 'TELA AZUL NA TELEVISAO') Or (Edit1.Text = 'TELEVISÃO COM CHUVISCO') Or (Edit1.Text = 'TELEVISAO COM CHUVISCO') Or (Edit1.Text = 'TELEVISÃO CHUVISCANDO') Or (Edit1.Text = 'TELEVISAO CHUVISCANDO') Then
+
+                    Label3.Text := '1- Verifique o circuito de sintonia(Seletor varicap)';
+
+                If (Edit1.Text = 'SÓ PEGA CANAIS ALTOS') Or (Edit1.Text = 'SO PEGA CANAIS ALTOS') Or (Edit1.Text = 'PEGA CANAIS ALTOS') Or (Edit1.Text = 'SÓ PEGA CANAIS BAIXOS') Or (Edit1.Text = 'SO PEGA CANAIS BAIXOS') Or (Edit1.Text = 'PEGA CANAIS BAIXOS') Or (Edit1.Text = 'SÓ SINTONIZA CANAIS ALTOS') Or (Edit1.Text = 'SO SINTONIZA CANAIS ALTOS') Or (Edit1.Text = 'SINTONIZA CANAIS ALTOS') Or (Edit1.Text = 'SÓ SINTONIZA CANAIS BAIXOS') Or (Edit1.Text = 'SO SINTONIZA CANAIS BAIXOS') Or (Edit1.Text = 'SINTONIZA CANAIS BAIXOS') Then
+
+                    Label3.Text := '1- Verifique o circuito de sintonia(Seletor varicap)';
+
+                If (Edit1.Text = 'SOM BAIXO') Or (Edit1.Text = 'TV COM SOM BAIXO') Or (Edit1.Text = 'TELEVISÃO COM SOM BAIXO') Or (Edit1.Text = 'TELEVISAO COM SOM BAIXO') Or (Edit1.Text = 'ÁUDIO BAIXO') Or (Edit1.Text = 'AUDIO BAIXO') Or (Edit1.Text = 'TV COM ÁUDIO BAIXO') Or (Edit1.Text = 'TV COM AUDIO BAIXO') Or (Edit1.Text = 'TELEVISÃO COM ÁUDIO BAIXO') Or (Edit1.Text = 'TELEVISAO COM ÁUDIO BAIXO') Or (Edit1.Text = 'COM ÁUDIO BAIXO') Or (Edit1.Text = 'COM AUDIO BAIXO') Or (Edit1.Text = 'COM SOM BAIXO') Then
+
+                    Label3.Text := '1- Verifique o circuito de sintonia(Seletor varicap)';
+
+                If (Edit1.Text = 'VERTICAL FECHADO') Or (Edit1.Text = 'LINHA VERTICAL') Or (Edit1.Text = 'LINHA') Or (Edit1.Text = 'LINHA NA TELA') Or (Edit1.Text = 'LINHA ONDULADA') Or (Edit1.Text = 'LINHA ONDULADA NA TELA') Or (Edit1.Text = 'VERTICAL FECHADO COM LINHA ONDULADA') Or (Edit1.Text = 'FALTA DE ALTURA') Then
+
+                    Label3.Text := '1- Procure curto nos capacitores eletrolíticos   2-Ressoldar o ' + #13 + 'circuito vertical   3-Troque o CI vertical e os capacitores ' + #13 + 'eletrolíticos   4-Medir os +B do circuito vertical';
+
+                If (Edit1.Text = 'FALTA DE LINEARIDADE') Or (Edit1.Text = 'VERTICAL FECHADO PELA METADE') Or (Edit1.Text = 'LINHAS BRANCAS EM TODA TELA') Or (Edit1.Text = 'FICOU COM LINHAS BRANCAS EM TODA TELA') Or (Edit1.Text = 'FICOU COM LINHA BRANCA') Or (Edit1.Text = 'LINHAS BRANCAS') Or (Edit1.Text = 'LINHAS') Or (Edit1.Text = 'LINHAS NA PARTE SUPERIOR') Or (Edit1.Text = 'LINHAS EM CIMA') Or (Edit1.Text = 'LINHAS NA PARTE INFERIOR') Or (Edit1.Text = 'LINHAS EMBAIXO') Or (Edit1.Text = 'TELA COM LINHAS') Or (Edit1.Text = 'VÁRIAS LINHAS NA TELA') Or (Edit1.Text = 'VARIAS LINHAS NA TELA') Or (Edit1.Text = 'VÁRIAS LINHAS') Or (Edit1.Text = 'VARIAS LINHAS') Or (Edit1.Text = 'LINHAS BRANCAS') Or (Edit1.Text = 'METADE DA TELA BRANCA') Or (Edit1.Text = 'METADE DA TELA PRETA') Then
+
+                    Label3.Text := '1- Troque os capacitores eletrolíticos   2-Troque o CI vertical';
+
+                If (Edit1.Text = 'MUDO') Or (Edit1.Text = 'TV MUDA') Or (Edit1.Text = 'TELEVISÃO MUDA') Or (Edit1.Text = 'TELEVISAO MUDA') Or (Edit1.Text = 'ESTÁ MUDO') Or (Edit1.Text = 'ESTA MUDO') Or (Edit1.Text = 'FICOU MUDO') Or (Edit1.Text = 'MUTE') Or (Edit1.Text = 'DEFEITO DE MUTE') Then
+
+                    Label3.Text := '1- Troque o transistor do mute ou o CI de som(O transistor do ' + #13 + 'mute pode ficar dentro do CI, veja o manual do equipamento)';
+
+                If Label3.Text = '' Then
+                  begin
+                    Label4.Visible := True;
+                    Label4.Text := procura + 'Não está relacionado, defina a pesquisa com outro nome.';
+                  End;
+
+            {Except
+
+                Label3.Visible := False;
+                Label4.Visible := true;
+                //Label4.Text := 'Informe o nome corretamente e com portugues correto(Verifique ' + #13 + 'os espaços).';
+                Label4.Text := procura + ', Não está relacionado, defina a pesquisa com outro nome.';
+
+            End;}
+
+
+
+
+
+
+end;
+
+
+procedure TForm3.Edit1KeyDown(Sender: TObject; var Key: Word; var KeyChar: Char;
+  Shift: TShiftState);
+
+var
+thetext:String;
+begin
+ //Edit1.Text:=AnsiUpperCase(Edit1.Text);
+ //Edit1.GoToTextEnd;
+
+ thetext := Edit1.Text;
+ Edit1.Text:=AnsiUpperCase(thetext);
+ Edit1.GoToTextEnd;
+end;
+
+procedure TForm3.Edit1KeyUp(Sender: TObject; var Key: Word; var KeyChar: Char;
+  Shift: TShiftState);
+
+var
+thetext:String;
+begin
+ //Edit1.Text:=AnsiUpperCase(Edit1.Text);
+ //Edit1.GoToTextEnd;
+
+ thetext := Edit1.Text;
+ Edit1.Text:=AnsiUpperCase(thetext);
+ Edit1.GoToTextEnd;
+end;
+
+procedure TForm3.FormShow(Sender: TObject);
+
+var
+thetext:String;
+begin
+ //Edit1.Text:=AnsiUpperCase(Edit1.Text);
+ //Edit1.GoToTextEnd;
+
+ thetext := Edit1.Text;
+ Edit1.Text:=AnsiUpperCase(thetext);
+ Edit1.GoToTextEnd;
+end;
+
+
+
+procedure TForm3.FormClose(Sender: TObject; var Action: TCloseAction);
+begin
+      Form3:=nil;
+      hide;
+      Edit1.Text:='';
+      Label3.Text:='';
+end;
+
+
+
+procedure TForm3.ToolBar1Click(Sender: TObject);
+begin
+        //Halt(0);
+      //Form1.Show;
+      //Application.MainForm.DisposeOf;
+      Form3:=nil;
+      hide;
+      Edit1.Text:='';
+      Label3.Text:='';
+      Label4.Text:='';
+end;
+
+
+
+
+
+
+
+{procedure TForm2.Edit1ChangeTracking(Sender: TObject);
+
+var
+thetext:String;
+begin
+
+ thetext := Edit1.Text;
+ Edit1.OnChangeTracking := nil;
+ Edit1.Text := '';
+ Edit1.Text := AnsiUpperCase(thetext);
+
+ Edit1.OnChangeTracking := Edit1ChangeTracking;
+ Edit1.GoToTextEnd;
+end;
+
+procedure TForm2.Edit1Typing(Sender: TObject);
+var
+thetext:String;
+begin
+ //Edit1.Text:=AnsiUpperCase(Edit1.Text);
+ //Edit1.GoToTextEnd;
+
+ thetext := Edit1.Text;
+ Edit1.Text:=AnsiUpperCase(thetext);
+ Edit1.GoToTextEnd;
+end; }
+
+
+
+
+
+
+
+
+
+
+end.

@@ -1,0 +1,80 @@
+unit Unit4;
+
+interface
+
+uses
+  System.SysUtils, System.Types, System.UITypes, System.Classes, System.Variants,
+  FMX.Types, FMX.Controls, FMX.Forms, FMX.Graphics, FMX.Dialogs, FMX.StdCtrls,
+  FMX.Edit;
+
+type
+  TForm4 = class(TForm)
+    Panel1: TPanel;
+    Label2: TLabel;
+    Label1: TLabel;
+    Edit1: TEdit;
+    Button1: TButton;
+    Label4: TLabel;
+    Label3: TLabel;
+    ToolBar1: TToolBar;
+    Label5: TLabel;
+    procedure ToolBar1Click(Sender: TObject);
+    procedure Edit1KeyDown(Sender: TObject; var Key: Word; var KeyChar: Char;
+      Shift: TShiftState);
+    procedure Edit1KeyUp(Sender: TObject; var Key: Word; var KeyChar: Char;
+      Shift: TShiftState);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  Form4: TForm4;
+
+implementation
+
+{$R *.fmx}
+
+uses Unit1;
+
+procedure TForm4.Edit1KeyDown(Sender: TObject; var Key: Word; var KeyChar: Char;
+  Shift: TShiftState);
+var
+thetext:String;
+begin
+ //Edit1.Text:=AnsiUpperCase(Edit1.Text);
+ //Edit1.GoToTextEnd;
+
+ thetext := Edit1.Text;
+ Edit1.Text:=AnsiUpperCase(thetext);
+ Edit1.GoToTextEnd;
+
+end;
+
+procedure TForm4.Edit1KeyUp(Sender: TObject; var Key: Word; var KeyChar: Char;
+  Shift: TShiftState);
+var
+thetext:String;
+begin
+ //Edit1.Text:=AnsiUpperCase(Edit1.Text);
+ //Edit1.GoToTextEnd;
+
+ thetext := Edit1.Text;
+ Edit1.Text:=AnsiUpperCase(thetext);
+ Edit1.GoToTextEnd;
+end;
+
+procedure TForm4.ToolBar1Click(Sender: TObject);
+begin
+  //Halt(0);
+      //Form1.Show;
+      //Application.MainForm.DisposeOf;
+      Form4:=nil;
+      hide;
+      Edit1.Text:='';
+      Label3.Text:='';
+      Label4.Text:='';
+end;
+
+end.

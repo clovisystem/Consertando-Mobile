@@ -1,0 +1,45 @@
+unit Unit2;
+
+interface
+
+uses
+  System.SysUtils, System.Types, System.UITypes, System.Classes, System.Variants,
+  FMX.Types, FMX.Controls, FMX.Forms, FMX.Graphics, FMX.Dialogs, FMX.StdCtrls,
+  FMX.Edit;
+
+type
+  TForm2 = class(TForm)
+    Panel2: TPanel;
+    ImageControl1: TImageControl;
+    Edit1: TEdit;
+    Label2: TLabel;
+    Label1: TLabel;
+    procedure ImageControl1Click(Sender: TObject);
+
+
+  private
+    Form2: TForm2;
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  Form2: TForm2;
+
+implementation
+
+{$R *.fmx}
+
+uses Unit1;
+
+
+
+procedure TForm2.ImageControl1Click(Sender: TObject);
+begin
+    Label1.Visible:=true;
+end;
+
+
+
+end.

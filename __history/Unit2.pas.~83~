@@ -1,0 +1,945 @@
+unit Unit2;
+
+interface
+
+uses
+  System.SysUtils, System.Types, System.UITypes, System.Classes, System.Variants,
+  FMX.Types, FMX.Controls, FMX.Forms, FMX.Graphics, FMX.Dialogs, FMX.StdCtrls,
+  FMX.Edit, FMX.ListView.Types, FMX.ListView, FMX.Layouts, FMX.ListBox;
+
+type
+  TForm2 = class(TForm)
+    Panel2: TPanel;
+    Label2: TLabel;
+    Label1: TLabel;
+    Label3: TLabel;
+    Label4: TLabel;
+    Edit1: TEdit;
+    Button1: TButton;
+    ToolBar1: TToolBar;
+    Label5: TLabel;
+
+
+    procedure Button1Click(Sender: TObject);
+    //procedure Edit1Typing(Sender: TObject);
+    //procedure Edit1ChangeTracking(Sender: TObject);
+    procedure ToolBar1Click(Sender: TObject);
+    procedure FormClose(Sender: TObject; var Action: TCloseAction);
+
+    //procedure Edit1Typing(Sender: TObject);
+    //procedure Edit1ChangeTracking(Sender: TObject);
+    procedure FormShow(Sender: TObject);
+    procedure Edit1KeyUp(Sender: TObject; var Key: Word; var KeyChar: Char;
+      Shift: TShiftState);
+    procedure Edit1KeyDown(Sender: TObject; var Key: Word; var KeyChar: Char;
+      Shift: TShiftState);
+
+
+  
+
+
+
+  private
+    Form2: TForm2;
+
+
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  Form2: TForm2;
+
+implementation
+
+{$R *.fmx}
+
+uses Unit1;
+
+
+
+
+
+
+
+
+
+//funciona no android
+
+
+
+
+
+
+
+
+
+procedure TForm2.Edit1KeyDown(Sender: TObject; var Key: Word; var KeyChar: Char;
+  Shift: TShiftState);
+
+var
+thetext:String;
+begin
+ //Edit1.Text:=AnsiUpperCase(Edit1.Text);
+ //Edit1.GoToTextEnd;
+
+ thetext := Edit1.Text;
+ Edit1.Text:=AnsiUpperCase(thetext);
+ Edit1.GoToTextEnd;
+end;
+
+procedure TForm2.Edit1KeyUp(Sender: TObject; var Key: Word; var KeyChar: Char;
+  Shift: TShiftState);
+
+var
+thetext:String;
+begin
+ //Edit1.Text:=AnsiUpperCase(Edit1.Text);
+ //Edit1.GoToTextEnd;
+
+ thetext := Edit1.Text;
+ Edit1.Text:=AnsiUpperCase(thetext);
+ Edit1.GoToTextEnd;
+end;
+
+procedure TForm2.FormClose(Sender: TObject; var Action: TCloseAction);
+begin
+      //Action:=caFree;
+      Form2:=nil;
+      hide;
+      Edit1.Text:='';
+      Label3.Text:='';
+end;
+
+procedure TForm2.FormShow(Sender: TObject);
+var
+thetext:String;
+begin
+ //Edit1.Text:=AnsiUpperCase(Edit1.Text);
+ //Edit1.GoToTextEnd;
+
+ thetext := Edit1.Text;
+ Edit1.Text:=AnsiUpperCase(thetext);
+ Edit1.GoToTextEnd;
+
+end;
+
+procedure TForm2.ToolBar1Click(Sender: TObject);
+begin
+      //Halt(0);
+      //Form1.Show;
+      //Application.MainForm.DisposeOf;
+      Form2:=nil;
+      hide;
+      Edit1.Text:='';
+      Label3.Text:='';
+      Label4.Text:='';
+end;
+
+
+
+
+
+
+
+{procedure TForm2.Edit1ChangeTracking(Sender: TObject);
+
+var
+thetext:String;
+begin
+
+ thetext := Edit1.Text;
+ Edit1.OnChangeTracking := nil;
+ Edit1.Text := '';
+ Edit1.Text := AnsiUpperCase(thetext);
+
+ Edit1.OnChangeTracking := Edit1ChangeTracking;
+ Edit1.GoToTextEnd;
+end;
+
+procedure TForm2.Edit1Typing(Sender: TObject);
+var
+thetext:String;
+begin
+ //Edit1.Text:=AnsiUpperCase(Edit1.Text);
+ //Edit1.GoToTextEnd;
+
+ thetext := Edit1.Text;
+ Edit1.Text:=AnsiUpperCase(thetext);
+ Edit1.GoToTextEnd;
+end; }
+
+function removeAcentos(texto:string):string;
+  Const ComAcento = 'áàãâçéèêíìîóòõôúùûÁÀÃÂÇÉÈÊÍÌÎÓÒÕÔÚÙÛ';
+  Const SemAcento = 'aaaaceeeiiioooouuuAAAACEEEIIIOOOOUUU';
+  var iFor : Integer;
+begin
+   for iFor := 1 to Length(texto) do begin
+      if Pos(texto[iFor],ComAcento) <> 0 then begin
+         texto[iFor] := SemAcento[Pos(texto[iFor],ComAcento)];
+      end;
+   end;
+   Result := texto;
+end;
+
+
+procedure TForm2.Button1Click(Sender: TObject);
+var
+    procura:string;
+begin
+    procura:=Edit1.Text;
+
+  begin
+    if (Label2.Text='Computador') then
+    begin
+    Label3.Visible:=true;
+    //Try
+
+                procura:=StringReplace(procura,' ',EmptyStr,[rfReplaceAll]);
+                Edit1.Text:=removeAcentos(procura);
+
+
+                If (Edit1.Text = 'DESLIGAAOCOLOCARPEN-DRIVE') Or (Edit1.Text = 'DESLIGAAOCOLOCARPENDRIVE')Or (Edit1.Text = 'DESLIGAAOCOLOCARHDEXTERNO') Or (Edit1.Text = 'DESLIGAQUANDOCOLOCAPEN-DRIVE')Or (Edit1.Text = 'DESLIGAQUANDOCOLOCAPENDRIVE') Or (Edit1.Text = 'DESLIGAQUANDOCOLOCAHDEXTERNO') Or (Edit1.Text = 'DESLIGA')Or (Edit1.Text = 'HDEXTERNO') Then
+                    Label3.Text := '1-Fonte de alimentação com potência menor ' + #13 + '2-instalar drivers de USB';
+
+                if (edit1.text = 'desligaaocolocarpen-drive')or (Edit1.Text = 'desligaaocolocarpendrive') or (edit1.text = 'desligaaocolocarhdexterno') or (edit1.text = 'desligaquandocolocapen-drive') or (edit1.text = 'desligaquandocolocapendrive')or (edit1.text = 'desligaquandocolocahdexterno') or (edit1.text = 'desliga')or (edit1.text = 'hdexterno') Then
+                    Label3.Text := '1-Fonte de alimentação com potência menor ' + #13 + '2-instalar drivers de USB';
+
+                 If (Edit1.Text = 'RUNTIMEERROR') Or (Edit1.Text = 'MENSAGEMRUNTIMEERROR') Or (Edit1.Text = 'RUNTIMEERROR') Or (Edit1.Text = 'MENSAGEMRUNTIMEERROR') Then
+                    Label3.Text := '1-Abra o prompt de comando e informe os comandos: ' + #13 + 'DISKPART <ENTER> LIST DISK <ENTER> SELECT DISK 0 <ENTER>' + #13 + ' CLEAN <ENTER> CONVERT GPT <ENTER> EXIT <ENTER>';
+                 if (edit1.text = 'não abre pasta') or (edit1.text = 'naoabrepasta') or (edit1.text = 'pasta não abre') or (edit1.text = 'pastanaoabre') or (edit1.text = 'não está abrindo pasta') or (edit1.text = 'naoestaabrindopasta') or (edit1.text = 'naoestaabrindoapasta') or (edit1.text = 'não está abrindo a pasta') or (edit1.text = 'não quer abrir pasta') or (edit1.text = 'naoquerabrirpasta') or (edit1.text = 'não quer abrir a pasta') or (edit1.text = 'naoquerabrirapasta') then
+                    Label3.Text := '1-Use um programa para limpar o registro do Windows';
+
+                If (Edit1.Text = 'NAOLIGA') Or (Edit1.Text = 'DEUPAU') Or (Edit1.Text = 'NAOLIGA') Or (Edit1.Text = 'COMPUTADORNÃOLIGA') Or (Edit1.Text = 'COMPUTADORNAOLIGA') Or (Edit1.Text = 'NÃO FUNCIONA') Or (Edit1.Text = 'NAOFUNCIONA') Or (Edit1.Text = 'NÃO ESTÁ LIGANDO') Or (Edit1.Text = 'NÃO ESTÁ FUNCIONANDO') Or (Edit1.Text = 'NAOESTALIGANDO') Or (Edit1.Text = 'NAOESTAFUNCIONANDO') Or (Edit1.Text = 'NÃO QUER LIGAR') Or (Edit1.Text = 'NÃO QUER FUNCIONAR') Or (Edit1.Text = 'NAOQUERLIGAR') Or (Edit1.Text = 'NAOQUERFUNCIONAR') Or (Edit1.Text = 'DESLIGADO') Then
+
+                    Label3.Text := '1-Veja a fonte de alimentação 3-Placa de vídeo ' + #13 + ' 4-Limpe os contatos da memória RAM com borracha' + #13 + '  5-Desconecte uma placa pci de cada vez e ' + #13 + 'ligue o PC  6-Teste o processador em outra ' + #13 + 'placa-mãe se o processador não funcionar troque' + #13 + ' por outro';
+
+
+                if (edit1.text = 'naoliga') or (edit1.text = 'deupau') or (edit1.text = 'naoliga') or (edit1.text = 'computador não liga') or (edit1.text = 'computadornaoliga') or (edit1.text = 'não funciona') or (edit1.text = 'naofunciona') or (edit1.text = 'não está ligando') or (edit1.text = 'não está funcionando') or (edit1.text = 'naoestaligando') or (edit1.text = 'naoestafuncionando') or (edit1.text = 'não quer ligar') or (edit1.text = 'não quer funcionar') or (edit1.text = 'naoquerligar') or (edit1.text = 'naoquerfuncionar') or (edit1.text = 'desligado') then
+                    Label3.Text := '1-Veja a fonte de alimentação 3-Placa de vídeo ' + #13 + ' 4-Limpe os contatos da memória RAM com borracha' + #13 + '  5-Desconecte uma placa pci de cada vez e ' + #13 + 'ligue o PC  6-Teste o processador em outra ' + #13 + 'placa-mãe se o processador não funcionar troque' + #13 + ' por outro';
+
+
+                If (Edit1.Text = 'NÃO ESTÁ SUBINDO VÍDEO') Or (Edit1.Text = 'NÃO SOBE VÍDEO') Or (Edit1.Text = 'SUBINDO VÍDEO') Or (Edit1.Text = 'NÃO SUBIU VÍDEO') Or (Edit1.Text = 'NAOESTASUBINDOVIDEO') Or (Edit1.Text = 'NAOSOBEVIDEO') Or (Edit1.Text = 'SUBINDOVIDEO') Or (Edit1.Text = 'NAOSUBIUVIDEO') Or (Edit1.Text = 'SEM VÍDEO') Or (Edit1.Text = 'SEMVIDEO') Or (Edit1.Text = 'VÍDEO NÃO LIGA') Or (Edit1.Text = 'VIDEONAOLIGA') Or (Edit1.Text = 'VÍDEO NÃO FUNCIONA') Or (Edit1.Text = 'VIDEONAOFUNCIONA') Or (Edit1.Text = 'VÍDEO') Or (Edit1.Text = 'VIDEO') Or (Edit1.Text = 'MONITOR NÃO LIGA') Or (Edit1.Text = 'MONITORNAOLIGA') Or (Edit1.Text = 'MONITOR NÃO FUNCIONA') Or (Edit1.Text = 'MONITORNAOFUNCIONA') Then
+
+                    Label3.Text := '1-Coloque uma placa de vídeo externa e conecte no' + #13 + ' monitor  2-Desabilite a placa de vídeo onboard ' + #13 + 'para a placa de vídeo externa funcionar  ' + #13 + '3-Limpe os contatos da memória RAM com borracha ' + #13 + ' 4-Desconecte uma placa pci de cada vez e ligue o PC';
+
+                if (edit1.text = 'não está subindo vídeo') or (edit1.text = 'não sobe vídeo') or (edit1.text = 'subindo vídeo') or (edit1.text = 'não subiu vídeo') or (edit1.text = 'naoestasubindovideo') or (edit1.text = 'naosobevideo') or (edit1.text = 'subindovideo') or (edit1.text = 'naosubiuvideo') or (edit1.text = 'sem vídeo') or (edit1.text = 'semvideo') or (edit1.text = 'vídeo não liga') or (edit1.text = 'videonaoliga') or (edit1.text = 'vídeo não funciona') or (edit1.text = 'videonaofunciona') or (edit1.text = 'vídeo') or (edit1.text = 'video') or (edit1.text = 'monitor não liga') or (edit1.text = 'monitornaoliga') or (edit1.text = 'monitor não funciona') or (edit1.text = 'monitornaofunciona') then
+                    Label3.Text := '1-Coloque uma placa de vídeo externa e conecte no' + #13 + ' monitor  2-Desabilite a placa de vídeo onboard ' + #13 + 'para a placa de vídeo externa funcionar  ' + #13 + '3-Limpe os contatos da memória RAM com borracha ' + #13 + ' 4-Desconecte uma placa pci de cada vez e ligue o PC';
+
+
+                If (Edit1.Text = 'NÃO ESTÁ SUBINDO SOM') Or (Edit1.Text = 'NÃO SOBE SOM') Or (Edit1.Text = 'SUBINDOSOM') Or (Edit1.Text = 'NÃO SUBIU SOM') Or (Edit1.Text = 'NAOESTASUBINDOSOM') Or (Edit1.Text = 'NAOSOBESOM') Or (Edit1.Text = 'SUBINDOSOM') Or (Edit1.Text = 'NAOSUBIUSOM') Or (Edit1.Text = 'SEMSOM') Or (Edit1.Text = 'SEM ÁUDIO')Or (Edit1.Text = 'SEMAUDIO') Or (Edit1.Text = 'SOM') Or (Edit1.Text = 'ÁUDIO') Or (Edit1.Text = 'ESTÁ SEM SOM') Or (Edit1.Text = 'ESTÁ SEM ÁUDIO') Then
+
+                    Label3.Text := '1-Verifique o driver de som em Painel de controle + ' + #13 + 'Gerenciador de Dispositivos + Dispositivos de Som ' + #13 + '2-Veja se o som está desligado na barra de' + #13 + ' tarefas do Sistema Operacional   3-Verifique a placa' + #13 + ' de som ou troque-a';
+
+                if (edit1.text = 'não está subindo som') or (edit1.text = 'não sobe som') or (edit1.text = 'subindosom') or (edit1.text = 'não subiu som') or (edit1.text = 'naoestasubindosom') or (edit1.text = 'naosobesom') or (edit1.text = 'subindosom') or (edit1.text = 'naosubiusom') or (edit1.text = 'semsom') or (edit1.text = 'sem áudio') or (edit1.text = 'som') or (edit1.text = 'áudio') or (edit1.text = 'está sem som') or (edit1.text = 'estasemsom')or (edit1.text = 'estasemaudio') then
+                    Label3.Text := '1-Verifique o driver de som em Painel de controle + ' + #13 + 'Gerenciador de Dispositivos + Dispositivos de Som ' + #13 + '2-Veja se o som está desligado na barra de' + #13 + ' tarefas do Sistema Operacional   3-Verifique a placa' + #13 + ' de som ou troque-a';
+
+
+                If (Edit1.Text = 'NÃO ESTÁ SUBINDO ÁUDIO') Or (Edit1.Text = 'NÃO SOBE ÁUDIO') Or (Edit1.Text = 'SUBINDO ÁUDIO') Or (Edit1.Text = 'NÃO SUBIU ÁUDIO') Or (Edit1.Text = 'NÃO ESTA SUBINDO ÁUDIO') Or (Edit1.Text = 'NAO SOBE ÁUDIO') Or (Edit1.Text = 'SUBINDO ÁUDIO') Or (Edit1.Text = 'NÃO SUBIU ÁUDIO') Or (Edit1.Text = 'NAOESTASUBINDOAUDIO') Or (Edit1.Text = 'NAOSOBEAUDIO') Or (Edit1.Text = 'SUBINDOAUDIO') Or (Edit1.Text = 'NAOSUBIUAUDIO') Or (Edit1.Text = 'NAOESTASUBINDOAUDIO') Or (Edit1.Text = 'NAOSOBEAUDIO') Or (Edit1.Text = 'SUBINDOAUDIO') Or (Edit1.Text = 'NAOSUBIUAUDIO') Then
+
+                    Label3.Text := '1-Verifique o driver de som em Painel de controle + ' + #13 + 'Gerenciador de Dispositivos + Dispositivos de Som   ' + #13 + '2-Veja se o som está desligado na barra de' + #13 + ' tarefas do Sistema Operacional   3-Verifique a placa ' + #13 + 'de som ou troque-a';
+
+                if (edit1.text = 'não está subindo áudio') or (edit1.text = 'não sobe áudio') or (edit1.text = 'subindo áudio') or (edit1.text = 'não subiu áudio') or (edit1.text = 'não esta subindo áudio') or (edit1.text = 'nao sobe áudio') or (edit1.text = 'subindo áudio') or (edit1.text = 'não subiu áudio') or (edit1.text = 'naoestasubindoaudio') or (edit1.text = 'naosobeaudio') or (edit1.text = 'subindoaudio') or (edit1.text = 'naosubiuaudio') or (edit1.text = 'naoestasubindoaudio') or (edit1.text = 'naosobeaudio') or (edit1.text = 'subindoaudio') or (edit1.text = 'naosubiuaudio') then
+                    Label3.Text := '1-Verifique o driver de som em Painel de controle + ' + #13 + 'Gerenciador de Dispositivos + Dispositivos de Som   ' + #13 + '2-Veja se o som está desligado na barra de' + #13 + ' tarefas do Sistema Operacional   3-Verifique a placa ' + #13 + 'de som ou troque-a';
+
+                If (Edit1.Text = 'COMPUTADORLIGAEDESLIGA') Or (Edit1.Text = 'ESTALIGANDOEDESLIGANDO')Or (Edit1.Text = 'LIGADESLIGA')Or (Edit1.Text = 'ESTALIGANDOEDESLIGANDO')Or (Edit1.Text = 'ESTÁ LIGANDO E DESLIGANDO')Or (Edit1.Text = 'LIGANDOEDESLIGANDO')Or (Edit1.Text = 'ESTÁ LIGANDO DESLIGANDO') Then
+
+                    Label3.Text := '1-A ligação da fonte com a placa-mãe pode estar com ' + #13 + 'mau-contato ou o micro sem HD';
+
+                if (edit1.text = 'computadorligaedesliga') or (edit1.text = 'estaligandoedesliggando')or (edit1.text = 'ligadesliga')or (edit1.text = 'estaligandoedesligando')or (edit1.text = 'está ligando e desligando')or (edit1.text = 'ligandoedesligando')or (edit1.text = 'está ligando desligando') then
+                    Label3.Text := '1-A ligação da fonte com a placa-mãe pode estar com ' + #13 + 'mau-contato ou o micro sem HD';
+
+
+
+                If (Edit1.Text = 'NÃO APARECE NADA NA TELA') Or (Edit1.Text = 'NAOAPARECENADANATELA') Or (Edit1.Text = 'NÃO APARECE NADA') Or (Edit1.Text = 'NAOAPARECENADA') Or (Edit1.Text = 'NÃO APARECE VÍDEO') Or (Edit1.Text = 'NAOAPARECEVIDEO') Then
+
+                    Label3.Text := '1-Passe álcool Isopropílico em toda placa-mãe e ' + #13 + 'aguarde secar(use escova)';
+
+                if (edit1.text = 'não aparece nada na tela') or (edit1.text = 'naoaparecenadanatela') or (edit1.text = 'não aparece nada') or (edit1.text = 'naoaparecenada') or (edit1.text = 'não aparece vídeo') or (edit1.text = 'naoaparecevideo') then
+                    Label3.Text := '1-Passe álcool Isopropílico em toda placa-mãe e ' + #13 + 'aguarde secar(use escova)';
+
+                If (Edit1.Text = 'NÃO INICIALIZA') Or (Edit1.Text = 'NAOINICIALIZA') Or (Edit1.Text = 'NÃO INICIA') Or (Edit1.Text = 'NAOINICIA') Or (Edit1.Text = 'COMPUTADOR NÃO INICIA') Or (Edit1.Text = 'COMPUTADORNAOINICIA') Or (Edit1.Text = 'NÃO CARREGA') Or (Edit1.Text = 'NAOCARREGA') Or (Edit1.Text = 'DISKBOOTFAILURE') Or (Edit1.Text = 'MENSAGEMDISKBOOTFAILURE') Then
+
+                    Label3.Text := '1-Pode ser um disco removível conectado, configure' + #13 + ' o SETUP ara que a sequência não asse or ele ou o HD' + #13 + ' está queimado  2-Coloque um disco de boot, reinicie' + #13 + ' o PC e informe o comando CHKDSK /R ou CHKDSK /P';
+
+                if (edit1.text = 'não inicializa') or (edit1.text = 'naoinicializa') or (edit1.text = 'não inicia') or (edit1.text = 'naoinicia') or (edit1.text = 'computador não inicia') or (edit1.text = 'computadornaoinicia') or (edit1.text = 'não carrega') or (edit1.text = 'naocarrega') or (edit1.text = 'diskbootfailure') or (edit1.text = 'mensagemdiskbootfailure') then
+                     Label3.Text := '1-Pode ser um disco removível conectado, configure' + #13 + ' o SETUP ara que a sequência não asse or ele ou o HD' + #13 + ' está queimado  2-Coloque um disco de boot, reinicie' + #13 + ' o PC e informe o comando CHKDSK /R ou CHKDSK /P';
+
+                If (Edit1.Text = 'COMPUTADORRESETANDO') Or (Edit1.Text = 'COMPUTADORREINICIANDO') Or (Edit1.Text = 'REINICIANDO') Or (Edit1.Text = 'REINICIASOZINHO') Or (Edit1.Text = 'RESETA') Or (Edit1.Text = 'COMPUTADORREINICIA') Or (Edit1.Text = 'REINICIA') Then
+
+                    Label3.Text := '1-Processador ou a fonte estão se aquecendo demais -' + #13 + ' limpe o cooler ou troque a fonte 2-Váem propriedades do' + #13 + ' Meu Computador guia Avançado + clique no botão Configurações' + #13 + ' de Inicialização + desmarque Reinicializar Automaticamente';
+
+                 if (edit1.text = 'computadorresetando') or (edit1.text = 'computadorreiniciando') or (edit1.text = 'reiniciando') or (edit1.text = 'reiniciasozinho') or (edit1.text = 'reseta') or (edit1.text = 'computadorreinicia') or (edit1.text = 'reinicia') then
+                    Label3.Text := '1-Processador ou a fonte estão se aquecendo demais -' + #13 + ' limpe o cooler ou troque a fonte 2-Váem propriedades do' + #13 + ' Meu Computador guia Avançado + clique no botão Configurações' + #13 + ' de Inicialização + desmarque Reinicializar Automaticamente';
+
+                If (Edit1.Text = 'LIGANASEGUNDAVEZ') Or (Edit1.Text = 'LIGAQUANDOAPERTADUASVEZES') Or (Edit1.Text = 'LIGAAOPRESSIONARPELASEGUNDAVEZ') Or (Edit1.Text = 'SOBENASEGUNDAVEZ') Or (Edit1.Text = 'SOBEQUANDOAPERTADUASVEZES') Or (Edit1.Text = 'SOBEAOPRESSIONARPELASEGUNDAVEZ') Then
+
+                    Label3.Text := '1-Coloque outra bateria CR2032 nova ou espaçadores entre' + #13 + ' a placa-mãe e o gabinete';
+
+                if (edit1.text = 'liganasegunda vez') or (edit1.text = 'ligaquandoapertaduasvezes') or (edit1.text = 'ligaaopressionarpelasegundavez') or (edit1.text = 'sobenasegundavez') or (edit1.text = 'sobequandoapertaduasvezes') or (edit1.text = 'sobeaopressionarpelasegundavez') then
+                    Label3.Text := '1-Coloque outra bateria CR2032 nova ou espaçadores entre' + #13 + ' a placa-mãe e o gabinete';
+
+                If (Edit1.Text = 'COMPUTADOR NÃO DESLIGA') Or (Edit1.Text = 'COMPUTADORNAODESLIGA') Or (Edit1.Text = 'NÃO DESLIGA') Or (Edit1.Text = 'NAODESLIGA') Or (Edit1.Text = 'NÃO QUER DESLIGAR') Or (Edit1.Text = 'NAOQUERDESLIGAR')Or (Edit1.Text = 'PCNAOQUERDESLIGAR')Or (Edit1.Text = 'PC NÃO QUER DESLIGAR')Or (Edit1.Text = 'MAQUINANAOQUERDESLIGAR')Or (Edit1.Text = 'MÁQUINA NÃO QUER DESLIGAR')Or (Edit1.Text = 'MAQUINANAODESLIGA')Or (Edit1.Text = 'MÁQUINA NÃO DESLIGA')Or (Edit1.Text = 'PCNAODESLIGA')Or (Edit1.Text = 'PC NÃO DESLIGA') Then
+
+                    Label3.Text := '1-Substitua a fonte de alimentação';
+
+                if (edit1.text = 'computador não desliga') or (edit1.text = 'computadornaodesliga') or (edit1.text = 'não desliga') or (edit1.text = 'naodesliga') or (edit1.text = 'não quer desligar') or (edit1.text = 'naoquerdesligar')or (edit1.text = 'pcnaoquerdesligar')or (edit1.text = 'pc não quer desligar')or (edit1.text = 'maquinanaoquerdesligar')or (edit1.text = 'máquina não quer desligar')or (edit1.text = 'maquinanaodesliga')or (edit1.text = 'máquina não desliga')or (edit1.text = 'pcnaodesliga')or (edit1.text = 'pc não desliga') then
+                    Label3.Text := '1-Substitua a fonte de alimentação';
+
+                If (Edit1.Text = 'PERIFÉRICOS NÃO LIGAM') Or (Edit1.Text = 'PERIFERICOSNAOLIGAM') Or (Edit1.Text = 'PERIFÉRICOS NÃO FUNCIONAM') Or (Edit1.Text = 'PERIFERICOSNAOFUNCIONAM') Or (Edit1.Text = 'IMPRESSORA NÃO FUNCIONA') Or (Edit1.Text = 'IMPRESSORANAOFUNCIONA') Or (Edit1.Text = 'SCANNER NÃO FUNCIONA') Or (Edit1.Text = 'SCANNERNAOFUNCIONA') Or (Edit1.Text = 'SCANNERNAOLIGA') Or (Edit1.Text = 'SCANNERNAOSOBE') Or (Edit1.Text = 'SCANNER NÃO LIGA') Or (Edit1.Text = 'SCANNER NÃO SOBE') Or (Edit1.Text = 'IMPRESSORA NÃO LIGA') Or (Edit1.Text = 'IMPRESSORANAOLIGA') Or (Edit1.Text = 'IMPRESSORA NÃO SOBE') Or (Edit1.Text = 'IMPRESSORANAOSOBE') Then
+
+                    Label3.Text := '1-Substitua a fonte de alimentação por uma mais potente';
+
+                if (edit1.text = 'periféricos não ligam') or (edit1.text = 'perifericosnaoligam') or (edit1.text = 'periféricos não funcionam') or (edit1.text = 'perifericosnaofuncionam') or (edit1.text = 'impressora não funciona') or (edit1.text = 'impressoranaofunciona') or (edit1.text = 'scanner não funciona') or (edit1.text = 'scannernaofunciona') or (edit1.text = 'scannernaoliga') or (edit1.text = 'scannernaosobe') or (edit1.text = 'scanner não liga') or (edit1.text = 'scanner não sobe') or (edit1.text = 'impressora não liga') or (edit1.text = 'impressoranaoliga') or (edit1.text = 'impressora não sobe') or (edit1.text = 'impressoranaosobe') then
+                     Label3.Text := '1-Substitua a fonte de alimentação por uma mais potente';
+
+                If (Edit1.Text = 'USBLENTO') Or (Edit1.Text = 'TRANSFERÊNCIALENTA') Or (Edit1.Text = 'TRANSFERÊNCIALENTAUSB')Or (Edit1.Text = 'TRANSFERENCIALENTA') Or (Edit1.Text = 'USBTRANSFERENCIALENTA')Or  (Edit1.Text = 'TRANSFERENCIAPORUSBLENTA') Or (Edit1.Text = 'TRANSFERÊNCIA POR USB LENTA')Or (Edit1.Text = 'USBLENTA')Or (Edit1.Text = 'USB') Then
+
+                    Label3.Text := '1-Coloque o USB na porta traseira do PC';
+
+                if (edit1.text = 'usblento') or (edit1.text = 'transferêncialenta') or (edit1.text = 'transferencialenta')or (edit1.text = 'transferencialentausb')or (edit1.text = 'usbtransferencialenta') or (edit1.text = 'transferenciaporusblenta') or (edit1.text = 'transferência por usb lenta')or (edit1.text = 'usblenta')or (edit1.text = 'usb') then
+                    Label3.Text := '1-Coloque o USB na porta traseira do PC';
+
+                If (Edit1.Text = 'BUG') Or (Edit1.Text = 'BUGS') Or (Edit1.Text = 'BUGDOWINDOWS') Or (Edit1.Text = 'BUGNOWINDOWS')Or (Edit1.Text = 'BUGANDO')Or (Edit1.Text = 'BUGADO') Then
+
+                    Label3.Text := '1-Atualize o Windows no WINDOWS UPDATE, dentro do Painel ' + #13 + 'de Controle';
+
+                 if (edit1.text = 'bug') or (edit1.text = 'bugs') or (edit1.text = 'bugdowindows') or (edit1.text = 'bugnowindows')or (edit1.text = 'bugando')or (edit1.text = 'bugado') then
+                     Label3.Text := '1-Atualize o Windows no WINDOWS UPDATE, dentro do Painel ' + #13 + 'de Controle';
+
+                If (Edit1.Text = 'USB NÃO FUNCIONA') Or (Edit1.Text = 'USBNAOFUNCIONA') Or (Edit1.Text = 'NAOFUNCIONAUSB') Or (Edit1.Text = 'NÃO FUNCIONA O USB') Or (Edit1.Text = 'PEN-DRIVE NÃO FUNCIONA') Or (Edit1.Text = 'PEN-DRIVENAOFUNCIONA') Or (Edit1.Text = 'PENDRIVENAOFUNCIONA')Or (Edit1.Text = 'HD EXTERNO NÃO FUNCIONA') Or (Edit1.Text = 'HDEXTERNONAOFUNCIONA') Or (Edit1.Text = 'HD EXTERNO NÃO LIGA') Or (Edit1.Text = 'HDEXTERNONAOLIGA') Or (Edit1.Text = 'PORTAUSB') Or (Edit1.Text = 'PORTA USB NÃO FUNCIONA') Or (Edit1.Text = 'PORTAUSBNAOFUNCIONA') Then
+
+                    Label3.Text := '1-Atualize a porta USB pelo Gerenciador de Dispositivos' + #13 + '(dentro do Painel de controle) com a unidade de CD ' + #13 + 'ou pela internet, clicando com o botão direito ' + #13 + 'em qualquer USB';
+
+                if (edit1.text = 'usb não funciona') or (edit1.text = 'usbnaofunciona') or (edit1.text = 'naofuncionausb') or (edit1.text = 'não funciona o usb') or (edit1.text = 'pen-drive não funciona') or (edit1.text = 'pen-drivenaofunciona') or (edit1.text = 'pendrivenaofunciona')or (edit1.text = 'hd externo não funciona') or (edit1.text = 'hdexternonaofunciona') or (edit1.text = 'hd externo não liga') or (edit1.text = 'hdexternonaoliga') or (edit1.text = 'portausb') or (edit1.text = 'porta usb não funciona') or (edit1.text = 'portausbnaofunciona') then
+                    Label3.Text := '1-Atualize a porta USB pelo Gerenciador de Dispositivos' + #13 + '(dentro do Painel de controle) com a unidade de CD ' + #13 + 'ou pela internet, clicando com o botão direito ' + #13 + 'em qualquer USB';
+
+                If (Edit1.Text = 'INSTALAÇÃO INTERROMPIDA') Or (Edit1.Text = 'INSTALAÇAOINTERROMPIDA') Or (Edit1.Text = 'INSTALAÇÃO PELO PEN-DRIVE INTERROMPIDA') Or (Edit1.Text = 'INSTALAÇAOPELOPEN-DRIVEINTERROMPIDA')Or (Edit1.Text = 'INSTALAÇAOPELOPENDRIVEINTERROMPIDA') Or (Edit1.Text = 'INSTALAÇÃO PELO HD EXTERNO INTERROMPIDA') Or (Edit1.Text = 'INSTALAÇAOPELOHDEXTERNOINTERROMPIDA') Or (Edit1.Text = 'INSTALAÇÃO DO PEN-DRIVE INTERROMPIDA') Or (Edit1.Text = 'INSTALAÇAODOPEN-DRIVEINTERROMPIDA') Or (Edit1.Text = 'INSTALAÇAODOPENDRIVEINTERROMPIDA')Or (Edit1.Text = 'INSTALAÇÃO DO HD EXTERNO INTERROMPIDA') Or (Edit1.Text = 'INSTALAÇAODOHDEXTERNOINTERROMPIDA') Then
+
+                    Label3.Text := '1-Modifique a inicialização para o HD e não mais para o ' + #13 + 'Pen-drive ou HD externo no SETUP';
+
+                 if (edit1.text = 'instalação interrompida') or (edit1.text = 'instalaçaointerrompida') or (edit1.text = 'instalação pelo pen-drive interrompida') or (edit1.text = 'instalaçaopelopen-driveinterrompida')or (edit1.text = 'instalaçaopelopendriveinterrompida') or (edit1.text = 'instalação pelo hd externo interrompida') or (edit1.text = 'instalaçaopelohdexternointerrompida') or (edit1.text = 'instalação do pen-drive interrompida') or (edit1.text = 'instalaçaodopen-driveinterrompida') or (edit1.text = 'instalaçaodopendriveinterrompida')or (edit1.text = 'instalação do hd externo interrompida') or (edit1.text = 'instalaçaodohdexternointerrompida') then
+                     Label3.Text := '1-Modifique a inicialização para o HD e não mais para o ' + #13 + 'Pen-drive ou HD externo no SETUP';
+
+                If (Edit1.Text = 'REINICIALIZAÇÃO LENTA') Or (Edit1.Text = 'REINICIALIZAÇAOLENTA') Or (Edit1.Text = 'INICIALIZAÇÃO LENTA') Or (Edit1.Text = 'INICIALIZAÇAOLENTA') Then
+
+                    Label3.Text := '1-Reinstale o Sistema Operacional com uma partição lógica,' + #13 + ' apenas';
+
+                 if (edit1.text = 'reinicialização lenta') or (edit1.text = 'reinicializaçaolenta') or (edit1.text = 'inicialização lenta') or (edit1.text = 'inicializaçaolenta') then
+                    Label3.Text := '1-Reinstale o Sistema Operacional com uma partição lógica,' + #13 + ' apenas';
+
+                If (Edit1.Text = 'WINDOWSIPCONFIGURATION') Or (Edit1.Text = 'MENSAGEMWINDOWSIPCONFIGURATION') Then
+
+                    Label3.Text := '1-Instale o driver da placa de rede';
+
+                 if (edit1.text = 'windowsipconfiguration') or (edit1.text = 'mensagemwindowsipconfiguration') then
+                    Label3.Text := '1-Instale o driver da placa de rede';
+
+                If (Edit1.Text = 'TELA AZUL NA INSTALAÇÃO') Or (Edit1.Text = 'TELAAZULNAINSTALAÇAO') Or (Edit1.Text = 'TELA AZUL NA INSTALAÇÃO DO WINDOWS') Or (Edit1.Text = 'TELAAZULNAINSTALAÇAODOWINDOWS') Then
+
+                    Label3.Text := '1-Acontece em modelos de notebooks da Dell... Acesse a BIOS' + #13 + ' dele(Tecla F12) e vá até SATA OPERATION, mude de AHCI' + #13 + ' para ATA';
+
+                if (edit1.text = 'tela azul na instalação') or (edit1.text = 'telaazulnainstalaçao') or (edit1.text = 'tela azul na instalação do windows') or (edit1.text = 'telaazulnainstalaçaodowindows') then
+                    Label3.Text := '1-Acontece em modelos de notebooks da Dell... Acesse a BIOS' + #13 + ' dele(Tecla F12) e vá até SATA OPERATION, mude de AHCI' + #13 + ' para ATA';
+
+                If (Edit1.Text = 'VÍRUS VOLTA') Or (Edit1.Text = 'VIRUSVOLTA') Or (Edit1.Text = 'VÍRUS VOLTA AO REINICIAR') Or (Edit1.Text = 'VIRUSVOLTAAOREINICIAR') Or (Edit1.Text = 'VÍRUS VOLTOU QUANDO REINICIOU') Or (Edit1.Text = 'VIRUSVOLTOUQUANDOREINICIOU') Or (Edit1.Text = 'VÍRUS VOLTOU') Or (Edit1.Text = 'VIRUSVOLTOU') Then
+
+                    Label3.Text := '1-Procure o BIOS UPDATE dentro da BIOS do seu PC e coloque-o' + #13 + ' como Disabled, assim os vírus de BIOS não apagarão a' + #13 + ' BIOS  2-Desligue o PC por 30 minutos e volte a ligar';
+
+                if (edit1.text = 'vírus volta') or (edit1.text = 'virusvolta') or (edit1.text = 'vírus volta ao reiniciar') or (edit1.text = 'virusvoltaaoreiniciar') or (edit1.text = 'vírus voltou quando reiniciou') or (edit1.text = 'virusvoltouquandoreiniciou') or (edit1.text = 'vírus voltou') or (edit1.text = 'virusvoltou') then
+                    Label3.Text := '1-Procure o BIOS UPDATE dentro da BIOS do seu PC e coloque-o' + #13 + ' como Disabled, assim os vírus de BIOS não apagarão a' + #13 + ' BIOS  2-Desligue o PC por 30 minutos e volte a ligar';
+
+
+                If (Edit1.Text = 'WINDOWS TRAVA NA INICIALIZAÇÃO') Or (Edit1.Text = 'WINDOWSTRAVANAINICIALIZAÇAO') Or (Edit1.Text = 'TRAVA NA INICIALIZAÇÃO') Or (Edit1.Text = 'TRAVANAINICIALIZAÇAO') Or (Edit1.Text = 'DEMORAPRAINICIALIZAR') Or (Edit1.Text = 'DEMORAAOINICIALIZAR') Or (Edit1.Text = 'DEMORAPRAINICIAR') Or (Edit1.Text = 'DEMORAAOINICIAR') Then
+
+                    Label3.Text := '1-ATUALIZE OS DRIVERS do chipset  2-TROQUE OS SLOTS das ' + #13 + 'placas de expansão  3-ATIVE O LOG DE INICIALIZAÇÃO, pressione' + #13 + ' F8 do Windows ao iniciar e escolha INICIAR COM LOG DE' + #13 + ' INICIALIZAÇÃO, veja arquivo C:\WINDOWS\ntbtlog.TXT, ' + #13 + 'veja a útima linha do arquivo';
+
+                if (edit1.text = 'windows trava na inicialização') or (edit1.text = 'windowstravanainicializaçao') or (edit1.text = 'trava na inicialização') or (edit1.text = 'travanainicializaçao') or (edit1.text = 'demoraprainicializar') or (edit1.text = 'demoraaoinicializar') or (edit1.text = 'demoraprainiciar') or (edit1.text = 'demoraaoiniciar') then
+                    Label3.Text := '1-ATUALIZE OS DRIVERS do chipset  2-TROQUE OS SLOTS das ' + #13 + 'placas de expansão  3-ATIVE O LOG DE INICIALIZAÇÃO, pressione' + #13 + ' F8 do Windows ao iniciar e escolha INICIAR COM LOG DE' + #13 + ' INICIALIZAÇÃO, veja arquivo C:\WINDOWS\ntbtlog.TXT, ' + #13 + 'veja a útima linha do arquivo';
+
+                If (Edit1.Text = 'COMPUTADORLIGASOZINHO') Or (Edit1.Text = 'WINDOWSLIGASOZINHO') Or (Edit1.Text = 'LIGASOZINHO') Or (Edit1.Text = 'LIGA SEM APERTAR O BOTÃO POWER') Or (Edit1.Text = 'LIGASEMAPERTAROBOTAOPOWER') Or (Edit1.Text = 'LIGA SEM APERTAR O BOTÃO') Or (Edit1.Text = 'LIGASEMAPERTAROBOTAO') Or (Edit1.Text = 'LIGA SEM PRESSIONAR O BOTÃO') Or (Edit1.Text = 'LIGASEMPRESSIONAROBOTAO') Then
+
+                    Label3.Text := '1-Abra o CMOS SETUP(BIOS) e vá na seção POWER MANAGEMENT, ' + #13 + 'ou equivalente, procure por WAKE UP EVENTS e desabilite Wake Up' + #13 + ' On Lan e Wake Up On Modem';
+
+                if (edit1.text = 'computadorligasozinho') or (edit1.text = 'windowsligasozinho') or (edit1.text = 'ligasozinho') or (edit1.text = 'liga sem apertar o botão power') or (edit1.text = 'ligasemapertarobotaopower') or (edit1.text = 'liga sem apertar o botão') or (edit1.text = 'ligasemapertarobotao') or (edit1.text = 'liga sem pressionar o botão') or (edit1.text = 'ligasempressionarobotao') then
+                    Label3.Text := '1-Abra o CMOS SETUP(BIOS) e vá na seção POWER MANAGEMENT, ' + #13 + 'ou equivalente, procure por WAKE UP EVENTS e desabilite Wake Up' + #13 + ' On Lan e Wake Up On Modem';
+
+                If (Edit1.Text = 'TELAPRETA') Or (Edit1.Text = 'VOLTANATELAPRETA') Or (Edit1.Text = 'COMPUTADORVOLTANATELAPRETA') Or (Edit1.Text = 'COMPUTADORLIGAEATELAFICA ESCURA') Or (Edit1.Text = 'TELAESCURA') Then
+
+                    Label3.Text := '1-Insira o DVD do Windows - Clique Reparar o Computador ' + #13 + '- clique Prompt de Comando e digite C: agora digite CHKDSK /F /R ' + #13 + 'e dê Enter - Digite: BOOTREC.EXE /FIXBOOT - BOOTREC.EXE /FIXMBR ' + #13 + '- Digite Exit e dê Enter - Reinicie -  Se não resolver, ' + #13 + 'formate o PC.';
+
+                if (edit1.text = 'telapreta') or (edit1.text = 'voltanatelapreta') or (edit1.text = 'computadorvoltanatelapreta') or (edit1.text = 'computadorligaeatelaficaescura') or (edit1.text = 'telaescura') then
+                    Label3.Text := '1-Insira o DVD do Windows - Clique Reparar o Computador ' + #13 + '- clique Prompt de Comando e digite C: agora digite CHKDSK /F /R ' + #13 + 'e dê Enter - Digite: BOOTREC.EXE /FIXBOOT - BOOTREC.EXE /FIXMBR ' + #13 + '- Digite Exit e dê Enter - Reinicie -  Se não resolver, ' + #13 + 'formate o PC.';
+
+
+                If (Edit1.Text = 'NÃO COPIA NADA PARA O HD EXTERNO') Or (Edit1.Text = 'HD EXTERNO NÃO COPIA NADA') Or (Edit1.Text = 'HDEXTERNONAOCOPIANADA') Or (Edit1.Text = 'HD EXTERNO NÃO COPIA') Or (Edit1.Text = 'HDEXTERNONAOCOPIA') Or (Edit1.Text = 'NÃO CONSIGO COPIAR NADA PARA O HD EXTERNO') Or (Edit1.Text = 'NÃO CONSIGO COPIAR PARA O HD EXTERNO') Or (Edit1.Text = 'NÃO COPIA') Or (Edit1.Text = 'NAOCOPIA') Or (Edit1.Text = 'NÃO COPIA PARA O HD') Or (Edit1.Text = 'NAOCOPIAPARAOHD') Or (Edit1.Text = 'NÃO COPIA PARA HD') Or (Edit1.Text = 'NAOCOPIAPARAHD') Then
+
+                    Label3.Text := '1-Deixe o HD conectado - Pressione as teclas "Windows R" ' + #13 + '- digite no Executar: CHKDSK E: /F (Onde "E:" é a letra desse HD)';
+
+                if (edit1.text = 'não copia nada para o hd externo') or (edit1.text = 'hd externo não copia nada') or (edit1.text = 'hdexternonaocopia nada') or (edit1.text = 'hd externo não copia') or (edit1.text = 'hdexternonaocopia') or (edit1.text = 'não consigo copiar nada para o hd externo') or (edit1.text = 'não consigo copiar para o hd externo') or (edit1.text = 'não copia') or (edit1.text = 'naocopia') or (edit1.text = 'não copia para o hd') or (edit1.text = 'naocopiaparaohd') or (edit1.text = 'não copia para hd') or (edit1.text = 'naocopiaparahd') then
+                     Label3.Text := '1-Deixe o HD conectado - Pressione as teclas "Windows R" ' + #13 + '- digite no Executar: CHKDSK E: /F (Onde "E:" é a letra desse HD)';
+
+                If (Edit1.Text = 'COMPUTADOR DÁ TELA AZUL E REINICIA') Or (Edit1.Text = 'COMPUTADORDATELAAZULEREINICIA') Or (Edit1.Text = 'TELA AZUL E REINICIA') Or (Edit1.Text = 'TELAAZUL') Or (Edit1.Text = 'HD') Or (Edit1.Text = 'DISCO') Or (Edit1.Text = 'HARDDISK') Then
+
+                    Label3.Text := '1-Programa que realizou uma operação ilegal  2-Substitua ' + #13 + 'o HD  3-Formate o computador';
+
+                if (edit1.text = 'computador dá tela azul e reinicia') or (edit1.text = 'computadordatelaazulereinicia') or (edit1.text = 'tela azul e reinicia') or (edit1.text = 'telaazul') or (edit1.text = 'hd') or (edit1.text = 'disco') or (edit1.text = 'harddisk') then
+                    Label3.Text := '1-Programa que realizou uma operação ilegal  2-Substitua ' + #13 + 'o HD  3-Formate o computador';
+
+                If (Edit1.Text = 'TECLAS NÃO FUNCIONAM') Or (Edit1.Text = 'TECLASNAOFUNCIONAM') Or (Edit1.Text = 'TECLADO NÃO FUNCIONA') Or (Edit1.Text = 'TECLADONAOFUNCIONA') Or (Edit1.Text = 'TECLA NÃO FUNCIONA') Or (Edit1.Text = 'TECLANAOFUNCIONA') Then
+
+                    Label3.Text := '1-Passe uma pinça embaixo da tecla até retirar os resíduos,' + #13 + ' se não conseguir retire a tecla com a pinça e retire o resíduo' + #13 + ' e coloque-a novamente';
+                if (edit1.text = 'teclas não funcionam') or (edit1.text = 'teclasnaofuncionam') or (edit1.text = 'teclado não funciona') or (edit1.text = 'tecladonaofunciona') or (edit1.text = 'tecla não funciona') or (edit1.text = 'teclanaofunciona') then
+                    Label3.Text := '1-Passe uma pinça embaixo da tecla até retirar os resíduos,' + #13 + ' se não conseguir retire a tecla com a pinça e retire o resíduo' + #13 + ' e coloque-a novamente';
+
+                If (Edit1.Text = 'COMPUTADORTRAVANDO') Or (Edit1.Text = 'COMPUTADORAPITANDO') Or (Edit1.Text = 'TRAVANDO') Or (Edit1.Text = 'APITANDO') Or (Edit1.Text = 'TRAVAMENTO') Or (Edit1.Text = 'TRAVOU') Or (Edit1.Text = 'COMPUTADORTRAVOU') Or (Edit1.Text = 'COMPUTADORCOMTRAVAMENTO') Or (Edit1.Text = 'APITO') Or (Edit1.Text = 'APITOS') Then
+
+                    Label3.Text := '1-Limpe os contatos da memória RAM com uma borracha   ' + #13 + '2-Quando está travando além de ser a memória outro problema ' + #13 + 'pode ser o Cooler(Limpe-o ou substitua)';
+
+                if (edit1.text = 'computadortravando') or (edit1.text = 'computadorapitando') or (edit1.text = 'travando') or (edit1.text = 'apitando') or (edit1.text = 'travamento') or (edit1.text = 'travou') or (edit1.text = 'computadortravou') or (edit1.text = 'computadorcomtravamento') or (edit1.text = 'apito') or (edit1.text = 'apitos') then
+                    Label3.Text := '1-Limpe os contatos da memória RAM com uma borracha   ' + #13 + '2-Quando está travando além de ser a memória outro problema ' + #13 + 'pode ser o Cooler(Limpe-o ou substitua)';
+
+                If (Edit1.Text = 'APITOREPETIDO') Or (Edit1.Text = 'APITANDOREPETIDAMENTE') Or (Edit1.Text = 'COMPUTADORAPITANDOREPETIDAMENTE') Or (Edit1.Text = 'APITOSREPETIDOS') Then
+
+                    Label3.Text := '1-A placa possui uma memória instalada, podendo ser também' + #13 + ' defeito da Placa de Vídeo, de Rede, etc.';
+
+                if (edit1.text = 'apitorepetido') or (edit1.text = 'apitandorepetidamente') or (edit1.text = 'computadorapitandorepetidamente') or (edit1.text = 'apitosrepetidos') then
+                    Label3.Text := '1-A placa possui uma memória instalada, podendo ser também' + #13 + ' defeito da Placa de Vídeo, de Rede, etc.';
+
+                If (Edit1.Text = 'VÍRUS') Or (Edit1.Text = 'VIRUS') Or (Edit1.Text = 'COMPUTADOR COM VÍRUS') Or (Edit1.Text = 'COMPUTADORCOMVIRUS') Or (Edit1.Text = 'COMPUTADORCONTAMINADO') Or (Edit1.Text = 'CONTAMINAÇÃO') Or (Edit1.Text = 'CONTAMINACAO') Or (Edit1.Text = 'CONTAMINADO') Then
+
+                    Label3.Text := '1-Abra o Gerenciador de Tarefas(CTRL ALT DEL) e acesse ' + #13 + '"Processos", veja se há processo suspeito, sendo vírus clique ' + #13 + 'com o direito nele, opção "Abrir Local do Arquivo" e ' + #13 + 'delete  2-Inicie o Windows no MODO DE SEGURANÇA e faça ' + #13 + 'uma Restauração de Sistema';
+
+                if (edit1.text = 'vírus') or (edit1.text = 'virus') or (edit1.text = 'computador com vírus') or (edit1.text = 'computadorcomvirus') or (edit1.text = 'computadorcontaminado') or (edit1.text = 'contaminação') or (edit1.text = 'contaminacao') or (edit1.text = 'contaminado') then
+                     Label3.Text := '1-Abra o Gerenciador de Tarefas(CTRL ALT DEL) e acesse ' + #13 + '"Processos", veja se há processo suspeito, sendo vírus clique ' + #13 + 'com o direito nele, opção "Abrir Local do Arquivo" e ' + #13 + 'delete  2-Inicie o Windows no MODO DE SEGURANÇA e faça ' + #13 + 'uma Restauração de Sistema';
+
+                If (Edit1.Text = 'BOOTMGR') Or (Edit1.Text = 'FALTABOOTMGR') Or (Edit1.Text = 'BOOTMBR') Or (Edit1.Text = 'FALTABOOTMBR') Or (Edit1.Text = 'MENSAGEMFALTABOOTMGR') Or (Edit1.Text = 'MENSAGEMFALTABOOTMBR') Or (Edit1.Text = 'SEMBOOTMGR') Or (Edit1.Text = 'SEMBOOTMBR') Then
+
+                    Label3.Text := 'DVD do Windows - Clique "Reparar o Sistema" e clique ' + #13 + '"Use as Ferramentas de Recuperação" selecione sistema operacional ' + #13 + '- clique "Prompt de Comando", Digite:BOOTSECT /NT60 ALL ' + #13 + '/FORCE /MBR, BOOTREC /FIXMBR, BOOTREC /FIXBOOT, ' + #13 + 'BOOTREC /REBUILDBCD';
+
+                if (edit1.text = 'bootmgr') or (edit1.text = 'faltabootmgr') or (edit1.text = 'bootmbr') or (edit1.text = 'faltabootmbr') or (edit1.text = 'mensagemfaltabootmgr') or (edit1.text = 'mensagemfaltabootmbr') or (edit1.text = 'sembootmgr') or (edit1.text = 'sembootmbr') then
+                     Label3.Text := 'DVD do Windows - Clique "Reparar o Sistema" e clique ' + #13 + '"Use as Ferramentas de Recuperação" selecione sistema operacional ' + #13 + '- clique "Prompt de Comando", Digite:BOOTSECT /NT60 ALL ' + #13 + '/FORCE /MBR, BOOTREC /FIXMBR, BOOTREC /FIXBOOT, ' + #13 + 'BOOTREC /REBUILDBCD';
+
+                If (Edit1.Text = 'INSIRAODISCOPARACONTINUAR') Or (Edit1.Text = 'MENSAGEMINSIRAODISCOPARACONTINUAR') Then
+
+                    Label3.Text := '1-Copie todos os arquivos do CD/DVD para o computador e ' + #13 + 'inicie a instalação lá';
+
+                if (edit1.text = 'insiraodiscoparacontinuar') or (edit1.text = 'mensageminsiraodiscoparacontinuar') then
+                    Label3.Text := '1-Copie todos os arquivos do CD/DVD para o computador e ' + #13 + 'inicie a instalação lá';
+
+                If (Edit1.Text = 'RECUPERARARQUIVOS') Or (Edit1.Text = 'RECUPERARARQUIVOSDEHD') Or (Edit1.Text = 'RECUPERARARQUIVOSDEHDDANIFICADO') Or (Edit1.Text = 'RECUPERAR') Or (Edit1.Text = 'RECUPERARHD') Then
+
+                    Label3.Text := '1-Utilize o Programa Recuva ou o Active File Recovery';
+
+                if (edit1.text = 'recuperararquivos') or (edit1.text = 'recuperararquivosdehd') or (edit1.text = 'recuperararquivosdehddanificado') or (edit1.text = 'recuperar') or (edit1.text = 'recuperarhd') then
+                    Label3.Text := '1-Utilize o Programa Recuva ou o Active File Recovery';
+
+                If (Edit1.Text = 'COMPUTADORLENTO') Or (Edit1.Text = 'LENTO') Or (Edit1.Text = 'ESTÁ LENTO') Or (Edit1.Text = 'ESTALENTO') Or (Edit1.Text = 'LENTIDÃO') Or (Edit1.Text = 'LENTIDAO') Or (Edit1.Text = 'ESTÁ COM LENTIDÃO') Or (Edit1.Text = 'ESTACOMLENTIDAO') Then
+
+                    Label3.Text := '1-Utilize o Desfragmentador de disco do Windows ou baixe um   ' + #13 + '2-Vá em configurações do Windows 10 + Atualização e segurança ' + #13 + '+ Recuperação + Reiniciar agora e escolha a opção ' + #13 + 'de Iniciar em Modo de Segurança';
+
+                if (edit1.text = 'computadorlento') or (edit1.text = 'lento') or (edit1.text = 'está lento') or (edit1.text = 'estalento') or (edit1.text = 'lentidão') or (edit1.text = 'lentidao') or (edit1.text = 'está com lentidão') or (edit1.text = 'estacomlentidao') then
+                    Label3.Text := '1-Utilize o Desfragmentador de disco do Windows ou baixe um   ' + #13 + '2-Vá em configurações do Windows 10 + Atualização e segurança ' + #13 + '+ Recuperação + Reiniciar agora e escolha a opção ' + #13 + 'de Iniciar em Modo de Segurança';
+
+                If (Edit1.Text = 'CONEXÃO NULA') Or (Edit1.Text = 'CONEXAONULA') Or (Edit1.Text = 'CONEXÃO LIMITADA') Or (Edit1.Text = 'MENSAGEM CONEXÃO NULA') Or (Edit1.Text = 'MENSAGEMCONEXAONULA') Or (Edit1.Text = 'MENSAGEM CONEXÃO LIMITADA') Or (Edit1.Text = 'MENSAGEMCONEXAOLIMITADA') Or (Edit1.Text = 'LIMITADA') Or (Edit1.Text = 'INTERNETLIMITADA') Then
+
+                    Label3.Text := '1-Painel de controle, Central de rede e compartilhamento, ' + #13 + 'Alterar configurações do adaptador, clique sobre sua conexão, ' + #13 + 'Propriedades + botão Configurar + guia Driver + ' + #13 + 'Atualizar Driver';
+
+                if (edit1.text = 'conexão nula') or (edit1.text = 'conexaonula') or (edit1.text = 'conexão limitada') or (edit1.text = 'mensagem conexão nula') or (edit1.text = 'mensagemconexaonula') or (edit1.text = 'mensagem conexão limitada') or (edit1.text = 'mensagemconexaolimitada') or (edit1.text = 'limitada') or (edit1.text = 'internetlimitada') then
+                    Label3.Text := '1-Painel de controle, Central de rede e compartilhamento, ' + #13 + 'Alterar configurações do adaptador, clique sobre sua conexão, ' + #13 + 'Propriedades + botão Configurar + guia Driver + ' + #13 + 'Atualizar Driver';
+
+                If (Edit1.Text = 'NULA') Or (Edit1.Text = 'CONEXAO') Or (Edit1.Text = 'LIMITADA') Or (Edit1.Text = 'CONEXÃO') Or (Edit1.Text = 'MENSAGEMCONEXAO') Or (Edit1.Text = 'MENSAGEM CONEXÃO') Then
+
+                    Label3.Text := '1-clique guia Gerenciamento de energia, desmarque opção ' + #13 + '"Computador pode desligar o dispositivo para economizar energia"';
+
+                if (edit1.text = 'nula') or (edit1.text = 'conexao') or (edit1.text = 'limitada') or (edit1.text = 'conexão') or (edit1.text = 'mensagemconexao') or (edit1.text = 'mensagem conexão') then
+                    Label3.Text := '1-clique guia Gerenciamento de energia, desmarque opção ' + #13 + '"Computador pode desligar o dispositivo para economizar energia"';
+
+                             If (Edit1.Text = 'CONEXÃO NÃO É PARTICULAR') Or (Edit1.Text = 'CONEXAONAOEPARTICULAR') Or (Edit1.Text = 'MENSAGEM CONEXÃO NÃO É PARTICULAR') Or (Edit1.Text = 'MENSAGEMCONEXAONAEPARTICULAR') Then
+
+                    Label3.Text := '1-Verifique a data d computador';
+
+              if (edit1.text = 'conexão não é particular') or (edit1.text = 'conexaonaoeparticular') or (edit1.text = 'mensagem conexão não é particular') or (edit1.text = 'mensagemconexaonaeparticular') then
+                   Label3.Text := '1-Verifique a data d computador';
+
+
+                If (Edit1.Text = 'INTERNETLIMITADA')or(Edit1.Text = 'LIMITADA')or(Edit1.Text = 'SEMCONEXAO')or(Edit1.Text = 'SEM CONEXÃO')Then
+
+                    Label3.Text := '1-Abra o Prompt(Execute como administrador)digite: ' + #13 + 'NETSH WINSOCK RESET, IPCONFIG /ALL, IPCONFIG /RELEASE, ' + #13 + 'e reinicie o computador';
+
+                if (edit1.text = 'internetlimitada')or(edit1.text = 'limitada')or(edit1.text = 'semconexao')or(edit1.text = 'sem conexão')then
+                     Label3.Text := '1-Abra o Prompt(Execute como administrador)digite: ' + #13 + 'NETSH WINSOCK RESET, IPCONFIG /ALL, IPCONFIG /RELEASE, ' + #13 + 'e reinicie o computador';
+
+                If (Edit1.Text = 'INTERNETTRAVANDO') Or (Edit1.Text = 'NAVEGADORTRAVANDO') Or (Edit1.Text = 'BROWSERTRAVANDO') Or (Edit1.Text = 'CONEXÃO TRAVANDO') Or (Edit1.Text = 'CONEXAOTRAVANDO') Or (Edit1.Text = 'INTERNETTRAVA') Or (Edit1.Text = 'CONEXÃO TRAVA') Or (Edit1.Text = 'CONEXAOTRAVA') Then
+
+                    Label3.Text := '1-Faça uma limpeza de cache no navegador   ' + #13 + '2-Exclua o histórico de navegaão em Opções da Internet dentro ' + #13 + 'do Painel de controle';
+
+                if (edit1.text = 'internettravando') or (edit1.text = 'navegadortravando') or (edit1.text = 'browsertravando') or (edit1.text = 'conexão travando') or (edit1.text = 'conexaotravando') or (edit1.text = 'internettrava') or (edit1.text = 'conexão trava') or (edit1.text = 'conexaotrava') then
+                    Label3.Text := '1-Faça uma limpeza de cache no navegador   ' + #13 + '2-Exclua o histórico de navegaão em Opções da Internet dentro ' + #13 + 'do Painel de controle';
+
+
+                If (Edit1.Text = 'ROTEADOR NÃO LOCALIZADO') Or (Edit1.Text = 'ROTEADORNAOLOCALIZADO') Or (Edit1.Text = 'ROTEADOR NÃO ENCONTRADO') Or (Edit1.Text = 'ROTEADORNAOENCONTRADO') Or (Edit1.Text = 'PÁGINA DE CONFIGURAÇÃO DO ROTEADOR NÃO É EXIBIDA') Or (Edit1.Text = 'PAGINADECONFIGURACAODOROTEADORNAOEEXIBIDA') Or (Edit1.Text = 'PAGINADOROTEADORNAOEEXIBIDA') Or (Edit1.Text = 'PÁGINA DO ROTEADOR NÃO É EXIBIDA') Then
+
+                    Label3.Text := '1-Configure o IP da máquina para receber IP' + #13 + ' DHCP(Dinâmico)';
+
+                if (edit1.text = 'roteador não localizado') or (edit1.text = 'roteadornaolocalizado') or (edit1.text = 'roteador não encontrado') or (edit1.text = 'roteadornaoencontrado') or (edit1.text = 'página de configuração do roteador não é exibida') or (edit1.text = 'paginadeconfiguracaodoroteadornaoeexibida') or (edit1.text = 'paginadoroteadornaoeexibida') or (edit1.text = 'página do roteador não é exibida') then
+                    Label3.Text := '1-Configure o IP da máquina para receber IP' + #13 + ' DHCP(Dinâmico)';
+
+                If (Edit1.Text = 'CERTIFICADODESEGURANÇA') Or (Edit1.Text = 'CERTIFICADODESEGURANCA') Or (Edit1.Text = 'MENSAGEMCERTIFICADODESEGURANÇA') Or (Edit1.Text = 'MENSAGEMCERTIFICADODESEGURANCA')Or (Edit1.Text = 'CERTIFICADO') Then
+
+                    Label3.Text := '1-Em Opções da Internet vá na guia Avançadas e ' + #13 + 'na lista exibida procure por Segurança e desmarque ' + #13 + '"Verificar Revogação de Certificados do Servidor" e ' + #13 + 'desmarque "SSL"';
+
+                if (edit1.text = 'certificadodesegurança') or (edit1.text = 'certificadodeseguranca') or (edit1.text = 'mensagemcertificadodesegurança') or (edit1.text = 'mensagemcertificadodeseguranca')or (edit1.text = 'certificado') then
+                   Label3.Text := '1-Em Opções da Internet vá na guia Avançadas e ' + #13 + 'na lista exibida procure por Segurança e desmarque ' + #13 + '"Verificar Revogação de Certificados do Servidor" e ' + #13 + 'desmarque "SSL"';
+
+                If (Edit1.Text = 'SEMINTERNET') Or (Edit1.Text = 'SEMSINAL') Or (Edit1.Text = 'SEMSINALDEINTERNET') Or (Edit1.Text = 'INTERNET') Or (Edit1.Text = 'SEM CONEXÃO') Or (Edit1.Text = 'SEMCONEXAO') Or (Edit1.Text = 'CONEXÃO') Or (Edit1.Text = 'CONEXAO') Or (Edit1.Text = 'NÃO CONECTA') Or (Edit1.Text = 'NAOCONECTA') Or (Edit1.Text = 'INTERNET NÃO FUNCIONA') Or (Edit1.Text = 'INTERNETNAOFUNCIONA') Then
+
+                    Label3.Text := '1-Resete o Modem 2-Desconecte e conecte o Modem ' + #13 + '3-Veja se seu adaptador da conexão está com IP estático, ' + #13 + 'mude para(DHCP) nas propriedades do adaptador ' + #13 + '4-No prompt digite: IPCONFIG /RELEASE && IPCONFIG /RENEW ' + #13 + '&& IPCONFIG /FLUSHDNS';
+
+               if (edit1.text = 'seminternet') or (edit1.text = 'semsinal') or (edit1.text = 'semsinaldeinternet') or (edit1.text = 'internet') or (edit1.text = 'sem conexão') or (edit1.text = 'semconexao') or (edit1.text = 'conexão') or (edit1.text = 'conexao') or (edit1.text = 'não conecta') or (edit1.text = 'naoconecta') or (edit1.text = 'internet não funciona') or (edit1.text = 'internetnaofunciona') then
+                     Label3.Text := '1-Resete o Modem 2-Desconecte e conecte o Modem ' + #13 + '3-Veja se seu adaptador da conexão está com IP estático, ' + #13 + 'mude para(DHCP) nas propriedades do adaptador ' + #13 + '4-No prompt digite: IPCONFIG /RELEASE && IPCONFIG /RENEW ' + #13 + '&& IPCONFIG /FLUSHDNS';
+
+                If (Edit1.Text = 'CONEXÃO CAINDO') Or (Edit1.Text = 'CONEXAOCAINDO') Or (Edit1.Text = 'INTERNETCAINDO') Or (Edit1.Text = 'CAINDO') Or (Edit1.Text = 'CAIUAINTERNET') Or (Edit1.Text = 'CONEXAORUIM') Or (Edit1.Text = 'CONEXÃO RUIM') Or (Edit1.Text = 'CONEXAOCAI') Or (Edit1.Text = 'CONEXÃO CAI') Or (Edit1.Text = 'CONEXÃO CAI TODA HORA') Or (Edit1.Text = 'CONEXAOCAITODAHORA') Or (Edit1.Text = 'CONEXÃO SEMPRE CAI') Or (Edit1.Text = 'CONEXAOSEMPRECAI') Then
+
+                    Label3.Text := '1-Ignore o roteador e conecte o Modem diretamente ' + #13 + 'no seu PC. Se perrsistir o problema configure o ' + #13 + 'Modem para modo Bridge';
+
+                if (edit1.text = 'conexão caindo') or (edit1.text = 'conexaocaindo') or (edit1.text = 'internetcaindo') or (edit1.text = 'caindo') or (edit1.text = 'caiuainternet') or (edit1.text = 'conexaoruim') or (edit1.text = 'conexão ruim') or (edit1.text = 'conexaocai') or (edit1.text = 'conexão cai') or (edit1.text = 'conexão cai toda hora') or (edit1.text = 'conexaocaitodahora') or (edit1.text = 'conexão sempre cai') or (edit1.text = 'conexaosemprecai') then
+                    Label3.Text := '1-Ignore o roteador e conecte o Modem diretamente ' + #13 + 'no seu PC. Se perrsistir o problema configure o ' + #13 + 'Modem para modo Bridge';
+
+                If (Edit1.Text = 'NÃO ABRE ARQUIVO') Or (Edit1.Text = 'NAOABREARQUIVO') Or (Edit1.Text = 'ARQUIVO NÃO ABRE') Or (Edit1.Text = 'ARQUIVONAOABRE') Or (Edit1.Text = 'NÃO ESTÁ ABRINDO ARQUIVO') Or (Edit1.Text = 'NAOESTAABRINDOARQUIVO') Or (Edit1.Text = 'NAOESTAABRINDOOARQUIVO') Or (Edit1.Text = 'NÃO ESTÁ ABRINDO O ARQUIVO') Or (Edit1.Text = 'NÃOQUERABRIRARQUIVO') Or (Edit1.Text = 'NAOQUERABRIRARQUIVO') Or (Edit1.Text = 'NÃO QUER ABRIR O ARQUIVO') Or (Edit1.Text = 'NAOQUERABRIROARQUIVO') Then
+
+                    Label3.Text := '1-Use um programa para limpar o registro do Windows.';
+
+                if (edit1.text = 'não abre arquivo') or (edit1.text = 'naoabrearquivo') or (edit1.text = 'arquivo não abre') or (edit1.text = 'arquivonaoabre') or (edit1.text = 'não está abrindo arquivo') or (edit1.text = 'naoestaabrindoarquivo') or (edit1.text = 'naoestaabrindooarquivo') or (edit1.text = 'não está abrindo o arquivo') or (edit1.text = 'nãoquerabrirarquivo') or (edit1.text = 'naoquerabrirarquivo') or (edit1.text = 'não quer abrir o arquivo') or (edit1.text = 'naoquerabriroarquivo') then
+                    Label3.Text := '1-Use um programa para limpar o registro do Windows.';
+
+                If (Edit1.Text = 'NÃO ABRE PASTA') Or (Edit1.Text = 'NAOABREPASTA') Or (Edit1.Text = 'PASTA NÃO ABRE') Or (Edit1.Text = 'PASTANAOABRE') Or (Edit1.Text = 'NÃO ESTÁ ABRINDO PASTA') Or (Edit1.Text = 'NAOESTAABRINDOPASTA') Or (Edit1.Text = 'NAOESTAABRINDOAPASTA') Or (Edit1.Text = 'NÃO ESTÁ ABRINDO A PASTA') Or (Edit1.Text = 'NÃO QUER ABRIR PASTA') Or (Edit1.Text = 'NAOQUERABRIRPASTA') Or (Edit1.Text = 'NÃO QUER ABRIR A PASTA') Or (Edit1.Text = 'NAOQUERABRIRAPASTA') Then
+
+                    Label3.Text := '1-Use um programa para limpar o registro do Windows';
+                                if (edit1.text = 'windows não pode ser instalado nesse disco a partição é uma partição de recuperação da microsoft') or (edit1.text = 'windowsnaopodeserinstaladonessediscoaparticaoeumaparticaoderecuperacaodamicrosoft') or (edit1.text = 'mensagem windows não pode ser instalado nesse disco a partição é uma partição de recuperação da microsoft') or (edit1.text = 'mensagemwindowsnaopodeserinstaladonessediscoaparticaoeumaparticaoderecuperacaodamicrosoft') or (edit1.text = 'windows não pode ser instalado nesse disco. a partição é uma partição de recuperação da microsoft') or (edit1.text = 'windowsnaopodeserinstaladonessedisco.apartiçaoeumaparticaoderecuperacaodamicrosoft') or (edit1.text = 'partição de recuperação da microsoft') or (edit1.text = 'particaoderecuperacaodamicrosoft') or (edit1.text = 'windows não pode ser instalado') or (edit1.text = 'windowsnaopodeserinstalado') or (edit1.text = 'windows não instala') or (edit1.text = 'windowsnaoinstala') or (edit1.text = 'nao instala windows') or (edit1.text = 'não instala windows') or (edit1.text = 'nãoinstala') or (edit1.text = 'naoinstala') or (edit1.text = 'falhanainstalação') or (edit1.text = 'falhanainstalacao') or (edit1.text = 'falha na instalação do windows') or (edit1.text = 'falhanainstalacaodowindows') or (edit1.text = 'naoinstalaowindows')then
+                    Label3.Text := '1-Abra o prompt de comando e informe os comandos: ' + #13 + 'DISKPART <ENTER> LIST DISK <ENTER> SELECT DISK 0 <ENTER>' + #13 + ' CLEAN <ENTER> CONVERT GPT <ENTER> EXIT <ENTER>';
+
+                If (Edit1.Text = 'DESKTOPTRAVADO') Or (Edit1.Text = 'ÁREA DE TRABALHO TRAVADA') Or (Edit1.Text = 'AREADETRABALHOTRAVADA') Or (Edit1.Text = 'WINDOWSTRAVADO') Or (Edit1.Text = 'WINDOWS ESTÁ TRAVADO') Or (Edit1.Text = 'WINDOWSESTATRAVADO')  Or (Edit1.Text = 'WINDOWSTATRAVADO')Or (Edit1.Text = 'WINDOWSFICOUTRAVADO') Or (Edit1.Text = 'FICOUTRAVADO') Or (Edit1.Text = 'ESTÁ TRAVADO') Or (Edit1.Text = 'TATRAVADO') Or (Edit1.Text = 'ESTATRAVADO') Or (Edit1.Text = 'TRAVADO') Or (Edit1.Text = 'TRAVOU') Or (Edit1.Text = 'ÁREA DE TRABALHO CONGELOU') Or (Edit1.Text = 'ÁREA DE TRABALHO CONGELADA') Or (Edit1.Text = 'AREADETRABALHOCONGELADA') Or (Edit1.Text = 'AREADETRABALHOCONGELOU') Or (Edit1.Text = 'DESKTOPCONGELOU') Or (Edit1.Text = 'DESKTOPCONGELADO') Or (Edit1.Text = 'CONGELADO') Or (Edit1.Text = 'CONGELOU') Or (Edit1.Text = 'CONGELA') Then
+
+                    Label3.Text := '1-Pressione as teclas CTRL ALT DEL para abrir o ' + #13 + 'Gerenciador de tarefas + clique na guia Aplicativos + ' + #13 + 'botão Nova Tarefa + Informe: EXPLORER';
+
+                if (edit1.text = 'runtimeerror') or (edit1.text = 'mensagemruntimeerror') or (edit1.text = 'runtimeerror') or (edit1.text = 'mensagemruntimeerror') then
+                    Label3.Text := '1-Iniciar + Executar + digite MSCONFIG + na guia ' + #13 + 'Serviços opção "Ocultar todos serviços Microsof" clique ' + #13 + 'no botão "Desativar tudo" + na guia "Inicialização de ' + #13 + 'Programas" clique em Desativar tudo + clique ' + #13 + 'em Aplicar e reinicie o Windows';
+
+                if (edit1.text = 'desktoptravado') or (edit1.text = 'área de trabalho travada') or (edit1.text = 'areadetrabalhotravada') or (edit1.text = 'windowstravado') or (edit1.text = 'windows está travado') or (edit1.text = 'windowsestatravado')or (edit1.text = 'windowstatravado') or (edit1.text = 'windowsficoutravado') or (edit1.text = 'ficoutravado') or (edit1.text = 'está travado') or (edit1.text = 'estatravado')or (edit1.text = 'tatravado') or (edit1.text = 'travado') or (edit1.text = 'travou') or (edit1.text = 'área de trabalho congelou') or (edit1.text = 'área de trabalho congelada') or (edit1.text = 'areadetrabalhocongelada') or (edit1.text = 'areadetrabalhocongelou') or (edit1.text = 'desktopcongelou') or (edit1.text = 'desktopcongelado') or (edit1.text = 'congelado') or (edit1.text = 'congelou') or (edit1.text = 'congela') then
+                     Label3.Text := '1-Pressione as teclas CTRL ALT DEL para abrir o ' + #13 + 'Gerenciador de tarefas + clique na guia Aplicativos + ' + #13 + 'botão Nova Tarefa + Informe: EXPLORER';
+
+                If (Edit1.Text = 'WINDOWS NÃO PODE SER INSTALADO NESSE DISCO A PARTIÇÃO É UMA PARTIÇÃO DE RECUPERAÇÃO DA MICROSOFT') Or (Edit1.Text = 'WINDOWSNAOPODESERINSTALADONESSEDISCOAPARTICAOEUMAPARTICAODERECUPERACAODAMICROSOFT') Or (Edit1.Text = 'MENSAGEM WINDOWS NÃO PODE SER INSTALADO NESSE DISCO A PARTIÇÃO É UMA PARTIÇÃO DE RECUPERAÇÃO DA MICROSOFT') Or (Edit1.Text = 'MENSAGEMWINDOWSNAOPODESERINSTALADONESSEDISCOAPARTICAOEUMAPARTICAODERECUPERACAODAMICROSOFT') Or (Edit1.Text = 'WINDOWS NÃO PODE SER INSTALADO NESSE DISCO. A PARTIÇÃO É UMA PARTIÇÃO DE RECUPERAÇÃO DA MICROSOFT') Or (Edit1.Text = 'WINDOWSNAOPODESERINSTALADONESSEDISCO.APARTIÇAOEUMAPARTICAODERECUPERACAODAMICROSOFT') Or (Edit1.Text = 'PARTIÇÃO DE RECUPERAÇÃO DA MICROSOFT') Or (Edit1.Text = 'PARTICAODERECUPERACAODAMICROSOFT') Or (Edit1.Text = 'WINDOWS NÃO PODE SER INSTALADO') Or (Edit1.Text = 'WINDOWSNAOPODESERINSTALADO') Or (Edit1.Text = 'WINDOWS NÃO INSTALA') Or (Edit1.Text = 'WINDOWSNAOINSTALA') Or (Edit1.Text = 'NAOINSTALAWINDOWS') Or (Edit1.Text = 'NÃO INSTALA WINDOWS') Or (Edit1.Text = 'NÃO INSTALA') Or (Edit1.Text = 'NAOINSTALA') Or (Edit1.Text = 'FALHA NA INSTALAÇÃO') Or (Edit1.Text = 'FALHANAINSTALACAO') Or (Edit1.Text = 'FALHA NA INSTALAÇÃO DO WINDOWS') Or (Edit1.Text = 'FALHANAINSTALACAODOWINDOWS') Then
+                     Label3.Text := '1-Iniciar + Executar + digite MSCONFIG + na guia ' + #13 + 'Serviços opção "Ocultar todos serviços Microsof" clique ' + #13 + 'no botão "Desativar tudo" + na guia "Inicialização de ' + #13 + 'Programas" clique em Desativar tudo + clique ' + #13 + 'em Aplicar e reinicie o Windows';
+
+
+                If Label3.Text = '' Then
+                  begin
+                    Label4.Visible := True;
+                    Label4.Text := procura + 'Não está relacionado, defina a pesquisa com outro nome.';
+                  End;
+             end; //fecha computador
+
+
+
+
+
+          If (Label2.Text='TV') then
+          begin
+          Label3.Visible:=true;
+          //Try
+                procura:=StringReplace(procura,' ',EmptyStr,[rfReplaceAll]);
+                Edit1.Text:=removeAcentos(procura);
+
+                If (Edit1.Text = 'NAOILUMINA') Or (Edit1.Text = 'DEUPAU') Or (Edit1.Text = 'NÃO ILUMINA') Or (Edit1.Text = 'FALTA ILUMINAÇÃO') Or (Edit1.Text = 'FALTAILUMINAÇAO') Or (Edit1.Text = 'FALTAILUMINACAO') Or (Edit1.Text = 'SEM VÍDEO') Or (Edit1.Text = 'SEMVIDEO') Or (Edit1.Text = 'VÍDEO') Or (Edit1.Text = 'VIDEO') Or (Edit1.Text = 'ILUMINAÇÃO') Or (Edit1.Text = 'ILUMINAÇAO') Or (Edit1.Text = 'ILUMINACAO') Or (Edit1.Text = 'SEM ILUMINAÇÃO') Or (Edit1.Text = 'SEMILUMINACAO') Or (Edit1.Text = 'SEMILUMINAÇAO') Or (Edit1.Text = 'SEMLUZ')Then
+
+                    Label3.Text := '1-Pode ser lâmpada queimada no display ou na fonte ' + #13 + ' inverter   2-Se aparecer manchas é devido à quebra ' + #13 + ' do display   3-Quando ocorrem riscos é devido à queima de um' + #13 + ' dos CIs';
+
+                if (edit1.text = 'nao ilumina') or (edit1.text = 'deu pau') or (edit1.text = 'não ilumina') or (edit1.text = 'falta iluminação') or (edit1.text = 'faltailuminaçao') or (edit1.text = 'faltailuminacao') or (edit1.text = 'sem vídeo') or (edit1.text = 'semvideo') or (edit1.text = 'vídeo') or (edit1.text = 'video') or (edit1.text = 'iluminação') or (edit1.text = 'iluminaçao') or (edit1.text = 'iluminacao') or (edit1.text = 'sem iluminação') or (edit1.text = 'semiluminacao') or (edit1.text = 'semiluminaçao') or (edit1.text = 'semluz')then
+                   Label3.Text := '1-Pode ser lâmpada queimada no display ou na fonte ' + #13 + ' inverter   2-Se aparecer manchas é devido à quebra ' + #13 + ' do display   3-Quando ocorrem riscos é devido à queima de um' + #13 + ' dos CIs';
+
+                If (Edit1.Text = 'NÃO LIGA') Or (Edit1.Text = 'NAOLIGA') Or (Edit1.Text = 'NÃO ACENDE') Or (Edit1.Text = 'NAOACENDE') Or (Edit1.Text = 'NÃO ACENDE O PAINEL') Or (Edit1.Text = 'NAOACENDEOPAINEL') Or (Edit1.Text = 'LIGAEACENDEOPAINEL') Or (Edit1.Text = 'NÃO FUNCIONA') Or (Edit1.Text = 'NAOFUNCIONA') Or (Edit1.Text = 'ESTÁ QUEBRADO') Or (Edit1.Text = 'ESTAQUEBRADO') Or (Edit1.Text = 'QUEBRADO') Or (Edit1.Text = 'NÃO ESTÁ FUNCIONANDO') Or (Edit1.Text = 'NAOESTAFUNCIONANDO') Or (Edit1.Text = 'NÃO ESTÁ LIGANDO') Or (Edit1.Text = 'NAOESTALIGANDO') Or (Edit1.Text = 'NAOESTAFUNCIONANDO') Or (Edit1.Text = 'NAOESTALIGANDO') Or (Edit1.Text = 'NÃO QUER LIGAR') Or (Edit1.Text = 'NÃO QUER FUNCIONAR') Or (Edit1.Text = 'NAOQUERLIGAR') Or (Edit1.Text = 'NAOQUERFUNCIONAR') Or (Edit1.Text = 'NAOLIGA') Or (Edit1.Text = 'NAOACENDE') Then
+
+                    Label3.Text := '1-Pode ser a fonte externa(se possuir) ou os CIs reguladores ' + #13 + 'de tensão internos que alimentam os circuitos ou ainda ' + #13 + 'no CI micro 2-Procure defeito na área do CI micro';
+
+                if (edit1.text = 'não liga') or (edit1.text = 'naoliga') or (edit1.text = 'não acende') or (edit1.text = 'naoacende') or (edit1.text = 'não acende o painel') or (edit1.text = 'naoacendeopainel') or (edit1.text = 'ligaeacendeopainel') or (edit1.text = 'não funciona') or (edit1.text = 'naofunciona') or (edit1.text = 'está quebrado') or (edit1.text = 'estaquebrado') or (edit1.text = 'quebrado') or (edit1.text = 'não está funcionando') or (edit1.text = 'naoestafuncionando') or (edit1.text = 'não está ligando') or (edit1.text = 'naoestaligando') or (edit1.text = 'naoestafuncionando') or (edit1.text = 'naoestaligando') or (edit1.text = 'não quer ligar') or (edit1.text = 'não quer funcionar') or (edit1.text = 'naoquerligar') or (edit1.text = 'naoquerfuncionar') or (edit1.text = 'naoliga') or (edit1.text = 'naoacende') then
+                    Label3.Text := '1-Pode ser a fonte externa(se possuir) ou os CIs reguladores ' + #13 + 'de tensão internos que alimentam os circuitos ou ainda ' + #13 + 'no CI micro 2-Procure defeito na área do CI micro';
+
+                If (Edit1.Text = 'NÃO ESTÁ SUBINDO VÍDEO') Or (Edit1.Text = 'NÃO SOBE VÍDEO') Or (Edit1.Text = 'SUBINDO VÍDEO') Or (Edit1.Text = 'NÃO SUBIU VÍDEO') Or (Edit1.Text = 'NAOESTASUBINDOVIDEO') Or (Edit1.Text = 'NAOSOBEVIDEO') Or (Edit1.Text = 'SUBINDOVIDEO') Or (Edit1.Text = 'NAOSUBIUVIDEO') Or (Edit1.Text = 'IMAGEM') Or (Edit1.Text = 'SEMIMAGEM') Or (Edit1.Text = 'ACENDE MAS NÃO TEM IMAGEM') Or (Edit1.Text = 'ACENDEMASNAOTEMIMAGEM') Or (Edit1.Text = 'ACENDE MAS NÃO APARECE IMAGEM') Or (Edit1.Text = 'ACENDEMASNAOAPARECEIMAGEM') Or (Edit1.Text = 'ACENDE MAS NÃO APARECE NADA') Or (Edit1.Text = 'ACENDEMASNAOAPARECENADA') Or (Edit1.Text = 'NÃO APARECE IMAGEM') Or (Edit1.Text = 'NAOAPARECEIMAGEM') Or (Edit1.Text = 'DEFEITONAIMAGEM') Or (Edit1.Text = 'DEFEITODEIMAGEM') Then
+
+                    Label3.Text := '1-Teste os circuitos de imagem ligando vários equipamentos na ' + #13 + 'TV - Se aparecer imagem junto com o menu na tela(OSD), ' + #13 + 'o CI Scaler está funcionando, caso contrário o Scaler ' + #13 + 'está causando defeito';
+
+                if (edit1.text = 'não está subindo vídeo') or (edit1.text = 'não sobe vídeo') or (edit1.text = 'subindo vídeo') or (edit1.text = 'não subiu vídeo') or (edit1.text = 'naoestasubindovideo') or (edit1.text = 'naosobevideo') or (edit1.text = 'subindovideo') or (edit1.text = 'naosubiuvideo') or (edit1.text = 'imagem') or (edit1.text = 'semimagem') or (edit1.text = 'acende mas não tem imagem') or (edit1.text = 'acendemasnaotemimagem') or (edit1.text = 'acende mas não aparece imagem') or (edit1.text = 'acendemasnaoapareceimagem') or (edit1.text = 'acende mas não aparece nada') or (edit1.text = 'acendemasnaoaparecenada') or (edit1.text = 'não aparece imagem') or (edit1.text = 'naoapareceimagem') or (edit1.text = 'defeitonaimagem') or (edit1.text = 'defeitodeimagem') then
+                    Label3.Text := '1-Teste os circuitos de imagem ligando vários equipamentos na ' + #13 + 'TV - Se aparecer imagem junto com o menu na tela(OSD), ' + #13 + 'o CI Scaler está funcionando, caso contrário o Scaler ' + #13 + 'está causando defeito';
+
+                If (Edit1.Text = 'NÃO ESTÁ SUBINDO SOM') Or (Edit1.Text = 'NÃO SOBE SOM') Or (Edit1.Text = 'SUBINDOSOM') Or (Edit1.Text = 'NÃO SUBIU SOM') Or (Edit1.Text = 'NAOESTASUBINDOSOM') Or (Edit1.Text = 'NAOSOBESOM') Or (Edit1.Text = 'SUBINDOSOM') Or (Edit1.Text = 'NAOSUBIUSOM') Or (Edit1.Text = 'SEMSOM') Or (Edit1.Text = 'SEM ÁUDIO') Or (Edit1.Text = 'SOM') Or (Edit1.Text = 'ÁUDIO') Or (Edit1.Text = 'ESTASEMSOM') Or (Edit1.Text = 'ESTASEMAUDIO') Then
+
+                    Label3.Text := '1-Teste o CI de áudio(Injete a ponta preta do multímetro em X1 ' + #13 + 'nos pinos 7 e 11 do Ci para exibir sinal)   2-Teste o CI ' + #13 + 'processado de áudio  3-Teste do CI demodulador e ' + #13 + 'decodificador estéreo 4-Circuito de sintonia(Seletor varicap)';
+
+                if (edit1.text = 'não está subindo som') or (edit1.text = 'não sobe som') or (edit1.text = 'subindosom') or (edit1.text = 'não subiu som') or (edit1.text = 'naoestasubindosom') or (edit1.text = 'naosobesom') or (edit1.text = 'subindosom') or (edit1.text = 'naosubiusom') or (edit1.text = 'semsom') or (edit1.text = 'sem áudio') or (edit1.text = 'som') or (edit1.text = 'áudio') or (edit1.text = 'estasemsom') or (edit1.text = 'estasemaudio') then
+                    Label3.Text := '1-Teste o CI de áudio(Injete a ponta preta do multímetro em X1 ' + #13 + 'nos pinos 7 e 11 do Ci para exibir sinal)   2-Teste o CI ' + #13 + 'processado de áudio  3-Teste do CI demodulador e ' + #13 + 'decodificador estéreo 4-Circuito de sintonia(Seletor varicap)';
+
+                If (Edit1.Text = 'NÃO ESTÁ SUBINDO ÁUDIO') Or (Edit1.Text = 'NÃO SOBE ÁUDIO') Or (Edit1.Text = 'SUBINDO ÁUDIO') Or (Edit1.Text = 'NÃO SUBIU ÁUDIO') Or (Edit1.Text = 'NÃO ESTA SUBINDO ÁUDIO') Or (Edit1.Text = 'NAOSOBEAUDIO') Or (Edit1.Text = 'SUBINDOAUDIO') Or (Edit1.Text = 'NAOSUBIUAUDIO') Or (Edit1.Text = 'NAOESTASUBINDOAUDIO') Or (Edit1.Text = 'NAOSOBEAUDIO') Or (Edit1.Text = 'SUBINDOAUDIO') Or (Edit1.Text = 'NAOSUBIUAUDIO') Or (Edit1.Text = 'NAOESTASUBINDOAUDIO') Or (Edit1.Text = 'NAOSOBEAUDIO') Or (Edit1.Text = 'SUBINDOAUDIO') Or (Edit1.Text = 'NAOSUBIUAUDIO') Then
+                    Label3.Text := '1-Teste o CI de áudio  2-Teste o CI processador de áudio  ' + #13 + '3-Teste do CI demodulador e decodificador estéreo 4-Circuito ' + #13 + 'de sintonia(Seletor varicap)';
+
+
+                if (edit1.text = 'não está subindo áudio') or (edit1.text = 'não sobe áudio') or (edit1.text = 'subindo áudio') or (edit1.text = 'não subiu áudio') or (edit1.text = 'não esta subindo áudio') or (edit1.text = 'naosobeaudio') or (edit1.text = 'subindoaudio') or (edit1.text = 'naosubiuaudio') or (edit1.text = 'naoestasubindoaudio') or (edit1.text = 'naosobeaudio') or (edit1.text = 'subindoaudio') or (edit1.text = 'naosubiuaudio') or (edit1.text = 'naoestasubindoaudio') or (edit1.text = 'naosobeaudio') or (edit1.text = 'subindoaudio') or (edit1.text = 'naosubiuaudio') then
+                    Label3.Text := '1-Teste o CI de áudio  2-Teste o CI processador de áudio  ' + #13 + '3-Teste do CI demodulador e decodificador estéreo 4-Circuito ' + #13 + 'de sintonia(Seletor varicap)';
+
+
+                If (Edit1.Text = 'CHECKSIGNALCABLE') Or (Edit1.Text = 'NOOPTIMUMRESOLUTION1280X1024') Or (Edit1.Text = 'MENSAGEMCHECKSIGNALCABLE') Or (Edit1.Text = 'MENSAGEMNOOPTIMUMRESOLUTION1280X1024') Or (Edit1.Text = 'NOOPTIMUMRESOLUTION1280X1024') Or (Edit1.Text = 'MENSAGEMNOOPTIMUMRESOLUTION1280X1024') Then
+
+                    Label3.Text := '1-Troque CI micro';
+
+                if (edit1.text = 'checksignalcable') or (edit1.text = 'nooptimumresolution1280x1024') or (edit1.text = 'mensagemchecksignalcable') or (edit1.text = 'mensagemnooptimumresolution1280x1024') or (edit1.text = 'nooptimumresolution1280x1024') or (edit1.text = 'mensagemnooptimumresolution1280x1024') then
+                   Label3.Text := '1-Troque CI micro';
+
+                If (Edit1.Text = 'DISPLAYQUEBRADO') Or (Edit1.Text = 'DISPLAYCOMRISCO') Or (Edit1.Text = 'DISPLAY') Or (Edit1.Text = 'PIXELMORTO') Or (Edit1.Text = 'PIXEL')Or (Edit1.Text = 'PIXELS')Or (Edit1.Text = 'DISPLAYCOMPIXELMORTO') Then
+                    Label3.Text := 'O display LCD deve ser trocado';
+
+                if (edit1.text = 'displayquebrado') or (edit1.text = 'displaycomrisco') or (edit1.text = 'display') or (edit1.text = 'pixelmorto') or (edit1.text = 'pixel') or (edit1.text = 'pixels')or (edit1.text = 'displaycompixelmorto') then
+                    Label3.Text := 'O display LCD deve ser trocado';
+
+
+                If (Edit1.Text = 'TELAACESASEMIMAGEM') Or (Edit1.Text = 'TELASEMIMAGEM')Or (Edit1.Text = 'SEMIMAGEM') Then
+
+                    Label3.Text := '1-Meça os pinos de +B do CI scaler. Alguns pinos funcionam com ' + #13 + '3,3 e outros com 1,8V   2-Medir o +B que alimenta o display. ' + #13 + 'Algumas trilhas recebem 3,3 ou 5V  3-Trocar o ' + #13 + 'CI scaler';
+
+                if (edit1.text = 'telaacesasemimagem') or (edit1.text = 'telasemimagem')or (edit1.text = 'semimagem') then
+                     Label3.Text := '1-Meça os pinos de +B do CI scaler. Alguns pinos funcionam com ' + #13 + '3,3 e outros com 1,8V   2-Medir o +B que alimenta o display. ' + #13 + 'Algumas trilhas recebem 3,3 ou 5V  3-Trocar o ' + #13 + 'CI scaler';
+
+                If (Edit1.Text = 'TELAAPAGADA') Or (Edit1.Text = 'TELAACENDEEAPAGA') Or (Edit1.Text = 'ACENDEEAPAGA') Or (Edit1.Text = 'APAGADA') Or (Edit1.Text = 'APAGADO') Or (Edit1.Text = 'LIGAEDESLIGA') Or (Edit1.Text = 'TELALIGAEDESLIGA') Then
+
+                    Label3.Text := '1-Teste as lâmpadas. Se uma queimar as outras não acendem   ' + #13 + '2-Medir o +B que alimenta a placa Inverter   3-Medir a tensão ' + #13 + '"Power On" do CI micro   4-Testar o fusível e os transistores ' + #13 + 'chaveadores do inverter   5-Trocar o CI oscilador do inverter';
+
+                if (edit1.text = 'telaapagada') or (edit1.text = 'telaacendeeapaga') or (edit1.text = 'acendeeapaga') or (edit1.text = 'apagada') or (edit1.text = 'apagado') or (edit1.text = 'ligaedesliga') or (edit1.text = 'telaligaedesliga') then
+                    Label3.Text := '1-Teste as lâmpadas. Se uma queimar as outras não acendem   ' + #13 + '2-Medir o +B que alimenta a placa Inverter   3-Medir a tensão ' + #13 + '"Power On" do CI micro   4-Testar o fusível e os transistores ' + #13 + 'chaveadores do inverter   5-Trocar o CI oscilador do inverter';
+
+                If (Edit1.Text = 'MONITOR NÃO LIGA') Or (Edit1.Text = 'MONITORNAOLIGA') Or (Edit1.Text = 'MONITORCOMDEFEITO') Or (Edit1.Text = 'MONITOR') Or (Edit1.Text = 'MONITOR NÃO FUNCIONA') Or (Edit1.Text = 'MONITORNAOFUNCIONA') Or (Edit1.Text = 'MONITORQUEBRADO') Then
+
+                    Label3.Text := 'Se não chegar +B no CI micro, meça os +B de 5 e 12V que ' + #13 + 'saem dos diodos ligados no chopper da fonte - Verifique se tem ' + #13 + '150V no filtro principal. Testar fusível e curto nos retificadores. ' + #13 + 'Teste resistores, diodos, transistores e substitua o CI da fonte';
+
+                if (edit1.text = 'monitor não liga') or (edit1.text = 'monitornaoliga') or (edit1.text = 'monitorcomdefeito') or (edit1.text = 'monitor') or (edit1.text = 'monitor não funciona') or (edit1.text = 'monitornaofunciona') or (edit1.text = 'monitorquebrado') then
+                    Label3.Text := 'Se não chegar +B no CI micro, meça os +B de 5 e 12V que ' + #13 + 'saem dos diodos ligados no chopper da fonte - Verifique se tem ' + #13 + '150V no filtro principal. Testar fusível e curto nos retificadores. ' + #13 + 'Teste resistores, diodos, transistores e substitua o CI da fonte';
+
+                If (Edit1.Text = 'TECLASDOCONTROLEREMOTONAOFUNCIONAM') Or (Edit1.Text = 'TECLAS DO CONTROLE REMOTO NAO FUNCIONAM') Or (Edit1.Text = 'TECLA DO CONTROLE REMOTO NÃO FUNCIONA') Or (Edit1.Text = 'TECLADOCONTROLEREMOTONAOFUNCIONA') Or (Edit1.Text = 'UMA DAS TECLAS NÃO FUNCIONAM') Or (Edit1.Text = 'UMADASTECLASNAOFUNCIONAM') Or (Edit1.Text = 'TECLA NÃO FUNCIONA') Or (Edit1.Text = 'TECLANAOFUNCIONA') Or (Edit1.Text = 'CONTROLE REMOTO NÃO FUNCIONA') Or (Edit1.Text = 'CONTROLEREMOTONAOFUNCIONA') Or (Edit1.Text = 'CONTROLEREMOTO') Then
+
+                    Label3.Text := '1-Lave a placa do Controle remoto com sabão em pó e seque ' + #13 + 'passando uma escova de dentes   2-Insira um decalque ou contato ' + #13 + 'de controle remoto na placa 2-Solda fria  3-Se não funcionar, ' + #13 + 'substitua o cristal - troque o capacitor eletrolítico ou resistor';
+
+                if (edit1.text = 'teclas do controle remoto não funcionam') or (edit1.text = 'teclasdocontroleremotonaofuncionam') or (edit1.text = 'tecla do controle remoto não funciona') or (edit1.text = 'tecladocontroleremotonaofunciona') or (edit1.text = 'uma das teclas não funcionam') or (edit1.text = 'umadasteclasnaofuncionam') or (edit1.text = 'tecla não funciona') or (edit1.text = 'teclanaofunciona') or (edit1.text = 'controle remoto não funciona') or (edit1.text = 'controleremotonaofunciona') or (edit1.text = 'controleremoto') then
+                    Label3.Text := '1-Lave a placa do Controle remoto com sabão em pó e seque ' + #13 + 'passando uma escova de dentes   2-Insira um decalque ou contato ' + #13 + 'de controle remoto na placa 2-Solda fria  3-Se não funcionar, ' + #13 + 'substitua o cristal - troque o capacitor eletrolítico ou resistor';
+
+                If (Edit1.Text = 'FICATRAVADA') Or (Edit1.Text = 'TELATRAVADA') Or (Edit1.Text = 'TRAVADA') Or (Edit1.Text = 'TRAVADO') Or (Edit1.Text = 'TELAFICATRAVADA') Or (Edit1.Text = 'TRAVOU') Or (Edit1.Text = 'ESTÁ TRAVANDO') Or (Edit1.Text = 'ESTATRAVANDO') Or (Edit1.Text = 'TRAVANDO') Or (Edit1.Text = 'ESTÁ TRAVADO') Or (Edit1.Text = 'ESTATRAVADO') Or (Edit1.Text = 'FICOUTRAVADO') Or (Edit1.Text = 'FICOUTRAVADA') Then
+
+                    Label3.Text := '1- Troque a memória(EEPROM)';
+
+                if (edit1.text = 'ficatravada') or (edit1.text = 'telatravada') or (edit1.text = 'travada') or (edit1.text = 'travado') or (edit1.text = 'telaficatravada') or (edit1.text = 'travou') or (edit1.text = 'está travando') or (edit1.text = 'estatravando') or (edit1.text = 'travando') or (edit1.text = 'está travado') or (edit1.text = 'estatravado') or (edit1.text = 'ficoutravado') or (edit1.text = 'ficoutravada') then
+                    Label3.Text := '1- Troque a memória(EEPROM)';
+
+                If (Edit1.Text = 'NÃO MEMORIZA') Or (Edit1.Text = 'NAOMEMORIZA') Or (Edit1.Text = 'MEMÓRIA') Or (Edit1.Text = 'MEMORIA') Or (Edit1.Text = 'SEM MEMÓRIA') Or (Edit1.Text = 'SEMMEMORIA') Or (Edit1.Text = 'NÃO LEMBRA') Or (Edit1.Text = 'NAOLEMBRA') Or (Edit1.Text = 'ESQUECE') Then
+
+                    Label3.Text := '1- Troque a memória(EEPROM)';
+
+                if (edit1.text = 'não memoriza') or (edit1.text = 'naomemoriza') or (edit1.text = 'memória') or (edit1.text = 'memoria') or (edit1.text = 'sem memória') or (edit1.text = 'semmemoria') or (edit1.text = 'não lembra') or (edit1.text = 'naolembra') or (edit1.text = 'esquece') then
+                     Label3.Text := '1- Troque a memória(EEPROM)';
+
+                If (Edit1.Text = 'MUDADECANAL') Or (Edit1.Text = 'MUDADECANALSOZINHO') Or (Edit1.Text = 'MUDADECANALSOZINHA') Or (Edit1.Text = 'TROCADECANAL') Or (Edit1.Text = 'TROCADECANALSOZINHO') Or (Edit1.Text = 'TROCADECANALSOZINHA') Then
+
+                    Label3.Text := '1- Troque a memória(EEPROM)';
+
+                if (edit1.text = 'mudadecanal') or (edit1.text = 'mudadecanalsozinho') or (edit1.text = 'mudadecanalsozinha') or (edit1.text = 'trocadecanal') or (edit1.text = 'trocadecanalsozinho') or (edit1.text = 'trocadecanalsozinha') then
+                    Label3.Text := '1- Troque a memória(EEPROM)';
+
+                If (Edit1.Text = 'AUMENTAOSOM') Or (Edit1.Text = 'AUMENTASOM') Or (Edit1.Text = 'AUMENTAOSOMSOZINHO') Or (Edit1.Text = 'AUMENTASOMSOZINHO') Or (Edit1.Text = 'AUMENTA') Or (Edit1.Text = 'AUMENTA O ÁUDIO SOZINHO') Or (Edit1.Text = 'AUMENTAOAUDIOSOZINHO') Or (Edit1.Text = 'AUMENTA O ÁUDIO') Or (Edit1.Text = 'AUMENTAOAUDIO') Or (Edit1.Text = 'SOMALTO') Or (Edit1.Text = 'ÁUDIO ALTO') Or (Edit1.Text = 'AUDIOALTO') Or (Edit1.Text = 'ALTO')Then
+
+                    Label3.Text := '1- Troque a memória(EEPROM)';
+
+                if (edit1.text = 'aumentaosom') or (edit1.text = 'aumentasom') or (edit1.text = 'aumentaosomsozinho') or (edit1.text = 'aumentasomsozinho') or (edit1.text = 'aumenta') or (edit1.text = 'aumenta o áudio sozinho') or (edit1.text = 'aumentaoaudiosozinho') or (edit1.text = 'aumenta o áudio') or (edit1.text = 'aumentaoaudio') or (edit1.text = 'somalto') or (edit1.text = 'áudio alto') or (edit1.text = 'audioalto') or (edit1.text = 'alto')then
+                    Label3.Text := '1- Troque a memória(EEPROM)';
+
+                If (Edit1.Text = 'LIGASOZINHO') Or (Edit1.Text = 'LIGASOZINHA') Or (Edit1.Text = 'FICALIGANDOSOZINHO') Or (Edit1.Text = 'FICALIGANDOSOZINHA') Or (Edit1.Text = 'ESTÁ LIGANDO SOZINHA') Or (Edit1.Text = 'ESTALIGANDOSOZINHA') Or (Edit1.Text = 'ESTÁ LIGANDO SOZINHO') Or (Edit1.Text = 'ESTALIGANDOSOZINHO') Or (Edit1.Text = 'TVLIGASOZINHA') Or (Edit1.Text = 'LIGA') Or (Edit1.Text = 'LIGADONADA') Or (Edit1.Text = 'TVLIGADONADA') Then
+
+                    Label3.Text := '1- Troque a memória(EEPROM)';
+
+                if (edit1.text = 'ligasozinho') or (edit1.text = 'ligasozinha') or (edit1.text = 'ficaligandosozinho') or (edit1.text = 'ficaligandosozinha') or (edit1.text = 'está ligando sozinha') or (edit1.text = 'estaligandosozinha') or (edit1.text = 'está ligando sozinho') or (edit1.text = 'estaligandosozinho') or (edit1.text = 'tvligasozinha') or (edit1.text = 'liga') or (edit1.text = 'ligadonada') or (edit1.text = 'tvligadonada') then
+                     Label3.Text := '1- Troque a memória(EEPROM)';
+
+                If (Edit1.Text = 'TVCHUVISCANDO') Or (Edit1.Text = 'CHUVISCANDO') Or (Edit1.Text = 'CHUVISCO') Or (Edit1.Text = 'TVCOMCHUVISCO') Or (Edit1.Text = 'TELAAZUL') Or (Edit1.Text = 'TVCOMTELAAZUL') Or (Edit1.Text = 'TELAAZULNATV') Or (Edit1.Text = 'TELEVISÃO COM TELA AZUL') Or (Edit1.Text = 'TELEVISAOCOMTELAAZUL') Or (Edit1.Text = 'TELA AZUL NA TELEVISÃO') Or (Edit1.Text = 'TELAAZULNATELEVISAO') Or (Edit1.Text = 'TELEVISÃO COM CHUVISCO') Or (Edit1.Text = 'TELEVISAOCOMCHUVISCO') Or (Edit1.Text = 'TELEVISÃO CHUVISCANDO') Or (Edit1.Text = 'TELEVISAOCHUVISCANDO') Then
+
+                    Label3.Text := '1- Verifique o circuito de sintonia(Seletor varicap)';
+
+                if (edit1.text = 'tvchuviscando') or (edit1.text = 'chuviscando') or (edit1.text = 'chuvisco') or (edit1.text = 'tvcomchuvisco') or (edit1.text = 'telaazul') or (edit1.text = 'tvcomtelaazul') or (edit1.text = 'telaazulnatv') or (edit1.text = 'televisão com tela azul') or (edit1.text = 'televisaocomtelaazul') or (edit1.text = 'tela azul na televisão') or (edit1.text = 'telaazulnatelevisao') or (edit1.text = 'televisão com chuvisco') or (edit1.text = 'televisaocomchuvisco') or (edit1.text = 'televisão chuviscando') or (edit1.text = 'televisaochuviscando') then
+                    Label3.Text := '1- Verifique o circuito de sintonia(Seletor varicap)';
+
+                If (Edit1.Text = 'SÓ PEGA CANAIS ALTOS') Or (Edit1.Text = 'SOPEGACANAISALTOS') Or (Edit1.Text = 'PEGACANAISALTOS') Or (Edit1.Text = 'SÓPEGACANAISBAIXOS') Or (Edit1.Text = 'SOPEGACANAISBAIXOS') Or (Edit1.Text = 'PEGACANAISBAIXOS') Or (Edit1.Text = 'SÓ SINTONIZA CANAIS ALTOS') Or (Edit1.Text = 'SOSINTONIZACANAISALTOS') Or (Edit1.Text = 'SINTONIZACANAISALTOS') Or (Edit1.Text = 'SÓ SINTONIZA CANAIS BAIXOS') Or (Edit1.Text = 'SOSINTONIZACANAISBAIXOS') Or (Edit1.Text = 'SINTONIZACANAISBAIXOS') Or (Edit1.Text = 'CANAISBAIXOS')Or (Edit1.Text = 'CANAISALTOS')Then
+
+                    Label3.Text := '1- Verifique o circuito de sintonia(Seletor varicap)';
+
+                if (edit1.text = 'só pega canais altos') or (edit1.text = 'sopegacanaisaltos') or (edit1.text = 'pegacanaisaltos') or (edit1.text = 'sópegacanaisbaixos') or (edit1.text = 'sopegacanaisbaixos') or (edit1.text = 'pegacanaisbaixos') or (edit1.text = 'só sintoniza canais altos') or (edit1.text = 'sosintonizacanaisaltos') or (edit1.text = 'sintonizacanaisaltos') or (edit1.text = 'só sintoniza canais baixos') or (edit1.text = 'sosintonizacanaisbaixos') or (edit1.text = 'sintonizacanaisbaixos') or (edit1.text = 'canaisbaixos')or (edit1.text = 'canaisaltos')then
+                    Label3.Text := '1- Verifique o circuito de sintonia(Seletor varicap)';
+
+                If (Edit1.Text = 'SOMBAIXO') Or (Edit1.Text = 'TVCOMSOMBAIXO') Or (Edit1.Text = 'TELEVISÃO COM SOM BAIXO') Or (Edit1.Text = 'TELEVISAOCOMSOMBAIXO') Or (Edit1.Text = 'ÁUDIO BAIXO') Or (Edit1.Text = 'AUDIOBAIXO') Or (Edit1.Text = 'TV COM ÁUDIO BAIXO') Or (Edit1.Text = 'TVCOMAUDIOBAIXO') Or (Edit1.Text = 'TELEVISÃO COM ÁUDIO BAIXO') Or (Edit1.Text = 'TELEVISAOCOMAUDIOBAIXO') Or (Edit1.Text = 'COM ÁUDIO BAIXO') Or (Edit1.Text = 'COMAUDIOBAIXO') Or (Edit1.Text = 'COMSOMBAIXO') Then
+
+                    Label3.Text := '1- Verifique o circuito de sintonia(Seletor varicap)';
+
+                if (edit1.text = 'sombaixo') or (edit1.text = 'tvcomsombaixo') or (edit1.text = 'televisão com som baixo') or (edit1.text = 'televisaocomsombaixo') or (edit1.text = 'áudio baixo') or (edit1.text = 'audiobaixo') or (edit1.text = 'tv com áudio baixo') or (edit1.text = 'tvcomaudiobaixo') or (edit1.text = 'televisão com áudio baixo') or (edit1.text = 'televisaocomaudiobaixo') or (edit1.text = 'com áudio baixo') or (edit1.text = 'comaudiobaixo') or (edit1.text = 'comsombaixo') then
+                    Label3.Text := '1- Verifique o circuito de sintonia(Seletor varicap)';
+
+                If (Edit1.Text = 'VERTICALFECHADO') Or (Edit1.Text = 'LINHAVERTICAL') Or (Edit1.Text = 'LINHA') Or (Edit1.Text = 'LINHANATELA') Or (Edit1.Text = 'LINHAONDULADA') Or (Edit1.Text = 'LINHAONDULADANATELA') Or (Edit1.Text = 'VERTICALFECHADOCOMLINHAONDULADA') Or (Edit1.Text = 'FALTADEALTURA') Or (Edit1.Text = 'ONDULADA')Or (Edit1.Text = 'ALTURA')Then
+
+                    Label3.Text := '1- Procure curto nos capacitores eletrolíticos   2-Ressoldar o ' + #13 + 'circuito vertical   3-Troque o CI vertical e os capacitores ' + #13 + 'eletrolíticos   4-Medir os +B do circuito vertical';
+
+                if (edit1.text = 'verticalfechado') or (edit1.text = 'linhavertical') or (edit1.text = 'linha') or (edit1.text = 'linhanatela') or (edit1.text = 'linhaondulada') or (edit1.text = 'linhaonduladanatela') or (edit1.text = 'verticalfechadocomlinhaondulada') or (edit1.text = 'faltadealtura')or (edit1.text = 'ondulada')or (edit1.text = 'altura') then
+                    Label3.Text := '1- Procure curto nos capacitores eletrolíticos   2-Ressoldar o ' + #13 + 'circuito vertical   3-Troque o CI vertical e os capacitores ' + #13 + 'eletrolíticos   4-Medir os +B do circuito vertical';
+
+                If (Edit1.Text = 'FALTADELINEARIDADE') Or (Edit1.Text = 'VERTICALFECHADOPELAMETADE') Or (Edit1.Text = 'LINHASBRANCASEMTODATELA') Or (Edit1.Text = 'FICOUCOMLINHASBRANCASEMTODATELA') Or (Edit1.Text = 'FICOUCOMLINHABRANCA') Or (Edit1.Text = 'LINHASBRANCAS') Or (Edit1.Text = 'LINHAS') Or (Edit1.Text = 'LINHASNAPARTESUPERIOR') Or (Edit1.Text = 'LINHASEMCIMA') Or (Edit1.Text = 'LINHASNAPARTEINFERIOR') Or (Edit1.Text = 'LINHASEMBAIXO') Or (Edit1.Text = 'TELACOMLINHAS') Or (Edit1.Text = 'VÁRIAS LINHAS NA TELA') Or (Edit1.Text = 'VARIASLINHASNATELA') Or (Edit1.Text = 'VÁRIAS LINHAS') Or (Edit1.Text = 'VARIASLINHAS') Or (Edit1.Text = 'LINHASBRANCAS') Or (Edit1.Text = 'METADEDATELABRANCA') Or (Edit1.Text = 'METADEDATELAPRETA') Then
+
+                    Label3.Text := '1- Troque os capacitores eletrolíticos   2-Troque o CI vertical';
+
+                if (edit1.text = 'faltadelinearidade') or (edit1.text = 'verticalfechadopelametade') or (edit1.text = 'linhasbrancasemtodatela') or (edit1.text = 'ficoucomlinhasbrancasemtodatela') or (edit1.text = 'ficoucomlinhabranca') or (edit1.text = 'linhasbrancas') or (edit1.text = 'linhas') or (edit1.text = 'linhasnapartesuperior') or (edit1.text = 'linhasemcima') or (edit1.text = 'linhasnaparteinferior') or (edit1.text = 'linhasembaixo') or (edit1.text = 'telacomlinhas') or (edit1.text = 'várias linhas na tela') or (edit1.text = 'variaslinhasnatela') or (edit1.text = 'várias linhas') or (edit1.text = 'variaslinhas') or (edit1.text = 'linhasbrancas') or (edit1.text = 'metadedatelabranca') or (edit1.text = 'metadedatelapreta') then
+                    Label3.Text := '1- Troque os capacitores eletrolíticos   2-Troque o CI vertical';
+
+                If (Edit1.Text = 'MUDO') Or (Edit1.Text = 'TVMUDA') Or (Edit1.Text = 'TELEVISÃO MUDA') Or (Edit1.Text = 'TELEVISAOMUDA') Or (Edit1.Text = 'ESTÁ MUDO') Or (Edit1.Text = 'ESTAMUDO') Or (Edit1.Text = 'FICOUMUDO') Or (Edit1.Text = 'MUTE') Or (Edit1.Text = 'DEFEITODEMUTE') Then
+
+                    Label3.Text := '1- Troque o transistor do mute ou o CI de som(O transistor do ' + #13 + 'mute pode ficar dentro do CI, veja o manual do equipamento)';
+
+                if (edit1.text = 'mudo') or (edit1.text = 'tvmuda') or (edit1.text = 'televisão muda') or (edit1.text = 'televisaomuda') or (edit1.text = 'está mudo') or (edit1.text = 'estamudo') or (edit1.text = 'ficoumudo') or (edit1.text = 'mute') or (edit1.text = 'defeitodemute') then
+                    Label3.Text := '1- Troque o transistor do mute ou o CI de som(O transistor do ' + #13 + 'mute pode ficar dentro do CI, veja o manual do equipamento)';
+
+                If Label3.Text = '' Then
+                  begin
+                    Label4.Visible := True;
+                    Label4.Text := procura + 'Não está relacionado, defina a pesquisa com outro nome.';
+                  End;
+
+           end; //fecha tv
+
+
+           If (Label2.Text = 'Rádio') Then
+           begin
+            Label3.Visible := true;
+            //Try
+                procura:=StringReplace(procura,' ',EmptyStr,[rfReplaceAll]);
+                Edit1.Text:=removeAcentos(procura);
+                If (Edit1.Text = 'NÃO ESTÁ SUBINDO SOM') Or (Edit1.Text = 'NÃO SOBE SOM') Or (Edit1.Text = 'SUBINDOSOM') Or (Edit1.Text = 'NÃO SUBIU SOM') Or (Edit1.Text = 'NAOESTASUBINDO SOM') Or (Edit1.Text = 'NAOSOBESOM') Or (Edit1.Text = 'SUBINDOSOM') Or (Edit1.Text = 'NAOSUBIUSOM') Or (Edit1.Text = 'SEM ÁUDIO') Or (Edit1.Text = 'SEMAUDIO') Or (Edit1.Text = 'SEMSOM') Or (Edit1.Text = 'ÁUDIO') Or (Edit1.Text = 'AUDIO') Or (Edit1.Text = 'SOM') Or (Edit1.Text = 'ÁUDIO NÃO FUNCIONA') Or (Edit1.Text = 'AUDIONAOFUNCIONA') Or (Edit1.Text = 'SOM NÃO FUNCIONA') Or (Edit1.Text = 'SOMNAOFUNCIONA') Or (Edit1.Text = 'SOM NÃO ESTÁ FUNCIONANDO') Or (Edit1.Text = 'SOMNAOESTAFUNCIONANDO') Or (Edit1.Text = 'ÁUDIO NÃO ESTÁ FUNCIONANDO') Or (Edit1.Text = 'AUDIONAOESTAFUNCIONANDO') Or (Edit1.Text = 'ÁUDIO NÃO ESTÁ TOCANDO') Or (Edit1.Text = 'AUDIONAOESTATOCANDO') Or (Edit1.Text = 'NÃO ESTÁ TOCANDO') Or (Edit1.Text = 'NAOESTATOCANDO') Or (Edit1.Text = 'SOM NÃO ESTÁ TOCANDO') Or (Edit1.Text = 'SOMNAOESTATOCANDO') Or (Edit1.Text = 'ÁUDIO NÃO TOCA') Or (Edit1.Text = 'AUDIONAOTOCA') Or (Edit1.Text = 'SOM NÃO TOCA') Or (Edit1.Text = 'SOMNAOTOCA') Or (Edit1.Text = 'NÃO TOCA') Or (Edit1.Text = 'NAOTOCA') Then
+                     Label3.Text := '1-Algum transistor pré-amplificador defeituoso   ' + #13 + '2-Diodo detetor   ' + #13 + '3-Veja o alto-falante, CI ou transistor de saída   ' + #13 + '4-Troque os transistores de som  ' + #13 + '5-Troque os componentes da saída de som  ' + #13 + '6-Se estiver apagado é os transistores reguladores da fonte';
+
+                if (edit1.text = 'sintoniza estações baixas') or (edit1.text = 'sintonizaestacoesbaixas') or (edit1.text = 'sintonizaestacoesbaixas') or (edit1.text = 'estações baixas') or (edit1.text = 'estacoesbaixas') or (edit1.text = 'só sintoniza estações baixas') or (edit1.text = 'sosintonizaestacoesbaixas') or (edit1.text = 'sosintonizaestacoesbaixas') or (edit1.text = 'só toca estações baixas') or (edit1.text = 'sotocaestacoesbaixas') or (edit1.text = 'sotocaestacoesbaixas') or (edit1.text = 'só reproduz estações baixas') or (edit1.text = 'soreproduzestacoesbaixas') or (edit1.text = 'soreproduzestacoesbaixas') or (edit1.text = 'só toca estações baixas') or (edit1.text = 'sotocaestacoesbaixas') or (edit1.text = 'sotocaestacoesbaixas') then
+                    Label3.Text := '1-Verifique os resistores que polarizam o transistor misturador';
+                If (Edit1.Text = 'NÃO SINTONIZA') Or (Edit1.Text = 'NAOSINTONIZA') Or (Edit1.Text = 'NÃO SINTONIZA AS ESTAÇÕES') Or (Edit1.Text = 'NAOSINTONIZAASESTAÇOES') Or (Edit1.Text = 'NAOSINTONIZAASESTACOES') Or (Edit1.Text = 'NÃO ESTÁ SINTONIZANDO') Or (Edit1.Text = 'NAOESTASINTONIZANDO') Or (Edit1.Text = 'SINTONIAFRACA') Or (Edit1.Text = 'SEMSINTONIA') Then
+                   Label3.Text := '1-Ver o transistor amplificador de RF e enrolamentos da bobina da antena' + #13 + '2-Transistor misturador 3-Transistor oscilador ' + #13 + '3-Ver os transistores amplificadores de FI ou CIs que amplificadores de FI';
+                if (edit1.text = 'não está subindo som') or (edit1.text = 'não sobe som') or (edit1.text = 'subindosom') or (edit1.text = 'não subiu som') or (edit1.text = 'naoestasubindosom') or (edit1.text = 'naosobesom') or (edit1.text = 'subindosom') or (edit1.text = 'naosubiusom') or (edit1.text = 'sem áudio') or (edit1.text = 'semaudio') or (edit1.text = 'semsom') or (edit1.text = 'áudio') or (edit1.text = 'audio') or (edit1.text = 'som') or (edit1.text = 'áudio não funciona') or (edit1.text = 'audionaofunciona') or (edit1.text = 'som não funciona') or (edit1.text = 'somnaofunciona') or (edit1.text = 'som não está funcionando') or (edit1.text = 'somnaoestafuncionando') or (edit1.text = 'áudio não está funcionando') or (edit1.text = 'audionaoestafuncionando') or (edit1.text = 'áudio não está tocando') or (edit1.text = 'audionaoestatocando') or (edit1.text = 'não está tocando') or (edit1.text = 'naoestatocando') or (edit1.text = 'som não está tocando') or (edit1.text = 'somnaoestatocando') or (edit1.text = 'áudio não toca') or (edit1.text = 'audionaotoca') or (edit1.text = 'som não toca') or (edit1.text = 'somnaotoca') or (edit1.text = 'não toca') or (edit1.text = 'naotoca') then
+                    Label3.Text := '1-Algum transistor pré-amplificador defeituoso   ' + #13 + '2-Diodo detetor   ' + #13 + '3-Veja o alto-falante, CI ou transistor de saída   ' + #13 + '4-Troque os transistores de som  ' + #13 + '5-Troque os componentes da saída de som  ' + #13 + '6-Se estiver apagado é os transistores reguladores da fonte';
+
+                If (Edit1.Text = 'ESTAÇÕES DESLOCADAS') Or (Edit1.Text = 'ESTACOESDESLOCADAS') Or (Edit1.Text = 'ESTAÇÕES DESLOCADAS NO DIAL') Or (Edit1.Text = 'ESTACOESDESLOCADASNODIAL') Or (Edit1.Text = 'ESTACOESDESLOCADASNODIAL') Or (Edit1.Text = 'ESTAÇÕES FORA DE POSIÇÃO') Or (Edit1.Text = 'ESTACOESFORADEPOSIÇAO') Or (Edit1.Text = 'ESTACOESFORADEPOSICAO') Or (Edit1.Text = 'ESTAÇÃO FORA DE POSIÇÃO') Or (Edit1.Text = 'ESTACAOFORADEPOSIÇAO') Or (Edit1.Text = 'ESTACAOFORADEPOSICAO') Or (Edit1.Text = 'DIAL FORA DE POSIÇÃO') Or (Edit1.Text = 'DIALFORADEPOSICAO') Or (Edit1.Text = 'DIAL') Or (Edit1.Text = 'DIALDESLOCADO') Or (Edit1.Text = 'DESLOCADO') Or (Edit1.Text = 'DESLOCADA') Or (Edit1.Text = 'ESTAÇÃO DESLOCADA') Or (Edit1.Text = 'ESTACAODESLOCADA')Or (Edit1.Text = 'MOSTRADOR')Or (Edit1.Text = 'DEFEITOMOSTRADOR')Or (Edit1.Text = 'DEFEITODIAL')Or (Edit1.Text = 'DEFEITONOMOSTRADOR')Or (Edit1.Text = 'DEFEITONODIAL') Then
+
+                    Label3.Text := '1-Ajuste a bobina osciladora e trimmer que fica no capacitor ' + #13 + 'variável(Normalmente ajusta-se a bobina para as estações baixas ' + #13 + 'e o trimmer para as altas)';
+
+                if (edit1.text = 'estações deslocadas') or (edit1.text = 'estacoesdeslocadas') or (edit1.text = 'estações deslocadas no dial') or (edit1.text = 'estacoesdeslocadasnodial') or (edit1.text = 'estacoesdeslocadasnodial') or (edit1.text = 'estações fora de posição') or (edit1.text = 'estaçoesforadeposiçao') or (edit1.text = 'estacoesforadeposicao') or (edit1.text = 'estação fora de posição') or (edit1.text = 'estacaoforadeposiçao') or (edit1.text = 'estacaoforadeposicao') or (edit1.text = 'dialforadeposicao') or (edit1.text = 'dialforadeposicao') or (edit1.text = 'dial') or (edit1.text = 'dialdeslocado') or (edit1.text = 'deslocado') or (edit1.text = 'deslocada') or (edit1.text = 'estação deslocada') or (edit1.text = 'estacaodeslocada')or (edit1.text = 'mostrador')or (edit1.text = 'defeitomostrador')or (edit1.text = 'defeitodial')or (edit1.text = 'defeitonomostrador')or (edit1.text = 'defeitonodial') then
+                    Label3.Text := '1-Ajuste a bobina osciladora e trimmer que fica no capacitor ' + #13 + 'variável(Normalmente ajusta-se a bobina para as estações baixas ' + #13 + 'e o trimmer para as altas)';
+
+                If (Edit1.Text = 'NÃO SINTONIZA NADA') Or (Edit1.Text = 'NAOSINTONIZANADA') Or (Edit1.Text = 'NÃO TOCA NADA') Or (Edit1.Text = 'NAOTOCANADA') Or (Edit1.Text = 'NÃO ESTÁ SINTONIZANDO NADA') Or (Edit1.Text = 'NAOESTASINTONIZANDONADA') Or (Edit1.Text = 'NÃO ESTÁ TOCANDO NADA') Or (Edit1.Text = 'NAOESTATOCANDONADA') Or (Edit1.Text = 'NÃO ESCUTO NADA') Or (Edit1.Text = 'NAOESCUTONADA') Or (Edit1.Text = 'NÃO FALA NADA') Or (Edit1.Text = 'NAOFALANADA') Or (Edit1.Text = 'SINTONIZANADA') Then
+
+                    Label3.Text := '1-Verifique o transistor oscilador  2-Verifique o transistor ' + #13 + 'amplicador de RF';
+
+               if (edit1.text = 'não sintoniza nada') or (edit1.text = 'naosintonizanada') or (edit1.text = 'não toca nada') or (edit1.text = 'naotocanada') or (edit1.text = 'não está sintonizando nada') or (edit1.text = 'naoestasintonizandonada') or (edit1.text = 'não está tocando nada') or (edit1.text = 'naoestatocandonada') or (edit1.text = 'não escuto nada') or (edit1.text = 'naoescutonada') or (edit1.text = 'não fala nada') or (edit1.text = 'naofalanada') or (edit1.text = 'sintonizanada') then
+                    Label3.Text := '1-Verifique o transistor oscilador  2-Verifique o transistor ' + #13 + 'amplicador de RF';
+
+                If (Edit1.Text = 'NÃO ESTÁ SUBINDO ÁUDIO') Or (Edit1.Text = 'NÃO SOBE ÁUDIO') Or (Edit1.Text = 'SUBINDO ÁUDIO') Or (Edit1.Text = 'NÃO SUBIU ÁUDIO') Or (Edit1.Text = 'NÃO ESTA SUBINDO ÁUDIO') Or (Edit1.Text = 'NAO SOBE ÁUDIO') Or (Edit1.Text = 'SUBINDO ÁUDIO') Or (Edit1.Text = 'NÃO SUBIU ÁUDIO') Or (Edit1.Text = 'NAOESTASUBINDOAUDIO') Or (Edit1.Text = 'NAOSOBEAUDIO') Or (Edit1.Text = 'SUBINDOAUDIO') Or (Edit1.Text = 'NAOSUBIUAUDIO') Or (Edit1.Text = 'NAOESTASUBINDOAUDIO') Or (Edit1.Text = 'NAOSOBEAUDIO') Or (Edit1.Text = 'SUBINDOAUDIO') Or (Edit1.Text = 'NAOSUBIUAUDIO') Then
+                    Label3.Text := '1-Algum transistor pré-amplificador defeituoso   ' + #13 + '2-Diodo detetor   ' + #13 + '3-Veja o alto-falante, CI ou transistor de saída   ' + #13 + '4-Troque os transistores de som  ' + #13 + '5-Troque os componentes da saída de som  ' + #13 + '6-Se estiver apagado é os transistores reguladores da fonte';
+
+                if (edit1.text = 'não está subindo áudio') or (edit1.text = 'não sobe áudio') or (edit1.text = 'subindo áudio') or (edit1.text = 'não subiu áudio') or (edit1.text = 'não esta subindo áudio') or (edit1.text = 'nao sobe áudio') or (edit1.text = 'subindo áudio') or (edit1.text = 'não subiu áudio') or (edit1.text = 'naoestasubindoaudio') or (edit1.text = 'naosobeaudio') or (edit1.text = 'subindoaudio') or (edit1.text = 'naosubiuaudio') or (edit1.text = 'naoestasubindoaudio') or (edit1.text = 'naosobeaudio') or (edit1.text = 'subindoaudio') or (edit1.text = 'naosubiuaudio') then
+                    Label3.Text := '1-Algum transistor pré-amplificador defeituoso   ' + #13 + '2-Diodo detetor   ' + #13 + '3-Veja o alto-falante, CI ou transistor de saída   ' + #13 + '4-Troque os transistores de som  ' + #13 + '5-Troque os componentes da saída de som  ' + #13 + '6-Se estiver apagado é os transistores reguladores da fonte';
+
+                if (edit1.text = 'sintoniza estação com áudio baixo') or (edit1.text = 'sintonizaestacaocomaudiobaixo') or (edit1.text = 'sintonizaestacaocomaudiobaixo') or (edit1.text = 'sintoniza estação com audio baixo') or (edit1.text = 'áudio baixo') or (edit1.text = 'audiobaixo') or (edit1.text = 'sombaixo') or (edit1.text = 'algumas estações com áudio baixo') or (edit1.text = 'algumasestacoescomaudiobaixo') or (edit1.text = 'algumasestacoescomaudiobaixo') or (edit1.text = 'algumas estações com som baixo') or (edit1.text = 'algumasestacoescomsombaixo') or (edit1.text = 'algumasestacoescomsombaixo') or (edit1.text = 'estações com som baixo') or (edit1.text = 'estacoescomsombaixo') or (edit1.text = 'estações com áudio baixo') or (edit1.text = 'estaçoes com audio baixo') then
+                   Label3.Text := '1-Ajuste a bobina de antena   2-Troque os transistores de som' + #13 + '(Normalmente ' + #13 + 'quatro ou o CI principal)   3-Troque os componentes ' + #13 + 'da saída de som(todos)   4-Se estiver apagado é os ' + #13 + 'transistores reguladores da fonte';
+
+                If (Edit1.Text = 'ÁUDIO FANHOSO') Or (Edit1.Text = 'AUDIOFANHOSO') Or (Edit1.Text = 'SOMFANHOSO') Or (Edit1.Text = 'FANHOSO') Or (Edit1.Text = 'SOMESTRANHO') Or (Edit1.Text = 'ÁUDIO ESTRANHO') Or (Edit1.Text = 'AUDIOESTRANHO') Or (Edit1.Text = 'ÁUDIO RUIM') Or (Edit1.Text = 'AUDIORUIM') Or (Edit1.Text = 'SOMRUIM') Or (Edit1.Text = 'FANHO') Or (Edit1.Text = 'FANHOSO') Then
+
+                    Label3.Text := '1-Bobinas desajustadas ou com contatos desajustados ' + #13 + '(Geralmente ligado ' + #13 + 'a dois diodos detetores)';
+
+                if (edit1.text = 'áudio fanhoso') or (edit1.text = 'audiofanhoso') or (edit1.text = 'somfanhoso') or (edit1.text = 'fanhoso') or (edit1.text = 'somestranho') or (edit1.text = 'áudio estranho') or (edit1.text = 'audioestranho') or (edit1.text = 'áudio ruim') or (edit1.text = 'audioruim') or (edit1.text = 'somruim') or (edit1.text = 'fanho') or (edit1.text = 'fanhoso') then
+                    Label3.Text := '1-Bobinas desajustadas ou com contatos desajustados ' + #13 + '(Geralmente ligado ' + #13 + 'a dois diodos detetores)';
+
+                If (Edit1.Text = 'SOMPIPOCANDO') Or (Edit1.Text = 'ÁUDIO PIPOCANDO') Or (Edit1.Text = 'AUDIOPIPOCANDO') Or (Edit1.Text = 'PIPOCANDO') Or (Edit1.Text = 'PIPOCA') Or (Edit1.Text = 'FICA PIPOCANDO') Or (Edit1.Text = 'ESTÁPIPOCANDO') Or (Edit1.Text = 'ESTAPIPOCANDO') Or (Edit1.Text = 'ESTÁ A PIPOCAR') Or (Edit1.Text = 'ESTAAPIPOCAR') Or (Edit1.Text = 'BATIDOS') Or (Edit1.Text = 'BATIDAS') Or (Edit1.Text = 'PIPOCA') Then
+
+                    Label3.Text := '1-Verifique o capacitor que liga a saída dos transistores com o alto-falante   ' + #13 + '2-Veja transistores ou CI de saída';
+
+                if (edit1.text = 'áudiodistorcido') or (edit1.text = 'audiodistorcido') or (edit1.text = 'somdistorcido') or (edit1.text = 'distorção') or (edit1.text = 'distorcao') or (edit1.text = 'distorcao') or (edit1.text = 'distorcido') or (edit1.text = 'som está distorcido') or (edit1.text = 'somestadistorcido') or (edit1.text = 'somficadistorcido') or (edit1.text = 'áudio fica distorcido') or (edit1.text = 'audioficadistorcido') or (edit1.text = 'áudio está distorcido') or (edit1.text = 'audioestadistorcido') or (edit1.text = 'som está distorcido') or (edit1.text = 'somestadistorcido') then
+                      Label3.Text := '1-Verifique o transistor';
+                if (edit1.text = 'sompipocando') or (edit1.text = 'áudio pipocando') or (edit1.text = 'audiopipocando') or (edit1.text = 'pipocando') or (edit1.text = 'pipoca') or (edit1.text = 'ficapipocando') or (edit1.text = 'está pipocando') or (edit1.text = 'estapipocando') or (edit1.text = 'está a pipocar') or (edit1.text = 'estaapipocar') or (edit1.text = 'batidos') or (edit1.text = 'batidas') or (edit1.text = 'pipoca') then
+                   Label3.Text := '1-Verifique o capacitor que liga a saída dos transistores com o alto-falante   ' + #13 + '2-Veja transistores ou CI de saída';
+
+                If (Edit1.Text = 'RUÍDO AO MUDAR DE ESTAÇÃO') Or (Edit1.Text = 'RUIDOAOMUDARDEESTACAO') Or (Edit1.Text = 'RUIDOAOMUDARDEESTACAO') Or (Edit1.Text = 'RUÍDO QUANDO MUDA DE ESTAÇÃO') Or (Edit1.Text = 'RUIDOQUANDOMUDADEESTACAO') Or (Edit1.Text = 'RUIDOQUANDOMUDADEESTACAO') Or (Edit1.Text = 'BARULHO AO MUDAR DE ESTAÇÃO') Or (Edit1.Text = 'BARULHOAOMUDARDEESTACAO') Or (Edit1.Text = 'BARULHO QUANDO MUDA DE ESTAÇÃO') Or (Edit1.Text = 'BARULHOQUANDOMUDADEESTACAO') Or (Edit1.Text = 'BARULHOQUANDOMUDADEESTACAO') Or (Edit1.Text = 'BARULHO') Or (Edit1.Text = 'BARULHOS') Then
+
+                    Label3.Text := '1-Limpe o capacitor variável com álcool isopropílico ou com um óleo fino ' + #13 + 'em seu eixo';
+
+                if (edit1.text = 'ruídos') or (edit1.text = 'ruidos') or (edit1.text = 'ruídosaomexeropotenciometro') or (edit1.text = 'ruidosaomexeropotenciometro') or (edit1.text = 'ruído no potenciômetro') or (edit1.text = 'ruidonopotenciometro') or (edit1.text = 'ruído ao girar botão') or (edit1.text = 'ruidoaogirarbotao') or (edit1.text = 'ruído ao girar botão') or (edit1.text = 'ruidoaogirarbotao') or (edit1.text = 'ruído') or (edit1.text = 'ruido') or (edit1.text = 'ruídos ao girar o botão') or (edit1.text = 'ruidosaogirarobotao') or (edit1.text = 'ruídos ao girar o potenciômetro') or (edit1.text = 'ruidosaogiraropotenciometro') or (edit1.text = 'ruídos ao girar potenciômetro') or (edit1.text = 'ruidosaogirarpotenciometro') or (edit1.text = 'ruídos ao girar botão') or (edit1.text = 'ruidosaogirarbotao') or (edit1.text = 'ruídos quando gira botão') or (edit1.text = 'ruidosquandogirabotao') or (edit1.text = 'ruídos quando gira o botão') or (edit1.text = 'ruidosquandogiraobotao') or (edit1.text = 'ruído quando gira botão') or (edit1.text = 'ruidoquandogirabotao') or (edit1.text = 'ruído quando gira o botão') or (edit1.text = 'ruido quando gira o botão') then
+                     Label3.Text := '1-Sujeira nos contatos ou eixos dos potenciômetros, limpe-os ou troque-os';
+                if (edit1.text = 'ruído ao mudar de estação') or (edit1.text = 'ruidoaomudardeestacao') or (edit1.text = 'ruidoaomudardeestacao') or (edit1.text = 'ruído quando muda de estação') or (edit1.text = 'ruidoquandomudadeestaçao') or (edit1.text = 'ruidoquandomudadeestacao') or (edit1.text = 'barulho ao mudar de estação') or (edit1.text = 'barulhoaomudardeestacao') or (edit1.text = 'barulhoquandomudadeestacao') or (edit1.text = 'barulhoquandomudadeestaçao') or (edit1.text = 'barulhoquandomudadeestacao') or (edit1.text = 'barulho') or (edit1.text = 'barulhos') then
+                    Label3.Text := '1-Limpe o capacitor variável com álcool isopropílico ou com um óleo fino ' + #13 + 'em seu eixo';
+
+                If (Edit1.Text = 'RUÍDO GRAVE') Or (Edit1.Text = 'RUIDOGRAVE') Or (Edit1.Text = 'SOMGRAVE') Or (Edit1.Text = 'ÁUDIO GRAVE') Or (Edit1.Text = 'AUDIOGRAVE') Or (Edit1.Text = 'GRAVE') Or (Edit1.Text = 'SOM ESTÁ GRAVE') Or (Edit1.Text = 'SOMESTAGRAVE') Or (Edit1.Text = 'ÁUDIO ESTÁ GRAVE') Or (Edit1.Text = 'AUDIOESTAGRAVE') Or (Edit1.Text = 'RUÍDO ESTÁ GRAVE') Or (Edit1.Text = 'RUIDOESTAGRAVE') Or (Edit1.Text = 'SOMFICOUGRAVE') Or (Edit1.Text = 'SOMFICANDOGRAVE') Or (Edit1.Text = 'ÁUDIO FICOU GRAVE') Or (Edit1.Text = 'AUDIOFICOUGRAVE') Or (Edit1.Text = 'ÁUDIO FICANDO GRAVE') Or (Edit1.Text = 'AUDIOFICANDOGRAVE') Then
+
+                    Label3.Text := '1-Os responsáveis são os diodos retificadores e capacitor de filtragem';
+
+                if (edit1.text = 'ruído grave') or (edit1.text = 'ruidograve') or (edit1.text = 'somgrave') or (edit1.text = 'áudio grave') or (edit1.text = 'audiograve') or (edit1.text = 'grave') or (edit1.text = 'som está grave') or (edit1.text = 'somestagrave') or (edit1.text = 'áudio está grave') or (edit1.text = 'audioestagrave') or (edit1.text = 'ruído está grave') or (edit1.text = 'ruidoestagrave') or (edit1.text = 'somficougrave') or (edit1.text = 'somficandograve') or (edit1.text = 'áudio ficou grave') or (edit1.text = 'audioficougrave') or (edit1.text = 'áudio ficando grave') or (edit1.text = 'audioficandograve') then
+                    Label3.Text := '1-Os responsáveis são os diodos retificadores e capacitor de filtragem';
+
+
+                If (Edit1.Text = 'RUÍDOS') Or (Edit1.Text = 'RUIDOS') Or (Edit1.Text = 'RUÍDOS AO MEXER O POTENCIÔMETRO') Or (Edit1.Text = 'RUIDOSAOMEXEROPOTENCIOMETRO') Or (Edit1.Text = 'RUÍDO NO POTENCIÔMETRO') Or (Edit1.Text = 'RUIDONOPOTENCIOMETRO') Or (Edit1.Text = 'RUÍDO AO GIRAR BOTÃO') Or (Edit1.Text = 'RUIDOAOGIRARBOTAO') Or (Edit1.Text = 'RUÍDO AO GIRAR BOTÃO') Or (Edit1.Text = 'RUIDOAOGIRARBOTAO') Or (Edit1.Text = 'RUÍDO') Or (Edit1.Text = 'RUIDO') Or (Edit1.Text = 'RUÍDOS AO GIRAR O BOTÃO') Or (Edit1.Text = 'RUIDOSAOGIRAROBOTAO') Or (Edit1.Text = 'RUÍDOS AO GIRAR O POTENCIÔMETRO') Or (Edit1.Text = 'RUIDOSAOGIRAROPOTENCIOMETRO') Or (Edit1.Text = 'RUÍDOS AO GIRAR POTENCIÔMETRO') Or (Edit1.Text = 'RUIDOSAOGIRARPOTENCIOMETRO') Or (Edit1.Text = 'RUÍDOS AO GIRAR BOTÃO') Or (Edit1.Text = 'RUIDOSAOGIRARBOTAO') Or (Edit1.Text = 'RUÍDOS QUANDO GIRA BOTÃO') Or (Edit1.Text = 'RUIDOSQUANDOGIRABOTAO') Or (Edit1.Text = 'RUÍDOS QUANDO GIRA O BOTÃO') Or (Edit1.Text = 'RUIDOSQUANDOGIRAOBOTAO') Or (Edit1.Text = 'RUÍDO QUANDO GIRA BOTÃO') Or (Edit1.Text = 'RUIDOQUANDOGIRABOTAO') Or (Edit1.Text = 'RUÍDO QUANDO GIRA O BOTÃO') Or (Edit1.Text = 'RUIDOQUANDOGIRAOBOTÃO') Then
+
+                    Label3.Text := '1-Sujeira nos contatos ou eixos dos potenciômetros, limpe-os ou troque-os';
+                If (Edit1.Text = 'NÃO FICA ESTÉREO') Or (Edit1.Text = 'NAOFICAESTEREO') Or (Edit1.Text = 'ESTÉREO') Or (Edit1.Text = 'ESTEREO') Or (Edit1.Text = 'SEM ESTÉREO') Or (Edit1.Text = 'SEMESTEREO') Or (Edit1.Text = 'NÃO ESTÁ ESTÉREO') Or (Edit1.Text = 'NAOESTAESTEREO') Or (Edit1.Text = 'ESTÁ SEM ESTÉREO') Or (Edit1.Text = 'ESTASEMESTEREO') Or (Edit1.Text = 'PROBLEMA COM ESTÉREO') Or (Edit1.Text = 'PROBLEMACOMESTEREO') Or (Edit1.Text = 'RÁDIO NÃO FICA ESTÉREO') Or (Edit1.Text = 'RADIONAOFICAESTEREO') Or (Edit1.Text = 'SOM NÃO FICA ESTÉREO') Or (Edit1.Text = 'SOMNAOFICAESTEREO') Or (Edit1.Text = 'ÁUDIO NÃO FICA ESTÉREO') Or (Edit1.Text = 'AUDIONAOFICAESTEREO') Then
+                    Label3.Text := '1-Veja se há um trimpot para ajuste do estéreo, troque-o e o ajuste até ' + #13 + 'que o LED de estéreo acenda';
+                If (Edit1.Text = 'SOMROUCO') Or (Edit1.Text = 'ÁUDIO ROUCO') Or (Edit1.Text = 'AUDIOROUCO') Or (Edit1.Text = 'ROUCO') Or (Edit1.Text = 'ESTÁ ROUCO') Or (Edit1.Text = 'ESTAROUCO') Or (Edit1.Text = 'SOMFICOUROUCO') Or (Edit1.Text = 'ÁUDIO FICOU ROUCO') Or (Edit1.Text = 'AUDIOFICOUROUCO') Or (Edit1.Text = 'ÁUDIO ESTÁ ROUCO') Or (Edit1.Text = 'AUDIOESTAROUCO') Or (Edit1.Text = 'SOM ESTÁ ROUCO') Or (Edit1.Text = 'SOMESTAROUCO') Then
+
+                    Label3.Text := '1-Troque os transistores de som   2-Troque os componentes da saída de ' + #13 + 'som(todos)   3-Se estiver apagado é os transistores reguladores da fonte';
+
+                if (edit1.text = 'somrouco') or (edit1.text = 'áudio rouco') or (edit1.text = 'audiorouco') or (edit1.text = 'rouco') or (edit1.text = 'está rouco') or (edit1.text = 'estarouco') or (edit1.text = 'tarouco')or (edit1.text = 'somficourouco') or (edit1.text = 'áudio ficou rouco') or (edit1.text = 'audioficourouco') or (edit1.text = 'áudio está rouco') or (edit1.text = 'audio esta rouco') or (edit1.text = 'som está rouco') or (edit1.text = 'somestarouco') then
+                    Label3.Text := '1-Troque os transistores de som   2-Troque os componentes da saída de ' + #13 + 'som(todos)   3-Se estiver apagado é os transistores reguladores da fonte';
+
+                If (Edit1.Text = 'SOMALTO') Or (Edit1.Text = 'ÁUDIO ALTO') Or (Edit1.Text = 'AUDIOALTO') Or (Edit1.Text = 'ALTO') Or (Edit1.Text = 'SOM ESTÁ ALTO') Or (Edit1.Text = 'SOMESTAALTO') Or (Edit1.Text = 'SOMFICOUALTO') Or (Edit1.Text = 'ÁUDIO FICOU ALTO') Or (Edit1.Text = 'AUDIOFICOUALTO') Or (Edit1.Text = 'ÁUDIO ESTÁ ALTO') Or (Edit1.Text = 'AUDIOESTAALTO') Or (Edit1.Text = 'SOM ESTÁ ALTO') Or (Edit1.Text = 'SOMESTAALTO') Then
+
+                    Label3.Text := '1-Troque os transistores de som   2-Troque os componentes da saída de ' + #13 + 'som(todos)   3-Se estiver apagado é os transistores reguladores da fonte';
+
+                if (edit1.text = 'somalto') or (edit1.text = 'áudio alto') or (edit1.text = 'audioalto') or (edit1.text = 'alto') or (edit1.text = 'som está alto') or (edit1.text = 'somestaalto')or (edit1.text = 'somtaalto') or (edit1.text = 'somficoualto') or (edit1.text = 'áudio ficou alto') or (edit1.text = 'audioficoualto') or (edit1.text = 'áudio está alto') or (edit1.text = 'audioestaalto') or (edit1.text = 'som está alto') or (edit1.text = 'somestaalto') or (edit1.text = 'somtaalto')then
+                    Label3.Text := '1-Troque os transistores de som   2-Troque os componentes da saída de ' + #13 + 'som(todos)   3-Se estiver apagado é os transistores reguladores da fonte';
+
+                If (Edit1.Text = 'SÓ LIGA O LED') Or (Edit1.Text = 'SOLIGAOLED') Or (Edit1.Text = 'SÓ LIGA LED') Or (Edit1.Text = 'SOLIGALED') Or (Edit1.Text = 'LIGAOLED') Or (Edit1.Text = 'SÓ LIGA O STAND-BY') Or (Edit1.Text = 'SOLIGAOSTAND-BY') Or (Edit1.Text = 'SÓ LIGA O STANDBY') Or (Edit1.Text = 'SOLIGAOSTANDBY') Or (Edit1.Text = 'SÓ LIGA STANDBY') Or (Edit1.Text = 'SOLIGASTANDBY') Or (Edit1.Text = 'STANDBY')Then
+
+                    Label3.Text := '1-Trocar o CI SMD(memória-omaior da placa)';
+
+                if (edit1.text = 'só liga o led') or (edit1.text = 'soligaoled') or (edit1.text = 'só liga led') or (edit1.text = 'soligaled') or (edit1.text = 'ligaoled') or (edit1.text = 'só liga o stand-by') or (edit1.text = 'soligaostand-by') or (edit1.text = 'só liga o standby') or (edit1.text = 'soligaostandby') or (edit1.text = 'só liga standby') or (edit1.text = 'soligastandby') or (edit1.text = 'standby')then
+                    Label3.Text := '1-Trocar o CI SMD(memória-omaior da placa)';
+
+                If (Edit1.Text = 'DESARMA') Or (Edit1.Text = 'RÁDIO DESARMA') Or (Edit1.Text = 'RADIODESARMA') Or (Edit1.Text = 'SOMDESARMA') Or (Edit1.Text = 'ESTÁ DESARMANDO') Or (Edit1.Text = 'ESTADESARMANDO') Or (Edit1.Text = 'TADESARMANDO')Or (Edit1.Text = 'FICADESARMANDO') Or (Edit1.Text = 'DESARMOU') Or (Edit1.Text = 'ESTÁ APAGANDO') Or (Edit1.Text = 'ESTAAPAGANDO') Or (Edit1.Text = 'APAGANDO') Or (Edit1.Text = 'APAGA') Or (Edit1.Text = 'APAGOU') Then
+
+                    Label3.Text := '1-Trocar o CI SMD(memória-omaior da placa)';
+
+                if (edit1.text = 'desarma') or (edit1.text = 'rádio desarma') or (edit1.text = 'radiodesarma') or (edit1.text = 'somdesarma') or (edit1.text = 'está desarmando') or (edit1.text = 'estadesarmando') or (edit1.text = 'tadesarmando')or (edit1.text = 'ficadesarmando') or (edit1.text = 'desarmou') or (edit1.text = 'está apagando') or (edit1.text = 'estaapagando') or (edit1.text = 'apagando') or (edit1.text = 'apaga') or (edit1.text = 'apagou') then
+                    Label3.Text := '1-Trocar o CI SMD(memória-omaior da placa)';
+
+                If (Edit1.Text = 'NÃO ACEITA COMANDO') Or (Edit1.Text = 'NAOACEITACOMANDO') Or (Edit1.Text = 'NÃO ACEITA COMANDO DO CONTROLE REMOTO') Or (Edit1.Text = 'NAOACEITACOMANDODOCONTROLEREMOTO') Or (Edit1.Text = 'NÃO OBEDECE O CONTROLE REMOTO') Or (Edit1.Text = 'NAOOBEDECEOCONTROLEREMOTO') Or (Edit1.Text = 'NÃO OBEDECE CONTROLE REMOTO') Or (Edit1.Text = 'NAOOBEDECECONTROLEREMOTO') Or (Edit1.Text = 'NÃO OBEDECE') Or (Edit1.Text = 'CONTROLEREMOTO')Then
+
+                    Label3.Text := '1-Trocar o CI SMD(memória-omaior da placa)';
+
+                if (edit1.text = 'não aceita comando') or (edit1.text = 'naoaceitacomando') or (edit1.text = 'não aceita comando do controle remoto') or (edit1.text = 'naoaceitacomandodocontroleremoto') or (edit1.text = 'não obedece o controle remoto') or (edit1.text = 'naoobedeceocontroleremoto') or (edit1.text = 'não obedece controle remoto') or (edit1.text = 'naoobedececontroleremoto') or (edit1.text = 'não obedece') or (edit1.text = 'controleremoto')then
+                    Label3.Text := '1-Trocar o CI SMD(memória-omaior da placa)';
+
+                If (Edit1.Text = 'DISPLAY NÃO ACENDE') Or (Edit1.Text = 'DISPLAYNAOACENDE') Or (Edit1.Text = 'DISPLAY NÃO LIGA') Or (Edit1.Text = 'DISPLAYNAOLIGA') Or (Edit1.Text = 'NÃO LIGA O DISPLAY') Or (Edit1.Text = 'NAOLIGAODISPLAY') Or (Edit1.Text = 'DISPLAY NÃO FUNCIONA') Or (Edit1.Text = 'DISPLAYNAOFUNCIONA') Or (Edit1.Text = 'NÃO FUNCIONA O DISPLAY') Or (Edit1.Text = 'NAOFUNCIONAODISPLAY') Or (Edit1.Text = 'NÃO FUNCIONA DISPLAY') Or (Edit1.Text = 'NAOFUNCIONADISPLAY') Or (Edit1.Text = 'NÃO LIGA DISPLAY') Or (Edit1.Text = 'NAOLIGADISPLAY') Or (Edit1.Text = 'DISPLAY') Then
+
+                    Label3.Text := '1-Veja o fusistor aberto(Na placa do display ou na placa principal)   ' + #13 + '2-Verifique também os capacitores eletrolíticos ou os circuitos que o comandam';
+
+                if (edit1.text = 'display não acende') or (edit1.text = 'displaynaoacende') or (edit1.text = 'display não liga') or (edit1.text = 'displaynaoliga') or (edit1.text = 'não liga o display') or (edit1.text = 'naoligaodisplay') or (edit1.text = 'display não funciona') or (edit1.text = 'displaynaofunciona') or (edit1.text = 'não funciona o display') or (edit1.text = 'naofuncionaodisplay') or (edit1.text = 'não funciona display') or (edit1.text = 'naofuncionadisplay') or (edit1.text = 'não liga display') or (edit1.text = 'naoligadisplay') or (edit1.text = 'display') then
+                    Label3.Text := '1-Veja o fusistor aberto(Na placa do display ou na placa principal)   ' + #13 + '2-Verifique também os capacitores eletrolíticos ou os circuitos que o comandam';
+
+                If (Edit1.Text = 'CHAVESFALHANDO') Or (Edit1.Text = 'CHAVESDOPAINELFALHANDO') Or (Edit1.Text = 'BOTÕES FALHANDO') Or (Edit1.Text = 'BOTOESFALHANDO') Or (Edit1.Text = 'BOTÕES DO PAINEL FALHANDO') Or (Edit1.Text = 'BOTOESDOPAINELFALHANDO') Or (Edit1.Text = 'BOTÃO NÃO FUNCIONA') Or (Edit1.Text = 'BOTAONAOFUNCIONA') Or (Edit1.Text = 'BOTÕES NÃO FUNCIONAM') Or (Edit1.Text = 'BOTOESNAOFUNCIONAM') Or (Edit1.Text = 'CHAVES NÃO FUNCIONAM') Or (Edit1.Text = 'CHAVESNAOFUNCIONAM') Or (Edit1.Text = 'BOTÃO NÃO LIGA') Or (Edit1.Text = 'BOTAONAOLIGA') Or (Edit1.Text = 'CHAVE NÃO LIGA') Or (Edit1.Text = 'CHAVENAOLIGA') Or (Edit1.Text = 'BOTÕES NÃO LIGAM') Or (Edit1.Text = 'BOTOESNAOLIGAM') Or (Edit1.Text = 'CHAVES NÃO LIGAM') Or (Edit1.Text = 'CHAVESNAOLIGAM') Then
+
+                    Label3.Text := '1-Limpe-as com álcool isopropílico ou substitua-as';
+
+                if (edit1.text = 'chavesfalhando') or (edit1.text = 'chavesdopainelfalhando') or (edit1.text = 'botões falhando') or (edit1.text = 'botoesfalhando') or (edit1.text = 'botões do painel falhando') or (edit1.text = 'botoesdopainelfalhando') or (edit1.text = 'botão não funciona') or (edit1.text = 'botaonaofunciona') or (edit1.text = 'botões não funcionam') or (edit1.text = 'botoesnaofuncionam') or (edit1.text = 'chaves não funcionam') or (edit1.text = 'chavesnaofuncionam') or (edit1.text = 'botão não liga') or (edit1.text = 'botaonaoliga') or (edit1.text = 'chave não liga') or (edit1.text = 'chavenaoliga') or (edit1.text = 'botões não ligam') or (edit1.text = 'botoesnaoligam') or (edit1.text = 'chaves não ligam') or (edit1.text = 'chavesnaoligam') then
+                   Label3.Text := '1-Limpe-as com álcool isopropílico ou substitua-as';
+
+                If (Edit1.Text = 'POTENCIÔMETRO DO VOLUME NÃO FUNCIONA') Or (Edit1.Text = 'POTENCIOMETRODOVOLUMENAOFUNCIONA') Or (Edit1.Text = 'POTENCIÔMETRO DO VOLUME') Or (Edit1.Text = 'POTENCIOMETRODOVOLUME') Or (Edit1.Text = 'BOTÃO DO VOLUME NÃO FUNCIONA') Or (Edit1.Text = 'BOTAODOVOLUMENAOFUNCIONA') Or (Edit1.Text = 'BOTÃO DO VOLUME') Or (Edit1.Text = 'BOTAODOVOLUME') Or (Edit1.Text = 'VOLUME') Or (Edit1.Text = 'VOLUME NÃO FUNCIONA') Or (Edit1.Text = 'VOLUMENAOFUNCIONA') Then
+
+                    Label3.Text := '1-Solte as travas laterais da placa e puxe o eixo, limpe todos ' + #13 + 'os contatos do eixo e a parte interna do potenciômetro com álcool isopropílico';
+
+                if (edit1.text = 'potenciômetro do volume não funciona') or (edit1.text = 'potenciometrodovolumenaofunciona') or (edit1.text = 'potenciômetro do volume') or (edit1.text = 'potenciometrodovolume') or (edit1.text = 'botão do volume não funciona') or (edit1.text = 'botaodovolumenaofunciona') or (edit1.text = 'botão do volume') or (edit1.text = 'botaodovolume') or (edit1.text = 'volume') or (edit1.text = 'volume não funciona') or (edit1.text = 'volumenaofunciona') then
+                    Label3.Text := '1-Solte as travas laterais da placa e puxe o eixo, limpe todos ' + #13 + 'os contatos do eixo e a parte interna do potenciômetro com álcool isopropílico';
+
+                If (Edit1.Text = 'NÃO PARA NAS ESTAÇÕES') Or (Edit1.Text = 'NAOPARANASESTACOES') Or (Edit1.Text = 'NÃO PARA NAS RÁDIOS') Or (Edit1.Text = 'NAOPARANASRADIOS') Or (Edit1.Text = 'NÃO PARA') Or (Edit1.Text = 'NAOPARA') Or (Edit1.Text = 'ESTAÇÕES NÃO PARAM') Or (Edit1.Text = 'ESTACOESNAOPARAM') Or (Edit1.Text = 'ESTACOESNAOPARAM') Then
+
+                    Label3.Text := '1-Ajuste a bobina que está ligada no AFC(Dentro do CI) ou ' + #13 + 'troque-a';
+
+                if (edit1.text = 'não para nas estações') or (edit1.text = 'naoparanasestacoes') or (edit1.text = 'não para nas rádios') or (edit1.text = 'naoparanasradios') or (edit1.text = 'não para') or (edit1.text = 'naopara') or (edit1.text = 'estações não param') or (edit1.text = 'estacoesnaoparam') or (edit1.text = 'estacoesnaoparam') then
+                   Label3.Text := '1-Ajuste a bobina que está ligada no AFC(Dentro do CI) ou ' + #13 + 'troque-a';
+
+                If (Edit1.Text = 'NOLOAD') Or (Edit1.Text = 'MENSAGEMNOLOAD') Or (Edit1.Text = 'NODISC') Or (Edit1.Text = 'MENSAGEMNODISC') Or (Edit1.Text = 'NÃO RECONHECE O CD') Or (Edit1.Text = 'NAORECONHECEOCD') Or (Edit1.Text = 'NÃO RECONHECE O DVD') Or (Edit1.Text = 'NAORECONHECEODVD') Or (Edit1.Text = 'NÃO LÊ O CD') Or (Edit1.Text = 'NAOLEOCD') Or (Edit1.Text = 'NÃO LÊ O DVD') Or (Edit1.Text = 'NAOLEODVD') Or (Edit1.Text = 'NÃO LÊ CD') Or (Edit1.Text = 'NAOLECD') Or (Edit1.Text = 'NÃO LÊ DVD') Or (Edit1.Text = 'NAOLEDVD') Or (Edit1.Text = 'ERROR') Or (Edit1.Text = 'MENSAGEMERROR') Then
+
+                    Label3.Text := '1-Lave a unidade ótica om álcool 96 graus   2-Teste ou troque ' + #13 + 'os cabos flats, se estiverem amassados  3-Regule a unidade ótica(No trimpot, regule em sentido horário até o meio,' + #13 + 'se não a amemória queimará)   4-Substitua a unidade de CD/DVD';
+
+                if (edit1.text = 'noload') or (edit1.text = 'mensagemnoload') or (edit1.text = 'nodisc') or (edit1.text = 'mensagemnodisc') or (edit1.text = 'não reconhece o cd') or (edit1.text = 'naoreconheceocd') or (edit1.text = 'não reconhece o dvd') or (edit1.text = 'naoreconheceodvd') or (edit1.text = 'não lê o cd') or (edit1.text = 'naoleocd') or (edit1.text = 'não lê o dvd') or (edit1.text = 'naoleodvd') or (edit1.text = 'não lê cd') or (edit1.text = 'naolecd') or (edit1.text = 'não lê dvd') or (edit1.text = 'naoledvd') or (edit1.text = 'error') or (edit1.text = 'mensagemerror') then
+                    Label3.Text := '1-Lave a unidade ótica om álcool 96 graus   2-Teste ou troque ' + #13 + 'os cabos flats, se estiverem amassados  3-Regule a unidade ótica(No trimpot, regule em sentido horário até o meio, se ' + #13 + 'não a amemória queimará)   4-Substitua a unidade de CD/DVD';
+
+                If (Edit1.Text = 'GAVETAABRESOZINHA') Or (Edit1.Text = 'GAVETAABRE') Or (Edit1.Text = 'GAVETA') Or (Edit1.Text = 'AS VEZES TOCA AS VEZES NÃO TOCA') Or (Edit1.Text = 'ASVEZESTOCAASVEZESNAOTOCA') Or (Edit1.Text = 'ASVEZESTOCA') Or (Edit1.Text = 'AS VEZES TOCA AS VEZES NÃO') Or (Edit1.Text = 'ASVEZESTOCAASVEZESNAO') Or (Edit1.Text = 'ASVEZESTOCACD') Or (Edit1.Text = 'PULA A MÚSICA') Or (Edit1.Text = 'PULAAMUSICA') Or (Edit1.Text = 'PULA') Or (Edit1.Text = 'REPETE A MÚSICA') Or (Edit1.Text = 'REPETEAMUSICA') Or (Edit1.Text = 'REPETE') Or (Edit1.Text = 'REPETINDO') Or (Edit1.Text = 'REPETINDO A MÚSICA') Or (Edit1.Text = 'REPETINDOAMUSICA') Or (Edit1.Text = 'REPETEAFAIXA') Or (Edit1.Text = 'PULAAFAIXA') Or (Edit1.Text = 'PULA') Or (Edit1.Text = 'PULA MÚSICA')Or (Edit1.Text = 'PULAMUSICA')Or (Edit1.Text = 'PULAFAIXA')Or (Edit1.Text = 'REPETE MÚSICA')Or (Edit1.Text = 'REPETEMUSICA')Or (Edit1.Text = 'REPETEFAIXA')Then
+
+                    Label3.Text := '1-Troque as correias   2-Teste os motores(Use uma bateria de ' + #13 + '9V nos dois sentidos de polaridade)   3-Lubrifique as engrenagens com graxa especial de engrenagem   4-Centralize a ' + #13 + 'gaveta(Colocar o bloco da gaveta no lugar)';
+
+                if (edit1.text = 'gavetaabresozinha') or (edit1.text = 'gavetaabre') or (edit1.text = 'gaveta') or (edit1.text = 'as vezes toca as vezes não toca') or (edit1.text = 'asvezestocaasvezesnaotoca') or (edit1.text = 'asvezestoca') or (edit1.text = 'as vezes toca as vezes não') or (edit1.text = 'asvezestocaasvezesnao') or (edit1.text = 'asvezestocacd') or (edit1.text = 'pula a música') or (edit1.text = 'pulaamusica') or (edit1.text = 'pula') or (edit1.text = 'repete a música') or (edit1.text = 'repeteamusica') or (edit1.text = 'repete') or (edit1.text = 'repetindo') or (edit1.text = 'repetindo a música') or (edit1.text = 'repetindoamusica') or (edit1.text = 'repeteafaixa') or (edit1.text = 'pulaafaixa') or (edit1.text = 'pula') or (edit1.text = 'pula música')or (edit1.text = 'pulamusica')or (edit1.text = 'pulafaixa')or (edit1.text = 'repete música')or (edit1.text = 'repetemusica')or (edit1.text = 'repetefaixa')then
+                    Label3.Text := '1-Troque as correias   2-Teste os motores(Use uma bateria ' + #13 + 'de 9V nos dois sentidos de polaridade)   3-Lubrifique as engrenagens com graxa especial de engrenagem   4-Centralize a ' + #13 + 'gaveta(Colocar o bloco da gaveta no lugar)';
+
+                If (Edit1.Text = 'SÓ LÊ CD-R') Or (Edit1.Text = 'SOLECD-R') Or (Edit1.Text = 'SOLECD')Or (Edit1.Text = 'LÊ CD-R APENAS') Or (Edit1.Text = 'LECD-RAPENAS') Or (Edit1.Text = 'LECD-RSOMENTE') Or (Edit1.Text = 'LÊ CD-R') Or (Edit1.Text = 'LÊ CD')Or (Edit1.Text = 'LECD-R') Or (Edit1.Text = 'NÃO LÊ MP3') Or (Edit1.Text = 'NAOLEMP3') Or (Edit1.Text = 'NÃO EXECUTA MP3') Or (Edit1.Text = 'NAOEXECUTAMP3') Or (Edit1.Text = 'NÃO TOCA MP3') Or (Edit1.Text = 'NAOTOCAMP3') Or (Edit1.Text = 'NÃO RECONHECE MP3') Or (Edit1.Text = 'NAORECONHECEMP3') Or (Edit1.Text = 'MP3') Then
+
+                    Label3.Text := '1-Limpe os motores da bandeja só com graxa   2-Limpe a ' + #13 + 'unidade ótica com cotonete limpo ou passe bastante álcool isopropílico no motor, espre secar e alimente o motor com uma ' + #13 + 'fonte externa e veja se gira';
+
+                if (edit1.text = 'só lê cd-r') or (edit1.text = 'solecd-r') or (edit1.text = 'lê cd-r apenas') or (edit1.text = 'lecd-rapenas') or (edit1.text = 'lecd-rsomente') or (edit1.text = 'lê cd-r') or (edit1.text = 'lecd-r') or (edit1.text = 'não lê mp3') or (edit1.text = 'naolemp3') or (edit1.text = 'não executa mp3') or (edit1.text = 'naoexecutamp3') or (edit1.text = 'não toca mp3') or (edit1.text = 'naotocamp3') or (edit1.text = 'não reconhece mp3') or (edit1.text = 'naoreconhecemp3') or (edit1.text = 'mp3') then
+                    Label3.Text := '1-Limpe os motores da bandeja só com graxa   2-Limpe a ' + #13 + 'unidade ótica com cotonete limpo ou passe bastante álcool isopropílico no motor, espre secar e alimente o motor com uma ' + #13 + 'fonte externa e veja se gira';
+
+                if (edit1.text = 'não fica estéreo') or (edit1.text = 'naoficaestereo') or (edit1.text = 'estéreo') or (edit1.text = 'estereo') or (edit1.text = 'sem estéreo') or (edit1.text = 'semestereo') or (edit1.text = 'não está estéreo') or (edit1.text = 'naoestaestereo') or (edit1.text = 'está sem estéreo') or (edit1.text = 'estasemestereo') or (edit1.text = 'problema com estéreo') or (edit1.text = 'problemacomestereo') or (edit1.text = 'rádio não fica estéreo') or (edit1.text = 'radionaoficaestereo') or (edit1.text = 'som não fica estéreo') or (edit1.text = 'somnaoficaestereo') or (edit1.text = 'áudio não fica estéreo') or (edit1.text = 'audionaoficaestereo') then
+
+                    Label3.Text := '1-Veja se há um trimpot para ajuste do estéreo, troque-o e o ' + #13 + 'ajuste até que o LED de estéreo acenda';
+
+               If (Edit1.Text = 'ÁUDIO DISTORCIDO') Or (Edit1.Text = 'AUDIODISTORCIDO') Or (Edit1.Text = 'SOMDISTORCIDO') Or (Edit1.Text = 'DISTORÇÃO') Or (Edit1.Text = 'DISTORÇAO') Or (Edit1.Text = 'DISTORCAO') Or (Edit1.Text = 'DISTORCIDO') Or (Edit1.Text = 'SOM ESTÁ DISTORCIDO') Or (Edit1.Text = 'SOMESTADISTORCIDO') Or (Edit1.Text = 'SOMFICADISTORCIDO') Or (Edit1.Text = 'ÁUDIO FICA DISTORCIDO') Or (Edit1.Text = 'AUDIOFICADISTORCIDO') Or (Edit1.Text = 'ÁUDIO ESTÁ DISTORCIDO') Or (Edit1.Text = 'AUDIOESTADISTORCIDO') Or (Edit1.Text = 'SOM ESTÁ DISTORCIDO') Or (Edit1.Text = 'SOMESTADISTORCIDO')  Or (Edit1.Text = 'SOMTADISTORCIDO')Then
+                     Label3.Text := '1-Verifique o transistor';
+
+
+                if (edit1.text = 'não sintoniza') or (edit1.text = 'naosintoniza') or (edit1.text = 'não sintoniza as estações') or (edit1.text = 'naosintonizaasestaçoes') or (edit1.text = 'naosintonizaasestacoes') or (edit1.text = 'não está sintonizando') or (edit1.text = 'naoestasintonizando') or (edit1.text = 'sintoniafraca') or (edit1.text = 'semsintonia') then
+                    Label3.Text := '1-Veja transistor amplificador de RF e enrolamentos da bobina de antena  ' + #13 + '2-Transistor misturador 3-Transistor oscilador   ' + #13 + '3-Veja os transistores amplificadores de FI ' + #13 + 'ou CIs que amplificam a FI';
+
+                If (Edit1.Text = 'SINTONIZA ESTAÇÃO COM ÁUDIO BAIXO') Or (Edit1.Text = 'SINTONIZAESTAÇAOCOMAUDIOBAIXO') Or (Edit1.Text = 'SINTONIZAESTACAOCOMAUDIOBAIXO') Or (Edit1.Text = 'SINTONIZA ESTAÇÃO COM AUDIO BAIXO') Or (Edit1.Text = 'ÁUDIO BAIXO') Or (Edit1.Text = 'AUDIOBAIXO') Or (Edit1.Text = 'SOMBAIXO') Or (Edit1.Text = 'ALGUMAS ESTAÇÕES COM ÁUDIO BAIXO') Or (Edit1.Text = 'ALGUMASESTACOESCOM AUDIO BAIXO') Or (Edit1.Text = 'ALGUMASESTACOESCOMAUDIOBAIXO') Or (Edit1.Text = 'ALGUMAS ESTAÇÕES COM SOM BAIXO') Or (Edit1.Text = 'ALGUMASESTACOESCOMSOMBAIXO') Or (Edit1.Text = 'ALGUMASESTACOESCOMSOMBAIXO') Or (Edit1.Text = 'ESTAÇÕES COM SOM BAIXO') Or (Edit1.Text = 'ESTACOESCOMSOMBAIXO') Or (Edit1.Text = 'ESTAÇÕES COM ÁUDIO BAIXO') Or (Edit1.Text = 'ESTACOESCOMAUDIOBAIXO') Then
+                Label3.Text := '1-Ajuste a bobina de antena   2-Troque os transistores de som' + #13 + '(Normalmente quatro ou o CI principal)   3-Troque os componentes ' + #13 + 'da saída de som(todos)   4-Se estiver apagado é os ' + #13 + 'transistores reguladores da fonte';
+
+                If (Edit1.Text = 'SINTONIZA ESTAÇÕES BAIXAS') Or (Edit1.Text = 'SINTONIZAESTACOESBAIXAS') Or (Edit1.Text = 'SINTONIZAESTACOESBAIXAS') Or (Edit1.Text = 'ESTAÇÕES BAIXAS') Or (Edit1.Text = 'ESTACOESBAIXAS') Or (Edit1.Text = 'SÓ SINTONIZA ESTAÇÕES BAIXAS') Or (Edit1.Text = 'SOSINTONIZAESTACOESBAIXAS') Or (Edit1.Text = 'SOSINTONIZAESTACOESBAIXAS') Or (Edit1.Text = 'SÓ TOCA ESTAÇÕES BAIXAS') Or (Edit1.Text = 'SOTOCAESTACOESBAIXAS') Or (Edit1.Text = 'SOTOCAESTACOESBAIXAS') Or (Edit1.Text = 'SÓ REPRODUZ ESTAÇÕES BAIXAS') Or (Edit1.Text = 'SOREPRODUZESTACOESBAIXAS') Or (Edit1.Text = 'SOREPRODUZESTACOESBAIXAS') Or (Edit1.Text = 'SÓ TOCA ESTAÇÕES BAIXAS') Or (Edit1.Text = 'SOTOCAESTACOESBAIXAS') Or (Edit1.Text = 'SOTOCAESTACOESBAIXAS') Then
+
+                    Label3.Text := '1-Verifique os resistores que polarizam o transistor misturador';
+
+                If (Edit1.Text = 'NÃO LIGA') Or (Edit1.Text = 'DEUPAU') Or (Edit1.Text = 'NÃO FUNCIONA') Or (Edit1.Text = 'NÃO QUER LIGAR') Or (Edit1.Text = 'NÃO QUER FUNCIONAR') Or (Edit1.Text = 'NÃO ESTÁ FUNCIONANDO') Or (Edit1.Text = 'NÃO ESTÁ LIGANDO') Or (Edit1.Text = 'NAOFUNCIONA') Or (Edit1.Text = 'NAOLIGA') Or (Edit1.Text = 'NAOESTAFUNCIONANDO') Or (Edit1.Text = 'NAOESTALIGANDO') Then
+
+                    Label3.Text := '1-Verifique o transformador, suporte de pilhas ou mau-contato ' + #13 + 'na chave LIGA/DESLIGA   2-Transistor de regulagem da tensão ' + #13 + 'da fonte   3-Observe os fusíveis ou teste  os fusistores na placa ' + #13 + 'do transformador de força';
+
+                if (edit1.text = 'não liga') or (edit1.text = 'deupau') or (edit1.text = 'não funciona') or (edit1.text = 'não quer ligar') or (edit1.text = 'não quer funcionar') or (edit1.text = 'não está funcionando') or (edit1.text = 'não está ligando') or (edit1.text = 'naofunciona') or (edit1.text = 'naoliga') or (edit1.text = 'naoestafuncionando') or (edit1.text = 'naoestaligando') then
+                    Label3.Text := '1-Verifique o transformador, suporte de pilhas ou mau-contato ' + #13 + 'na chave LIGA/DESLIGA   2-Transistor de regulagem da tensão ' + #13 + 'da fonte   3-Observe os fusíveis ou teste  os fusistores na placa ' + #13 + 'do transformador de força';
+
+
+                If (Edit1.Text = 'RONCA') Or (Edit1.Text = 'SOMRONCANDO') Or (Edit1.Text = 'RÁDIO RONCA') Or (Edit1.Text = 'RADIORONCA') Or (Edit1.Text = 'RÁDIO RONCANDO') Or (Edit1.Text = 'RADIORONCANDO') Or (Edit1.Text = 'SOMRONCANDO') Or (Edit1.Text = 'RONCANDO') Then
+
+                    Label3.Text := '1-Verifique os diodos retificadores, capacitor eletrolítico de ' + #13 + 'filtragem';
+
+                if (edit1.text = 'ronca') or (edit1.text = 'somroncando') or (edit1.text = 'rádio ronca') or (edit1.text = 'radioronca') or (edit1.text = 'rádio roncando') or (edit1.text = 'radioroncando') or (edit1.text = 'somroncando') or (edit1.text = 'roncando') then
+                    Label3.Text := '1-Verifique os diodos retificadores, capacitor eletrolítico de ' + #13 + 'filtragem';
+
+
+                If Label3.Text = '' Then
+                  begin
+                    Label4.Visible := True;
+                    Label4.Text := procura + 'Não está relacionado, defina a pesquisa com outro nome.';
+                  End;
+
+              end;//fecha radio
+
+
+
+
+
+
+
+
+          end;
+end;
+            {Except
+
+                Label3.Visible := False;
+                Label4.Visible := true;
+                //Label4.Text := 'Informe o nome corretamente e com portugues correto(Verifique ' + #13 + 'os espaços).'
+                Label4.Text := procura + 'Não está relacionado, defina a pesquisa com outro nome.'
+
+             end;}
+
+
+
+      //end;
+   //end;
+
+end.
