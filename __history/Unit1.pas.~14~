@@ -1,71 +1,15 @@
-unit Unit1;
-
-interface
-
-uses
-  System.SysUtils, System.Types, System.UITypes, System.Classes, System.Variants,
-  FMX.Types, FMX.Controls, FMX.Forms, FMX.Graphics, FMX.Dialogs, FMX.StdCtrls;
-
-type
-  TForm1 = class(TForm)
-    Panel1: TPanel;
-    Label1: TLabel;
-    Button2: TButton;
-    Button1: TButton;
-    Button3: TButton;
-    ImageControl1: TImageControl;
-    ImageControl2: TImageControl;
-    ImageControl3: TImageControl;
-
-    //procedure ShowForm(AObject: TFmxObject);
-    procedure Button2Click(Sender: TObject);
-  private
-    //Fform2: TForm2;
-    { Private declarations }
-  public
-
-    { Public declarations }
-  end;
-
-var
-  Form1: TForm1;
-
-implementation
-
-{$R *.fmx}
-
-uses Unit2;
-
-
-
-
-{procedure TForm1.ShowForm(AObject: TFmxObject);
-  var
-    i:integer;
-  begin
-      for i:=0 to Pred(Self.Panel1.children.count)do
-        TControl(Self.Panel1.Children[i]).Visible:=TControl(Self.Panel1.Children[i])=TControl(AObject);
-  end;  }
-
-
-
-procedure TForm1.Button2Click(Sender: TObject);
-
-begin
-    Form2.showmodal;
-
-    {if not assigned(Fform2) then
-      Fform2:=TForm2.Create(self);
-      Panel1.AddObject(Fform2.Panel2);
-      ShowForm(Fform2.Panel2); }
-
-
-
-
-end;
-
-
-
-
-
-end.
+UJAzkVBQd9WVVTjRlBP20pWV9ZRVFTYPEJE6ThBQepBRj/eNzo10TMz
+        LNZBRUCrpZeOMNXJyAYAAAAAHiYwgw0QF/8aICn/P0RO/klMVfUsMTzuJik23B4lNsYQGyfzDRgf/wYL
+        Ev8DBQj/ERgb1FBaXRgAAAAAAAAAACYuQH9MTFa0joyP07KxspmysLJeWFhcenh6fX9/fX8wNjtFozM2
+        PPogJSr9IyYp8CcqLexpa22Sfn99SFdUVCVSV19pfYmPqoudopZ1iZKEa4iUjVdwertSanPUUXF9yUlh
+        bexbe4r6RFdg/E9ja+RbcnrnWXeE0GqNn8ZqfIdZS1JWM2yCidWLsLn/hK65/3yuv/9jkKL/UX+Q/2ui
+        uP9diZv/Z5eo/15/iv9nhpD/b5ai/3Smuv98udD2eKW+SAAAAABNV15KeZmg6JrIzv+Yx8//d6Gr/26a
+        pv+Gusf/f7K//2+YpP9jg4z/g6y3/3GQnf97prX/kcnd83mhukQAAAAAAAAAAU9aY1x1lJzumcfN/3me
+        pf96oaf/b5O4/1d3sf+GsMP/SWBp/4a0vf+Iq73+ZIOO/5LE2vSMsMlFAAAAAAAAAAARAAADRFJYbG6O
+        lfdzk5z/WHWP/3CTwP9ZeML/d53O/z9Sc/90m6L/krvL/32Yq+dzlKPZi6zBUAAAAAAAAAAAAAAAADQm
+        Jgg4QUWHRVZh+D5Ui/9bfLn/TWq7/2yOyf9Qa5T/XHuF94qyx/+fyebNUl9nUUdPVEkAAAAAAAAAAAAA
+        AAAAAAAAMCw0CSUnLIpXc338gK7R/0prwP+Qx+L/gbXC/3qlsrR0kaXDoszl1JWsvBJNS0ocAAAAAAAA
+        AAAAAAAAAAAAAAAAAAA6QEJEOENFlEphdulmjrz/g7TH/4a9xP+LwcylUl9qOYGdraySqrwUAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAQUpQUDxGS1w5QT9KY4SK2oe7w/+OyM7/iL/HuGFogAVRU1syXl5jHAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAFxgaBFSWF4QAAAAAEFGSTZaeHvBhbi9/4zBzMlsiZgNAAAAAHBv
+        bwYAAAAAAAAAAAA

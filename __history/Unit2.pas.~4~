@@ -1,45 +1,12 @@
-unit Unit2;
-
-interface
-
-uses
-  System.SysUtils, System.Types, System.UITypes, System.Classes, System.Variants,
-  FMX.Types, FMX.Controls, FMX.Forms, FMX.Graphics, FMX.Dialogs, FMX.StdCtrls,
-  FMX.Edit;
-
-type
-  TForm2 = class(TForm)
-    Panel2: TPanel;
-    ImageControl1: TImageControl;
-    Edit1: TEdit;
-    Label2: TLabel;
-    Label1: TLabel;
-    procedure ImageControl1Click(Sender: TObject);
-    procedure Panel2Click(Sender: TObject);
-
-  private
-    Fform2:TForm2;
-    { Private declarations }
-  public
-    { Public declarations }
-  end;
-
-var
-  Form2: TForm2;
-
-implementation
-
-{$R *.fmx}
-
-uses Unit1;
-
-
-
-procedure TForm2.ImageControl1Click(Sender: TObject);
-begin
-    Label1.Visible:=true;
-end;
-
-
-
-end.
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.21005.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "Vasco Da Gama", "Vasco Da Gama\Vasco Da Gama.vbproj", "{E5003465-30F3-4200-B5D0-124CBADD6643}"
+EndProject
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "Vasco da Gama - O Navegador", "SETUP\Vasco da Gama - Setup\Vasco da Gama - Setup.vdproj", "{310B639E-426D-4C44-BDE3-F68DF0527491}"
+EndProject
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "Vasco da Gama - Install", "Vasco da Gama - Install\Vasco da Gama - Install.vdproj", "{573D4E57-214A-4E97-B936-EE8846905959}"
+EndProject
+Project("{54435603-DBB4-11D2-8724-00

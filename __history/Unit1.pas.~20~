@@ -1,93 +1,19 @@
-unit Unit1;
-
-interface
-
-uses
-  System.SysUtils, System.Types, System.UITypes, System.Classes, System.Variants,
-  FMX.Types, FMX.Controls, FMX.Forms, FMX.Graphics, FMX.Dialogs, FMX.StdCtrls;
-
-type
-  TForm1 = class(TForm)
-    Panel1: TPanel;
-    Label1: TLabel;
-    Button2: TButton;
-    Button3: TButton;
-    ImageControl2: TImageControl;
-    ImageControl3: TImageControl;
-    Button1: TButton;
-    ImageControl1: TImageControl;
-
-    //procedure ShowForm(AObject: TFmxObject);
-    procedure Button2Click(Sender: TObject);
-    procedure ImageControl1Click(Sender: TObject);
-    procedure Button1Click(Sender: TObject);
-    procedure ImageControl2Click(Sender: TObject);
-    procedure Button3Click(Sender: TObject);
-    procedure ImageControl3Click(Sender: TObject);
-  private
-    //Fform2: TForm2;
-    { Private declarations }
-  public
-
-    { Public declarations }
-  end;
-
-var
-  Form1: TForm1;
-
-implementation
-
-{$R *.fmx}
-
-uses Unit2;
-
-
-
-
-{procedure TForm1.ShowForm(AObject: TFmxObject);
-  var
-    i:integer;
-  begin
-      for i:=0 to Pred(Self.Panel1.children.count)do
-        TControl(Self.Panel1.Children[i]).Visible:=TControl(Self.Panel1.Children[i])=TControl(AObject);
-  end;   }
-
-
-
-procedure TForm1.Button1Click(Sender: TObject);
-begin
-    Form2.showmodal;
-end;
-
-procedure TForm1.Button2Click(Sender: TObject);
-
-begin
-    Form2.showmodal;
-
-    {if not assigned(Fform2) then
-      Fform2:=TForm2.Create(self);
-      Panel1.AddObject(Fform2.Panel2);
-      ShowForm(Fform2.Panel2); }
-end;
-
-procedure TForm1.ImageControl1Click(Sender: TObject);
-begin
-    Form2.showmodal;
-end;
-
-procedure TForm1.ImageControl2Click(Sender: TObject);
-begin
-    Form2.showmodal;
-end;
-
-procedure TForm1.Button3Click(Sender: TObject);
-begin
-    Form2.showmodal;
-end;
-
-procedure TForm1.ImageControl3Click(Sender: TObject);
-begin
-    Form2.showmodal;
-end;
-
-end.
+﻿<?xml version="1.0" encoding="utf-8"?>
+<asmv1:assembly xsi:schemaLocation="urn:schemas-microsoft-com:asm.v1 assembly.adaptive.xsd" manifestVersion="1.0" xmlns:asmv3="urn:schemas-microsoft-com:asm.v3" xmlns:dsig="http://www.w3.org/2000/09/xmldsig#" xmlns:co.v1="urn:schemas-microsoft-com:clickonce.v1" xmlns:co.v2="urn:schemas-microsoft-com:clickonce.v2" xmlns="urn:schemas-microsoft-com:asm.v2" xmlns:asmv1="urn:schemas-microsoft-com:asm.v1" xmlns:asmv2="urn:schemas-microsoft-com:asm.v2" xmlns:xrml="urn:mpeg:mpeg21:2003:01-REL-R-NS" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <assemblyIdentity name="Vasco Da Gama.application" version="1.0.0.7" publicKeyToken="0000000000000000" language="neutral" processorArchitecture="x86" xmlns="urn:schemas-microsoft-com:asm.v1" />
+  <description asmv2:publisher="Vasco a Gama 1.1" co.v1:suiteName="Clov!System" asmv2:product="Microsoft Vasco da Gama WebBrowser" xmlns="urn:schemas-microsoft-com:asm.v1" />
+  <deployment install="true" mapFileExtensions="true" co.v1:createDesktopShortcut="true" />
+  <compatibleFrameworks xmlns="urn:schemas-microsoft-com:clickonce.v2">
+    <framework targetVersion="4.0" profile="Client" supportedRuntime="4.0.30319" />
+    <framework targetVersion="4.0" profile="Full" supportedRuntime="4.0.30319" />
+  </compatibleFrameworks>
+  <dependency>
+    <dependentAssembly dependencyType="install" codebase="Vasco Da Gama.exe.manifest" size="3549">
+      <assemblyIdentity name="Vasco Da Gama.exe" version="1.0.0.7" publicKeyToken="0000000000000000" language="neutral" processorArchitecture="x86" type="win32" />
+      <hash>
+        <dsig:Transforms>
+          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+        </dsig:Transforms>
+        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+        <dsig:DigestValue>irYPcPk4S1mNsCIJsvfEFFi+PMY=</dsig:DigestValue>
+   

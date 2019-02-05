@@ -801,7 +801,6 @@ begin
                 if (edit1.text = 'ruído grave') or (edit1.text = 'ruidograve') or (edit1.text = 'somgrave') or (edit1.text = 'áudio grave') or (edit1.text = 'audiograve') or (edit1.text = 'grave') or (edit1.text = 'som está grave') or (edit1.text = 'somestagrave') or (edit1.text = 'áudio está grave') or (edit1.text = 'audioestagrave') or (edit1.text = 'ruído está grave') or (edit1.text = 'ruidoestagrave') or (edit1.text = 'somficougrave') or (edit1.text = 'somficandograve') or (edit1.text = 'áudio ficou grave') or (edit1.text = 'audioficougrave') or (edit1.text = 'áudio ficando grave') or (edit1.text = 'audioficandograve') then
                     Label3.Text := '1-Os responsáveis são os diodos retificadores e capacitor de filtragem';
 
-
                 If (Edit1.Text = 'RUÍDOS') Or (Edit1.Text = 'RUIDOS') Or (Edit1.Text = 'RUÍDOS AO MEXER O POTENCIÔMETRO') Or (Edit1.Text = 'RUIDOSAOMEXEROPOTENCIOMETRO') Or (Edit1.Text = 'RUÍDO NO POTENCIÔMETRO') Or (Edit1.Text = 'RUIDONOPOTENCIOMETRO') Or (Edit1.Text = 'RUÍDO AO GIRAR BOTÃO') Or (Edit1.Text = 'RUIDOAOGIRARBOTAO') Or (Edit1.Text = 'RUÍDO AO GIRAR BOTÃO') Or (Edit1.Text = 'RUIDOAOGIRARBOTAO') Or (Edit1.Text = 'RUÍDO') Or (Edit1.Text = 'RUIDO') Or (Edit1.Text = 'RUÍDOS AO GIRAR O BOTÃO') Or (Edit1.Text = 'RUIDOSAOGIRAROBOTAO') Or (Edit1.Text = 'RUÍDOS AO GIRAR O POTENCIÔMETRO') Or (Edit1.Text = 'RUIDOSAOGIRAROPOTENCIOMETRO') Or (Edit1.Text = 'RUÍDOS AO GIRAR POTENCIÔMETRO') Or (Edit1.Text = 'RUIDOSAOGIRARPOTENCIOMETRO') Or (Edit1.Text = 'RUÍDOS AO GIRAR BOTÃO') Or (Edit1.Text = 'RUIDOSAOGIRARBOTAO') Or (Edit1.Text = 'RUÍDOS QUANDO GIRA BOTÃO') Or (Edit1.Text = 'RUIDOSQUANDOGIRABOTAO') Or (Edit1.Text = 'RUÍDOS QUANDO GIRA O BOTÃO') Or (Edit1.Text = 'RUIDOSQUANDOGIRAOBOTAO') Or (Edit1.Text = 'RUÍDO QUANDO GIRA BOTÃO') Or (Edit1.Text = 'RUIDOQUANDOGIRABOTAO') Or (Edit1.Text = 'RUÍDO QUANDO GIRA O BOTÃO') Or (Edit1.Text = 'RUIDOQUANDOGIRAOBOTÃO') Then
 
                     Label3.Text := '1-Sujeira nos contatos ou eixos dos potenciômetros, limpe-os ou troque-os';
@@ -957,3 +956,147 @@ end;
    //end;
 
 end.
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  object Form2: TForm2
+  Left = 0
+  Top = 0
+  Caption = 'Consertando'
+  ClientHeight = 567
+  ClientWidth = 384
+  FormStyle = fsPopup
+  FormFactor.Width = 320
+  FormFactor.Height = 480
+  FormFactor.Devices = [dkDesktop]
+  DesignerMobile = True
+  DesignerWidth = 384
+  DesignerHeight = 592
+  DesignerDeviceName = 'Google Nexus 4'
+  DesignerOrientation = 0
+  DesignerOSVersion = ''
+  object Panel2: TPanel
+    Height = 585.000000000000000000
+    Position.Y = 16.000000000000000000
+    Width = 385.000000000000000000
+    TabOrder = 0
+    object Label3: TLabel
+      Align = alCenter
+      AutoSize = True
+      Height = 26.000000000000000000
+      Width = 58.000000000000000000
+      WordWrap = False
+      Trimming = ttCharacter
+    end
+    object Edit1: TEdit
+      Touch.InteractiveGestures = [igLongTap, igDoubleTap]
+      TabOrder = 0
+      Font.Size = 12.000000000000000000
+      FontColor = claBlue
+      Position.X = 24.000000000000000000
+      Position.Y = 112.000000000000000000
+      Width = 337.000000000000000000
+      Height = 32.000000000000000000
+      StyledSettings = [ssFamily, ssSize, ssStyle]
+      KillFocusByReturn = False
+      OnChangeTracking = Edit1ChangeTracking
+      OnTyping = Edit1Typing
+    end
+    object Label2: TLabel
+      Height = 23.000000000000000000
+      Position.X = 160.000000000000000000
+      Position.Y = 16.000000000000000000
+      Text = 'Label2'
+      Width = 82.000000000000000000
+      Trimming = ttCharacter
+    end
+    object Label1: TLabel
+      Height = 23.000000000000000000
+      Position.X = 128.000000000000000000
+      Position.Y = 48.000000000000000000
+      Text = 'Informe o defeito:'
+      Width = 169.000000000000000000
+      Trimming = ttCharacter
+    end
+    object Label4: TLabel
+      Height = 23.000000000000000000
+      Position.X = 16.000000000000000000
+      Position.Y = 184.000000000000000000
+      Text = 'Label4'
+      Visible = False
+      Width = 340.000000000000000000
+      Trimming = ttCharacter
+    end
+    object Button1: TButton
+      Height = 32.000000000000000000
+      Position.X = 328.000000000000000000
+      Position.Y = 112.000000000000000000
+      StyleLookup = 'searcheditbutton'
+      TabOrder = 5
+      Text = 'Button1'
+      Trimming = ttCharacter
+      Width = 32.000000000000000000
+      OnClick = Button1Click
+    end
+  end
+  object ToolBar1: TToolBar
+    Align = alBottom
+    Height = 48.000000000000000000
+    Position.Y = 519.000000000000000000
+    TabOrder = 1
+    Width = 384.000000000000000000
+    OnClick = ToolBar1Click
+    object Label5: TLabel
+      Font.Size = 20.000000000000000000
+      StyledSettings = [ssFamily, ssStyle, ssFontColor]
+      Height = 23.000000000000000000
+      Position.X = 160.000000000000000000
+      Position.Y = 16.000000000000000000
+      Text = 'Voltar'
+      Width = 57.000000000000000000
+      Trimming = ttCharacter
+    end
+  end
+end
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       object Form2: TForm2
+  Left = 0
+  Top = 0
+  Caption = 'Consertando'
+  ClientHeight = 567
+  ClientWidth = 384
+  FormStyle = fsPopup
+  FormFactor.Width = 320
+  FormFactor.Height = 480
+  FormFactor.Devices = [dkDesktop]
+  OnClose = FormClose
+  DesignerMobile = True
+  DesignerWidth = 384
+  DesignerHeight = 592
+  DesignerDeviceName = 'Google Nexus 4'
+  DesignerOrientation = 0
+  DesignerOSVersion = ''
+  object Panel2: TPanel
+    Height = 585.000000000000000000
+    Width = 385.000000000000000000
+    TabOrder = 0
+    object Label3: TLabel
+      Align = alCenter
+      AutoSize = True
+      Height = 26.000000000000000000
+      Width = 58.000000000000000000
+      WordWrap = False
+      Trimming = ttCharacter
+    end
+    object Edit1: TEdit
+      Touch.InteractiveGestures = [igLongTap, igDoubleTap]
+      TabOrder = 0
+      Font.Size = 12.000000000000000000
+      FontColor = claBlue
+      Position.X = 24.000000000000000000
+      Position.Y = 112.000000000000000000
+      Width = 337.000000000000000000
+      Height = 32.000000000000000000
+      StyledSettings = [ssFamily, ssSize, ssStyle]
+      KillFocusByReturn = False
+      OnChangeTracking = Edit1ChangeTracking
+      OnTyping = Edit1Typing
+    end
+    object Label2: TLabel
+      Height = 23.00000000000

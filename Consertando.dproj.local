@@ -2,14 +2,16 @@
 <BorlandProject>
 	<Transactions>
     <Transaction>2017/08/31 12:42:39.000.837,=C:\Users\Clovis Jr\Documents\RAD Studio\Projects\Unit3.pas</Transaction>
-    <Transaction>2017/08/31 12:44:41.000.371,C:\Users\Clovis Jr\Desktop\Consertando-Mobile\Unit1.fmx=C:\Users\Clovis Jr\Documents\RAD Studio\Projects\Unit3.fmx</Transaction>
-    <Transaction>2017/08/31 12:44:41.000.371,C:\Users\Clovis Jr\Desktop\Consertando-Mobile\Unit1.pas=C:\Users\Clovis Jr\Documents\RAD Studio\Projects\Unit3.pas</Transaction>
-    <Transaction>2017/08/31 12:44:58.000.171,C:\Users\Clovis Jr\Desktop\Consertando-Mobile\Consertando.dproj=C:\Users\Clovis Jr\Documents\RAD Studio\Projects\Project1.dproj</Transaction>
+    <Transaction>2017/08/31 12:44:41.000.371,C:\Users\Clovis Jr\Documents\RAD Studio\Projects\Unit3.fmx=C:\Users\Clovis Jr\Desktop\Consertando-Mobile\Unit1.fmx</Transaction>
+    <Transaction>2017/08/31 12:44:41.000.371,C:\Users\Clovis Jr\Documents\RAD Studio\Projects\Unit3.pas=C:\Users\Clovis Jr\Desktop\Consertando-Mobile\Unit1.pas</Transaction>
+    <Transaction>2017/08/31 12:44:58.000.171,C:\Users\Clovis Jr\Documents\RAD Studio\Projects\Project1.dproj=C:\Users\Clovis Jr\Desktop\Consertando-Mobile\Consertando.dproj</Transaction>
     <Transaction>2017/08/31 13:15:50.000.967,=C:\Users\Clovis Jr\Desktop\Consertando-Mobile\Unit2.pas</Transaction>
     <Transaction>2017/09/07 16:16:52.000.967,=C:\Users\Clovis Jr\Desktop\Consertando-Mobile\Unit3.pas</Transaction>
     <Transaction>2017/09/07 16:35:03.000.790,=C:\Users\Clovis Jr\Desktop\Consertando-Mobile\Unit4.pas</Transaction>
   </Transactions>
 	<MobileDevice>rsxe5_android</MobileDevice>
-	<BT_BuildType>Debug</BT_BuildType>  <ActiveMobileDevice>   <NoProfile iOSSimulator="iPhone5" Android="F10012082600292604B5"/>
-  </ActiveMobileDevice>
+	<BT_BuildType>Debug</BT_BuildType>
+	<ActiveMobileDevice>
+		<NoProfile iOSSimulator="iPhone5" Android="teste"/>
+	</ActiveMobileDevice>
 </BorlandProject>
